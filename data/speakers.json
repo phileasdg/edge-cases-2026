@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Prof. Laurent Hébert-Dufresne",
+        "affiliation": "Vermont Complex Systems Institute",
+        "topic": "Keynote: Structural Network Science & Contagion",
+        "type": "faculty"
+    },
+    {
+        "name": "Prof. Juniper Lovato",
+        "affiliation": "Vermont Complex Systems Center",
+        "topic": "Keynote: Digital Societies & Governance",
+        "type": "faculty"
+    },
+    {
+        "name": "Pedro Márquez-Zacarías",
+        "affiliation": "Wolfram Institute / SFI Omidyar Fellow",
+        "topic": "Theoretical Biology & Computational Linguistics of Purépecha"
+    },
+    {
+        "name": "Shahar Somin",
+        "affiliation": "Bar-Ilan University",
+        "topic": "Ghost networks: Detecting influence when no links are visible"
+    },
+    {
+        "name": "Osnat Mokryn",
+        "affiliation": "University of Haifa",
+        "topic": "Engagement Homeostasis in Temporal Interaction Networks"
+    },
+    {
+        "name": "Moyi Tian",
+        "affiliation": "University of Colorado Boulder",
+        "topic": "How Do Online Agents Spread News? Network Dynamics of LLMs"
+    },
+    {
+        "name": "Swathi Nachiar Manivannan",
+        "affiliation": "Yale University",
+        "topic": "Deconstructing fitness seascapes across scales of complexity"
+    },
+    {
+        "name": "Arhan Vora",
+        "affiliation": "University of Montpellier",
+        "topic": "Sailing through Phenotype Space: Discretizing Evolution"
+    },
+    {
+        "name": "Chathura Jayalath",
+        "affiliation": "University of Central Florida",
+        "topic": "Generative Model Discovery: Mechanistic Models & Multimodal AI"
+    },
+    {
+        "name": "Cynthia S. Q. Siew",
+        "affiliation": "National University of Singapore",
+        "topic": "The Mental Lexicon As A Complex Network"
+    },
+    {
+        "name": "Emmy Tither",
+        "affiliation": "UIUC",
+        "topic": "Building Networks Using Qualitative Data & STIN Models"
+    },
+    {
+        "name": "Katie Spoon",
+        "affiliation": "Stanford University",
+        "topic": "Your doctor visits as a network: High-risk health trajectories"
+    },
+    {
+        "name": "Anelise Rocha Assumpcao",
+        "affiliation": "Universidade Federal Fluminense",
+        "topic": "The Production of Judicial Decisions: A Comparative Study"
+    },
+    {
+        "name": "Carlos Zapata-Carratala",
+        "affiliation": "Wolfram Institute",
+        "topic": "Higher Arity Science & Mathematical Foundations"
+    },
+    {
+        "name": "Divya Sindhu Lekha",
+        "affiliation": "IIIT Kottayam",
+        "topic": "Winning at Chess Without Search: Interaction Networks"
+    },
+    {
+        "name": "Haily Merritt",
+        "affiliation": "Northeastern University London",
+        "topic": "Brain Networks as Phenotypes"
+    },
+    {
+        "name": "Andrea Bina",
+        "affiliation": "Independent Consultant",
+        "topic": "Strengthening relationships in the Peruvian Amazon"
+    },
+    {
+        "name": "Phileas Dazeley-Gaist",
+        "affiliation": "Complexity Coffee",
+        "topic": "Networked Creativity: Artist Community Citation Networks"
+    }
+]

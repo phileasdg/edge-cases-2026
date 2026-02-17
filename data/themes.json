@@ -1,0 +1,32 @@
+[
+    {
+        "id": "01",
+        "title": "Encoding & Representation",
+        "description": "Capturing and visualizing complex structures from qualitative and abstract data."
+    },
+    {
+        "id": "02",
+        "title": "Evolution & Adaptation",
+        "description": "Understanding how networked systems grow and adapt to varied environments."
+    },
+    {
+        "id": "03",
+        "title": "Dynamics & Function",
+        "description": "Exploring the relationship between network structure and system behavior."
+    },
+    {
+        "id": "04",
+        "title": "Computation & Discovery",
+        "description": "Applying algorithmic tools to identify hidden patterns in complex systems."
+    },
+    {
+        "id": "05",
+        "title": "Natural & Mental Systems",
+        "description": "Investigating the network architecture of biological and cognitive processes."
+    },
+    {
+        "id": "06",
+        "title": "Foundational Frameworks",
+        "description": "Developing new mathematical tools and interdisciplinary methods for complex systems."
+    }
+]

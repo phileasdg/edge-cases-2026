@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Cases: Surprising Applications in Network Science | CCS 2026</title>
+    <meta name="description"
+        content="A satellite symposium at CCS 2026 exploring frontiers in network science through the lens of surprising domains and latent structures.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&family=Roboto+Mono:wght@500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                Edge Cases
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="burger-button" id="mobileBurger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu-panel" id="mobileMenu">
+            <a href="#about">About</a>
+            <a href="#themes">Themes</a>
+            <a href="#agenda">Agenda</a>
+            <a href="#speakers">Speakers</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="info-banner" data-reveal>
+            <p><strong>Notice:</strong> Symposium details, including speakers and agenda, are currently tentative and
+                subject to change.</p>
+        </div>
+        <section class="hero" id="home">
+            <canvas id="networkCanvas" class="hero-canvas"></canvas>
+            <div class="container">
+                <div class="mono" data-reveal style="opacity: 0.8; margin-bottom: 0.5rem;">CCS 2026 Satellite Symposium
+                </div>
+                <h1 data-reveal>Edge Cases</h1>
+                <p class="tagline" data-reveal>Exploration of the surprising, the latent, and the unconventional in
+                    Network
+                    Science.</p>
+                <div data-reveal>
+                    <a href="#about" class="sfi-cta">
+                        Explore the Graph
+                        <svg class="arrow-circle-icon" width="24" height="14" viewBox="-395 256 24 14">
+                            <path fill="none" d="M-377 263h-17.6m15.4-2.2l2.2 2.2-2.2 2.2" />
+                            <circle fill="none" cx="-378.1" cy="263" r="6.8" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="about">
+            <div class="container">
+                <div class="grid">
+                    <div data-reveal>
+                        <h2 style="margin-bottom: 2rem;">The Concept</h2>
+                        <p>While network science is inherently interdisciplinary, academic structures often silos
+                            researchers by domain. <strong>Edge Cases</strong> is a satellite symposium designed to
+                            break these boundaries, highlighting the diversity and universality of network science
+                            applications.</p>
+                        <p style="margin-top: 1.5rem;">We highlight research applying network science to unconventional
+                            domains, exploring how shared computational frameworks reveal unique insights when applied
+                            across diverse and distinct contexts.</p>
+                    </div>
+                    <div data-reveal
+                        style="background: var(--bg-color); padding: var(--space-md); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+                        <p>Organized by <strong>Complexity Coffee</strong> (the SFI complexity global school alumni
+                            network),
+                            this event prioritizes the novel, the computational, and the interdisciplinary.</p>
+                        <div style="margin-top: 2rem;">
+                            <a href="https://ccs26.cssociety.org/" target="_blank" class="mono"
+                                style="color: var(--sfi-ming); border-bottom: 2px solid var(--accent-color);">Part of
+                                CCS 2026 @
+                                Binghamton</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="themes">
+            <div class="container">
+                <h2 data-reveal>Symposium Themes</h2>
+                <div class="grid" id="themes-grid" style="margin-top: var(--space-md);">
+                    <!-- Dynamic Themes Inject Here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="agenda">
+            <div class="container">
+                <h2 data-reveal>Symposium Agenda</h2>
+                <div class="agenda-list" id="agenda-list">
+                    <!-- Dynamic Agenda Inject Here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="speakers">
+            <div class="container">
+                <h2 data-reveal>Featured Contributors</h2>
+                <div class="grid" id="speakers-grid" style="margin-top: var(--space-md);">
+                    <!-- Dynamic Speakers Inject Here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="contact">
+            <div class="container">
+                <div class="contact-header" data-reveal>
+                    <h2>Connect & Collaborate</h2>
+                    <p class="section-description">Edge Cases 2026 is an initiative by <strong>Complexity
+                            Coffee</strong>. We invite researchers, creators, and enthusiasts to reach out for inquiries
+                        regarding the symposium, potential collaborations, or speaker recruitment.</p>
+                </div>
+                <div class="contact-grid" style="margin-top: var(--space-lg);">
+                    <div class="contact-card" data-reveal style="max-width: 600px;">
+                        <div class="card-tag">Complexity Coffee</div>
+                        <h3>Alumni Network</h3>
+                        <p>Specializing in interdisciplinary complexity science and unconventional network applications.
+                        </p>
+                        <div class="contact-actions">
+                            <a href="mailto:phileasd@wolfram.com" class="contact-link">Contact Phileas</a>
+                            <a href="mailto:avora@uoregon.edu" class="contact-link">Contact Arhan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 2rem 0; background: var(--sfi-ming); color: white;">
+        <div class="container text-center">
+            <h2 style="color: white; margin-bottom: 2rem;">Complexity in Conversation</h2>
+            <div class="grid" style="max-width: 800px; margin: 0 auto; opacity: 0.8;">
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Edge Cases 2026</h4>
+                    <p>A Complexity Coffee satellite symposium dedicated to the surprising applications of network
+                        science.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Partners</h4>
+                    <ul>
+                        <li><a href="https://complexitycoffee.org" target="_blank"
+                                style="color: white; text-decoration: underline;">Complexity Coffee</a></li>
+                        <li><a href="https://santafe.edu" target="_blank"
+                                style="color: white; text-decoration: underline;">SFI Alumni Network</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Complexity Coffee. Organized in
+                association with CCS 2026.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
