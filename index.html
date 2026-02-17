@@ -26,7 +26,9 @@
                 <li><a href="#themes">Themes</a></li>
                 <li><a href="#agenda">Agenda</a></li>
                 <li><a href="#speakers">Speakers</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Organizers</a></li>
+                <li class="nav-external"><a href="https://complexity.coffee" target="_blank">Complexity Coffee ↗</a>
+                </li>
             </ul>
             <button class="burger-button" id="mobileBurger">
                 <span></span>
@@ -45,8 +47,9 @@
 
     <main>
         <div class="info-banner" data-reveal>
-            <p><strong>Notice:</strong> Symposium details, including speakers and agenda, are currently tentative and
-                subject to change.</p>
+            <p><strong>Notice:</strong> Symposium details are currently tentative and subject to change. The listed
+                speakers have tentatively accepted an invitation or expressed interest in speaking through our call for
+                speakers.</p>
         </div>
         <section class="hero" id="home">
             <canvas id="networkCanvas" class="hero-canvas"></canvas>
@@ -54,12 +57,12 @@
                 <div class="mono" data-reveal style="opacity: 0.8; margin-bottom: 0.5rem;">CCS 2026 Satellite Symposium
                 </div>
                 <h1 data-reveal>Edge Cases</h1>
-                <p class="tagline" data-reveal>Exploration of the surprising, the latent, and the unconventional in
+                <p class="tagline" data-reveal>Exploring the surprising and the unconventional in
                     Network
                     Science.</p>
                 <div data-reveal>
-                    <a href="#about" class="sfi-cta">
-                        Explore the Graph
+                    <a href="#about" class="primary-cta">
+                        Learn more
                         <svg class="arrow-circle-icon" width="24" height="14" viewBox="-395 256 24 14">
                             <path fill="none" d="M-377 263h-17.6m15.4-2.2l2.2 2.2-2.2 2.2" />
                             <circle fill="none" cx="-378.1" cy="263" r="6.8" />
@@ -84,14 +87,16 @@
                     </div>
                     <div data-reveal
                         style="background: var(--bg-color); padding: var(--space-md); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
-                        <p>Organized by <strong>Complexity Coffee</strong> (the SFI complexity global school alumni
+                        <p>Organized by <strong>Complexity Coffee</strong> (the SFI Complexity Global School alumni
                             network),
-                            this event prioritizes the novel, the computational, and the interdisciplinary.</p>
-                        <div style="margin-top: 2rem;">
+                            this event highlights the novel, the computational, and the interdisciplinary.</p>
+                        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                            <a href="https://complexity.coffee" target="_blank" class="mono"
+                                style="color: var(--primary-dark); border-bottom: 2px solid var(--accent-color); width: fit-content;">Visit
+                                Complexity Coffee ↗</a>
                             <a href="https://ccs26.cssociety.org/" target="_blank" class="mono"
-                                style="color: var(--sfi-ming); border-bottom: 2px solid var(--accent-color);">Part of
-                                CCS 2026 @
-                                Binghamton</a>
+                                style="color: var(--primary-dark); border-bottom: 2px solid var(--accent-color); width: fit-content; opacity: 0.7;">Part
+                                of CCS 2026 @ Binghamton</a>
                         </div>
                     </div>
                 </div>
@@ -128,20 +133,26 @@
         <section class="section section-alt" id="contact">
             <div class="container">
                 <div class="contact-header" data-reveal>
-                    <h2>Connect & Collaborate</h2>
+                    <h2>The Organizers</h2>
                     <p class="section-description">Edge Cases 2026 is an initiative by <strong>Complexity
-                            Coffee</strong>. We invite researchers, creators, and enthusiasts to reach out for inquiries
-                        regarding the symposium, potential collaborations, or speaker recruitment.</p>
+                            Coffee</strong>, a global alumni network of researchers and creators dedicated to
+                        interdisciplinary applications of network science. We provide a platform for unconventional
+                        scientific discourse and foster collaborations across traditional domain silos.</p>
                 </div>
                 <div class="contact-grid" style="margin-top: var(--space-lg);">
                     <div class="contact-card" data-reveal style="max-width: 600px;">
                         <div class="card-tag">Complexity Coffee</div>
                         <h3>Alumni Network</h3>
-                        <p>Specializing in interdisciplinary complexity science and unconventional network applications.
-                        </p>
-                        <div class="contact-actions">
-                            <a href="mailto:phileasd@wolfram.com" class="contact-link">Contact Phileas</a>
-                            <a href="mailto:avora@uoregon.edu" class="contact-link">Contact Arhan</a>
+                        <p>A community born from the Complexity Global School, specializing in interdisciplinary
+                            complexity science and unconventional network applications.</p>
+                        <div class="contact-actions"
+                            style="margin-top: var(--space-md); flex-direction: column; align-items: flex-start; gap: 1rem;">
+                            <a href="https://complexity.coffee" target="_blank" class="btn"
+                                style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Visit Complexity Coffee ↗</a>
+                            <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+                                <a href="mailto:phileasd@wolfram.com" class="contact-link">Contact Phileas</a>
+                                <a href="mailto:avora@uoregon.edu" class="contact-link">Contact Arhan</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,7 +160,7 @@
         </section>
     </main>
 
-    <footer style="padding: 2rem 0; background: var(--sfi-ming); color: white;">
+    <footer style="padding: 2rem 0; background: var(--primary-dark); color: white;">
         <div class="container text-center">
             <h2 style="color: white; margin-bottom: 2rem;">Complexity in Conversation</h2>
             <div class="grid" style="max-width: 800px; margin: 0 auto; opacity: 0.8;">
@@ -159,12 +170,12 @@
                         science.</p>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 1rem;">Partners</h4>
+                    <h4 style="color: white; margin-bottom: 1rem;">Resources</h4>
                     <ul>
-                        <li><a href="https://complexitycoffee.org" target="_blank"
+                        <li><a href="https://complexity.coffee" target="_blank"
                                 style="color: white; text-decoration: underline;">Complexity Coffee</a></li>
-                        <li><a href="https://santafe.edu" target="_blank"
-                                style="color: white; text-decoration: underline;">SFI Alumni Network</a></li>
+                        <li><a href="https://ccs26.cssociety.org/" target="_blank"
+                                style="color: white; text-decoration: underline;">CCS 2026 @ Binghamton</a></li>
                     </ul>
                 </div>
             </div>

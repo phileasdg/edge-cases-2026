@@ -2,18 +2,18 @@
     {
         "name": "Prof. Laurent Hébert-Dufresne",
         "affiliation": "Vermont Complex Systems Institute",
-        "topic": "Keynote: Structural Network Science & Contagion",
+        "topic": "Keynote: Details forthcoming",
         "type": "faculty"
     },
     {
         "name": "Prof. Juniper Lovato",
         "affiliation": "Vermont Complex Systems Center",
-        "topic": "Keynote: Digital Societies & Governance",
+        "topic": "Keynote: Details forthcoming",
         "type": "faculty"
     },
     {
         "name": "Pedro Márquez-Zacarías",
-        "affiliation": "Wolfram Institute / SFI Omidyar Fellow",
+        "affiliation": "Wolfram Institute",
         "topic": "Theoretical Biology & Computational Linguistics of Purépecha"
     },
     {
@@ -88,7 +88,7 @@
     },
     {
         "name": "Phileas Dazeley-Gaist",
-        "affiliation": "Complexity Coffee",
+        "affiliation": "Complexity Coffee, Wolfram Research",
         "topic": "Networked Creativity: Artist Community Citation Networks"
     }
 ]

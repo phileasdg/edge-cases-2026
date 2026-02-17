@@ -4,8 +4,8 @@
   --section-bg: #ffffff;
   --text-color: #1a1a1a;
   --accent-color: #00a9b7;
-  /* SFI Sea */
-  --sfi-ming: #003d5b;
+  /* Primary Palette */
+  --primary-dark: #003d5b;
   --muted-text: #666666;
   --card-bg: #ffffff;
   --border-color: #f0f0f0;
@@ -64,7 +64,7 @@ h4 {
 h1 {
   font-size: clamp(3rem, 10vw, 5rem);
   /* Sized down slightly */
-  color: var(--sfi-ming);
+  color: var(--primary-dark);
 }
 
 h2 {
@@ -116,7 +116,7 @@ ul {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: var(--sfi-blue);
+  background: var(--accent-color);
   color: white;
   border-radius: 0;
   transition: var(--transition-fast);
@@ -171,6 +171,20 @@ header .container {
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--accent-color);
+}
+
+.nav-external a {
+  color: var(--primary-dark) !important;
+  font-weight: 700 !important;
+  border: 1px solid var(--accent-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav-external a:hover {
+  background: var(--accent-color);
+  color: white !important;
 }
 
 /* Hamburger Menu Button */
@@ -284,24 +298,33 @@ header .container {
 }
 
 /* Arrow CTA style from CC */
-.sfi-cta {
+.primary-cta {
   display: inline-flex;
   align-items: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
-  margin-top: 2.5rem;
-  color: var(--sfi-ming);
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 1rem;
 }
 
-.sfi-cta svg {
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease;
-  stroke: var(--sfi-ming);
+.primary-cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
-.sfi-cta:hover svg {
+.primary-cta svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+  transition: transform 0.2s;
+}
+
+.primary-cta:hover svg {
   transform: translateX(4px);
 }
 
@@ -379,7 +402,7 @@ header .container {
 .time {
   font-family: var(--font-heading);
   font-weight: 700;
-  color: var(--sfi-ming);
+  color: var(--primary-dark);
   font-size: 1.1rem;
   width: 120px;
 }
@@ -427,7 +450,7 @@ header .container {
 .contact-card h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: var(--sfi-ming);
+  color: var(--primary-dark);
 }
 
 .contact-card p {
@@ -454,7 +477,7 @@ header .container {
 
 .contact-link {
   font-weight: 600;
-  color: var(--sfi-ming);
+  color: var(--primary-dark);
   border-bottom: 2px solid var(--accent-color);
   padding-bottom: 2px;
 }
@@ -484,7 +507,7 @@ header .container {
 }
 
 .info-banner strong {
-  color: var(--sfi-ming);
+  color: var(--primary-dark);
   font-family: var(--font-mono);
   text-transform: uppercase;
   font-size: 0.75rem;

@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Render Notes
         if (agenda.notes) {
             html += `
-                <div class="agenda-notes" data-reveal style="margin-top: 4rem; padding: 2rem; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 0.9rem; border-left: 4px solid var(--sfi-orange);">
+                <div class="agenda-notes" data-reveal style="margin-top: 4rem; padding: 2rem; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 0.9rem; border-left: 4px solid var(--accent-color);">
                     <h4 style="margin-bottom: 1rem;">Provisional Scaling & Extensions</h4>
                     ${agenda.notes.map(note => `<p style="margin-bottom: 0.5rem; opacity: 0.8;">• ${note}</p>`).join('')}
                 </div>
