@@ -4,16 +4,14 @@
 <head>
     <script>
         // Password lock (Easy to remove later: Delete this <script> block)
-        if (sessionStorage.getItem('siteUnlocked') !== 'true') {
-            let p;
-            while (p !== 'edgecases2026secrets') {
-                p = prompt('Please enter the password to view this website:');
-                if (p === null) {
-                    document.documentElement.innerHTML = '<body style="font-family:sans-serif;padding:2rem;text-align:center;"><h1>Access Denied</h1><p>Please refresh to try again.</p></body>';
-                    throw new Error('Access Denied');
-                }
+        let p;
+        while (p !== 'edgecases2026secrets') {
+            p = prompt('Please enter the password to view this website:');
+            if (p === null) {
+                document.documentElement.innerHTML = '<head><title>Access Denied</title></head><body style="font-family:sans-serif;padding:2rem;text-align:center;"><h1>Access Denied</h1><p>Please refresh to try again.</p></body>';
+                window.stop();
+                throw new Error('Access Denied');
             }
-            sessionStorage.setItem('siteUnlocked', 'true');
         }
     </script>
     <meta charset="UTF-8">
