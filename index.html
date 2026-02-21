@@ -2,23 +2,11 @@
 <html lang="en">
 
 <head>
-    <script>
-        // Password lock (Easy to remove later: Delete this <script> block)
-        let p;
-        while (p !== 'edgecases2026secrets') {
-            p = prompt('Please enter the password to view this website:');
-            if (p === null) {
-                document.documentElement.innerHTML = '<head><title>Access Denied</title></head><body style="font-family:sans-serif;padding:2rem;text-align:center;"><h1>Access Denied</h1><p>Please refresh to try again.</p></body>';
-                window.stop();
-                throw new Error('Access Denied');
-            }
-        }
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edge Cases: Surprising Applications in Network Science | CCS 2026</title>
     <meta name="description"
-        content="A satellite symposium at CCS 2026 exploring frontiers in network science through the lens of surprising domains and latent structures.">
+        content="A satellite event at CCS 2026 exploring frontiers in network science through the lens of surprising domains and latent structures.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,9 +26,7 @@
                 <li><a href="#themes">Themes</a></li>
                 <li><a href="#agenda">Agenda</a></li>
                 <li><a href="#speakers">Speakers</a></li>
-                <li><a href="#contact">Organizers</a></li>
-                <li class="nav-external"><a href="https://complexitycoffee.org" target="_blank">Complexity Coffee ↗</a>
-                </li>
+                <li><a href="#host">Host</a></li>
             </ul>
             <button class="burger-button" id="mobileBurger">
                 <span></span>
@@ -53,20 +39,19 @@
             <a href="#themes">Themes</a>
             <a href="#agenda">Agenda</a>
             <a href="#speakers">Speakers</a>
-            <a href="#contact">Contact</a>
+            <a href="#organizers">Organizers</a>
         </div>
     </header>
 
     <main>
         <div class="info-banner" data-reveal>
-            <p><strong>Notice:</strong> Symposium details are currently tentative and subject to change. The listed
-                speakers have tentatively accepted an invitation or expressed interest in speaking through our call for
-                speakers.</p>
+            <p><strong>Notice:</strong> Satellite details are currently tentative and subject to change. The full roster
+                of speakers will be announced closer to the event.</p>
         </div>
         <section class="hero" id="home">
             <canvas id="networkCanvas" class="hero-canvas"></canvas>
             <div class="container">
-                <div class="mono" data-reveal style="opacity: 0.8; margin-bottom: 0.5rem;">CCS 2026 Satellite Symposium
+                <div class="mono" data-reveal style="opacity: 0.8; margin-bottom: 0.5rem;">CCS 2026 Satellite
                 </div>
                 <h1 data-reveal>Edge Cases</h1>
                 <p class="tagline" data-reveal>Exploring the surprising and the unconventional in
@@ -90,22 +75,22 @@
                     <div data-reveal>
                         <h2 style="margin-bottom: 2rem;">The Concept</h2>
                         <p>While network science is inherently interdisciplinary, academic structures often silos
-                            researchers by domain. <strong>Edge Cases</strong> is a satellite symposium designed to
-                            break these boundaries, highlighting the diversity and universality of network science
-                            applications.</p>
+                            researchers by domain. <strong>Edge Cases</strong> is a satellite event designed to
+                            bridge these silos, showcasing the diversity and universality of network science
+                            applications. By uniting researchers whose work spans distinct problem spaces, we
+                            aim to encourage methodological cross-pollination.</p>
                         <p style="margin-top: 1.5rem;">We highlight research applying network science to unconventional
                             domains, exploring how shared computational frameworks reveal unique insights when applied
                             across diverse and distinct contexts.</p>
                     </div>
                     <div data-reveal
                         style="background: var(--bg-color); padding: var(--space-md); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
-                        <p>Organized by <strong>Complexity Coffee</strong> (the SFI Complexity Global School alumni
-                            network),
+                        <p>Organized by <strong>Wolfram</strong>,
                             this event highlights the novel, the computational, and the interdisciplinary.</p>
                         <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                            <a href="https://complexitycoffee.org" target="_blank" class="mono"
+                            <a href="https://wolfram.com" target="_blank" class="mono"
                                 style="color: var(--primary-dark); border-bottom: 2px solid var(--accent-color); width: fit-content;">Visit
-                                Complexity Coffee ↗</a>
+                                Wolfram ↗</a>
                             <a href="https://ccs26.cssociety.org/" target="_blank" class="mono"
                                 style="color: var(--primary-dark); border-bottom: 2px solid var(--accent-color); width: fit-content; opacity: 0.7;">Part
                                 of CCS 2026 @ Binghamton</a>
@@ -117,7 +102,7 @@
 
         <section class="section" id="themes">
             <div class="container">
-                <h2 data-reveal>Symposium Themes</h2>
+                <h2 data-reveal>Satellite Themes</h2>
                 <div class="grid" id="themes-grid" style="margin-top: var(--space-md);">
                     <!-- Dynamic Themes Inject Here -->
                 </div>
@@ -126,14 +111,14 @@
 
         <section class="section section-alt" id="agenda">
             <div class="container">
-                <h2 data-reveal>Symposium Agenda</h2>
+                <h2 data-reveal>Satellite Agenda</h2>
                 <div class="agenda-list" id="agenda-list">
                     <!-- Dynamic Agenda Inject Here -->
                 </div>
             </div>
         </section>
 
-        <section class="section" id="speakers">
+        <section class="section" id="speakers" style="display: none;">
             <div class="container">
                 <h2 data-reveal>Featured Contributors</h2>
                 <div class="grid" id="speakers-grid" style="margin-top: var(--space-md);">
@@ -142,31 +127,25 @@
             </div>
         </section>
 
-        <section class="section section-alt" id="contact">
+        <!-- Teaser Section (Visible by Default) -->
+        <section class="section" id="speakers-teaser">
             <div class="container">
-                <div class="contact-header" data-reveal>
-                    <h2>The Organizers</h2>
-                    <p class="section-description">Edge Cases 2026 is an initiative by <strong>Complexity
-                            Coffee</strong>, a global alumni network of researchers and creators dedicated to
-                        interdisciplinary applications of network science. We provide a platform for unconventional
-                        scientific discourse and foster collaborations across traditional domain silos.</p>
+                <h2 data-reveal>Featured Contributors</h2>
+                <div
+                    style="margin-top: var(--space-md); text-align: center; padding: 4rem 2rem; background: rgba(0,0,0,0.02); border-radius: var(--radius-lg); border: 2px dashed var(--border-color);">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--primary-dark);">Speaker Lineup</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;"
+                        id="teaser-text">A number of researchers have expressed
+                        interest.<br><br><strong>More information coming soon.</strong></p>
                 </div>
-                <div class="contact-grid" style="margin-top: var(--space-lg);">
-                    <div class="contact-card" data-reveal style="max-width: 600px;">
-                        <div class="card-tag">Complexity Coffee</div>
-                        <h3>Alumni Network</h3>
-                        <p>A community born from the Complexity Global School, specializing in interdisciplinary
-                            complexity science and unconventional network applications.</p>
-                        <div class="contact-actions"
-                            style="margin-top: var(--space-md); flex-direction: column; align-items: flex-start; gap: 1rem;">
-                            <a href="https://complexitycoffee.org" target="_blank" class="btn"
-                                style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Visit Complexity Coffee ↗</a>
-                            <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
-                                <a href="mailto:phileasd@wolfram.com" class="contact-link">Contact Phileas</a>
-                                <a href="mailto:avora@uoregon.edu" class="contact-link">Contact Arhan</a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="host">
+            <div class="container">
+                <div class="organizers-header" data-reveal>
+                    <h2>The Host</h2>
+                    <p class="section-description">Edge Cases 2026 is hosted by <strong>Wolfram Research</strong>.</p>
                 </div>
             </div>
         </section>
@@ -178,21 +157,22 @@
             <div class="grid" style="max-width: 800px; margin: 0 auto; opacity: 0.8;">
                 <div>
                     <h4 style="color: white; margin-bottom: 1rem;">Edge Cases 2026</h4>
-                    <p>A Complexity Coffee satellite symposium dedicated to the surprising applications of network
-                        science.</p>
+                    <p>A satellite event dedicated to the surprising applications of network
+                        science, hosted by Wolfram Research.</p>
                 </div>
                 <div>
                     <h4 style="color: white; margin-bottom: 1rem;">Resources</h4>
                     <ul>
-                        <li><a href="https://complexitycoffee.org" target="_blank"
-                                style="color: white; text-decoration: underline;">Complexity Coffee</a></li>
+                        <li><a href="https://wolfram.com" target="_blank"
+                                style="color: white; text-decoration: underline;">Wolfram</a></li>
                         <li><a href="https://ccs26.cssociety.org/" target="_blank"
                                 style="color: white; text-decoration: underline;">CCS 2026 @ Binghamton</a></li>
                     </ul>
                 </div>
             </div>
-            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Complexity Coffee. Organized in
-                association with CCS 2026.</p>
+            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Wolfram. Organized in
+                association with CCS 2026. &nbsp;|&nbsp; <a href="#" id="login-link"
+                    style="color: inherit; text-decoration: none;">Organizer Access</a></p>
         </div>
     </footer>
 

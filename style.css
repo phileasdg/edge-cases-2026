@@ -404,16 +404,17 @@ header .container {
   font-weight: 700;
   color: var(--primary-dark);
   font-size: 1.1rem;
-  width: 120px;
+  flex-basis: 140px;
+  flex-shrink: 0;
 }
 
 /* Contact & Collaborate */
-.contact-header {
+.organizers-header {
   max-width: 800px;
   margin-bottom: var(--space-lg);
 }
 
-.contact-header h2 {
+.organizers-header h2 {
   margin-bottom: 1rem;
 }
 
@@ -423,14 +424,14 @@ header .container {
   line-height: 1.6;
 }
 
-.contact-grid {
+.organizers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: var(--space-lg);
   justify-items: start;
 }
 
-.contact-card {
+.organizers-card {
   padding: var(--space-lg);
   background: var(--card-bg);
   border-radius: var(--radius-lg);
@@ -441,19 +442,19 @@ header .container {
   justify-content: space-between;
 }
 
-.contact-card:hover {
+.organizers-card:hover {
   border-color: var(--accent-color);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
-.contact-card h3 {
+.organizers-card h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--primary-dark);
 }
 
-.contact-card p {
+.organizers-card p {
   color: var(--muted-text);
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -469,24 +470,24 @@ header .container {
   margin-bottom: 0.5rem;
 }
 
-.contact-actions {
+.organizers-actions {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
 }
 
-.contact-link {
+.organizers-link {
   font-weight: 600;
   color: var(--primary-dark);
   border-bottom: 2px solid var(--accent-color);
   padding-bottom: 2px;
 }
 
-.contact-link:hover {
+.organizers-link:hover {
   color: var(--accent-color);
 }
 
-.contact-link:hover {
+.organizers-link:hover {
   color: var(--accent-color);
 }
 

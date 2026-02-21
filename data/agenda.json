@@ -37,12 +37,18 @@
         },
         {
             "time": "12:00",
-            "title": "Talks, Session B",
-            "duration": "60 mins",
-            "description": "Three 20-minute talks focusing on Dynamics & Function, and Foundational Frameworks."
+            "title": "Methodological Speed Dating",
+            "duration": "30 mins",
+            "description": "Attendees are asked to gather in small groups and discuss their research for a few minutes before rotating to a different group. At the end, participants share their cross-disciplinary takeaways with the whole room."
         },
         {
-            "time": "13:00",
+            "time": "12:30",
+            "title": "Talks, Session B",
+            "duration": "40 mins",
+            "description": "Two 20-minute talks focusing on Dynamics & Function, and Foundational Frameworks."
+        },
+        {
+            "time": "13:10",
             "title": "Closing",
             "duration": "5 mins",
             "description": "Final remarks and future outlook for the Edge Cases community."

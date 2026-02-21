@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSpeakers(speakers) {
+        // Update Teaser Text
+        const teaserText = document.getElementById('teaser-text');
+        if (teaserText) {
+            teaserText.innerHTML = `<strong>${speakers.length} researchers</strong> have expressed interest or tentatively accepted an invitation.<br><br><strong>More information coming soon.</strong>`;
+        }
+
         const grid = document.getElementById('speakers-grid');
         if (!grid) return;
         grid.innerHTML = speakers.map(speaker => `
@@ -91,6 +97,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="topic">${speaker.topic}</p>
             </div>
         `).join('');
+
+        // Handle Login Logic
+        const loginLink = document.getElementById('login-link');
+        const speakersSection = document.getElementById('speakers');
+        const teaserSection = document.getElementById('speakers-teaser');
+
+        if (loginLink) {
+            loginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const p = prompt('Please enter the password to view this website:');
+                if (p === 'edgecases2026secrets') {
+                    unlockSite();
+                } else if (p !== null) {
+                    alert('Incorrect password.');
+                }
+            });
+        }
+
+        function unlockSite() {
+            if (speakersSection) speakersSection.style.display = 'block';
+            if (teaserSection) teaserSection.style.display = 'none';
+        }
+
         observeReveals();
     }
 
