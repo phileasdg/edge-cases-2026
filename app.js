@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle Login Logic
         const loginLink = document.getElementById('login-link');
-        const speakersSection = document.getElementById('speakers');
+        const speakersSection = document.getElementById('speakers-full');
         const teaserSection = document.getElementById('speakers-teaser');
 
         if (loginLink) {
