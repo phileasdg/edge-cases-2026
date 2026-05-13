@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Teaser Text
         const teaserText = document.getElementById('teaser-text');
         if (teaserText) {
-            teaserText.innerHTML = `<strong>${speakers.length} researchers</strong> have expressed interest or tentatively accepted an invitation.<br><br><strong>More information coming soon.</strong>`;
+            teaserText.innerHTML = `<strong>More information coming soon.</strong>`;
         }
 
         const grid = document.getElementById('speakers-grid');

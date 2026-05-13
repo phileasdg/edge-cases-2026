@@ -8,7 +8,7 @@ Contact: <phileasd@wolfram.com>
 While network science is an interdisciplinary field, the incentives of
 modern academia can fence researchers into domain-specific silos.
 Conference tracks, while useful and even necessary, can reinforce these
-silos. **Edge Cases** is a satellite symposium designed to break these
+silos. Edge Cases is a satellite symposium designed to break these
 boundaries and highlight the sheer diversity of network science projects
 and applications. We focus specifically on interdisciplinary work that
 applies computational methods to surprising domains. Our goal is to
