@@ -31,41 +31,38 @@ def generate_network_image(output_path):
     # Calculate layout
     pos = nx.spring_layout(G, k=0.15, iterations=300, seed=55)
     
-    # Select hubs that are spatially separated for better label placement
+    # Select hubs that are spatially separated
     degrees = dict(G.degree())
-    hub_candidates = sorted(degrees.items(), key=lambda x: x[1], reverse=True)[:30]
+    hub_candidates = sorted(degrees.items(), key=lambda x: x[1], reverse=True)[:40]
     selected_hubs = []
-    min_dist = 0.4
+    min_dist = 0.45
     
     for node, deg in hub_candidates:
         if len(selected_hubs) >= len(theme_titles):
             break
-        
-        # Check distance from already selected hubs
         too_close = False
         for other in selected_hubs:
             d = ((pos[node][0] - pos[other][0])**2 + (pos[node][1] - pos[other][1])**2)**0.5
             if d < min_dist:
                 too_close = True
                 break
-        
         if not too_close:
             selected_hubs.append(node)
 
-    # Create figure
-    plt.figure(figsize=(12, 6.3), dpi=200) 
-    plt.gca().set_facecolor('white')
+    # Create figure with NO margins
+    fig = plt.figure(figsize=(12, 6.3), dpi=200) 
+    ax = fig.add_axes([0, 0, 1, 1]) 
+    ax.set_facecolor('white')
     
     # Colors
     teal = '#00a9b7'
     navy = '#003d5b'
     
     # Draw edges
-    nx.draw_networkx_edges(G, pos, edge_color=navy, alpha=0.1, width=0.4)
+    nx.draw_networkx_edges(G, pos, edge_color=navy, alpha=0.1, width=0.4, ax=ax)
     
     # Draw nodes
     node_sizes = [pow(v, 1.8) * 1.5 for v in degrees.values()]
-    # Hubs are navy, others are teal
     node_colors = [navy if node in selected_hubs else teal for node in G.nodes()]
     
     nx.draw_networkx_nodes(G, pos, 
@@ -73,27 +70,29 @@ def generate_network_image(output_path):
                            node_color=node_colors,
                            alpha=0.9,
                            linewidths=0.4,
-                           edgecolors='white')
+                           edgecolors='white',
+                           ax=ax)
 
     # Sprinkle in Theme Labels
     for i, hub in enumerate(selected_hubs):
         if i < len(theme_titles):
             x, y = pos[hub]
-            # Offset labels slightly for clarity
-            plt.text(x, y + 0.06, theme_titles[i], 
-                     fontsize=6, 
+            plt.text(x, y + 0.08, theme_titles[i], 
+                     fontsize=11, 
                      fontweight='bold',
                      fontfamily='sans-serif',
                      color=navy,
                      ha='center',
-                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='none', pad=0.8))
+                     bbox=dict(facecolor='white', alpha=0.9, edgecolor='none', pad=1.5))
     
-    # Clean up
+    # CROP: Set limits slightly narrower than the actual spread to "fill the box"
+    # Spring layout usually puts things within [-1, 1]
+    ax.set_xlim(-0.85, 0.85)
+    ax.set_ylim(-0.45, 0.45) # Maintain ~12:6.3 ratio
+    
+    # Save with no padding
     plt.axis('off')
-    plt.tight_layout()
-    
-    # Save
-    plt.savefig(output_path, bbox_inches='tight', pad_inches=0)
+    plt.savefig(output_path, pad_inches=0)
     plt.close()
 
 if __name__ == "__main__":
