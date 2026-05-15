@@ -101,7 +101,7 @@ ul {
 
 .mono {
   font-family: var(--font-main);
-  /* Complexity Coffee uses Inter for taglines */
+  /* Tagline style */
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -297,7 +297,7 @@ header .container {
   text-shadow: 0 0 20px rgba(253, 253, 253, 0.9);
 }
 
-/* Arrow CTA style from CC */
+/* Arrow CTA style */
 .primary-cta {
   display: inline-flex;
   align-items: center;
