@@ -359,32 +359,72 @@ header .container {
 }
 
 .speaker-card {
-  padding: var(--space-md);
+  padding: var(--space-lg);
   background: white;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
+  text-align: center;
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  min-height: 380px; /* Consistent height for grid balance */
+}
+
+.speaker-card.no-image {
+  justify-content: center;
+  background: linear-gradient(to bottom, #ffffff, #fafafa);
+}
+
+.speaker-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.speaker-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--bg-color);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+.speaker-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .speaker-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
 }
 
 .speaker-card .affiliation {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .speaker-card .topic {
-  font-size: 0.95rem;
-  color: var(--text-color);
+  font-size: 1rem;
+  color: var(--muted-text);
   font-style: italic;
-  line-height: 1.4;
-  opacity: 0.9;
+  line-height: 1.5;
 }
 
 /* Agenda */

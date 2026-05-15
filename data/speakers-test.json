@@ -1,0 +1,36 @@
+[
+    {
+        "id": "speaker-1",
+        "name": "Dr. Elena Vance",
+        "affiliation": "Institute for Xeno-Sociology",
+        "topic": "Mapping Communication Networks in Non-Human Intelligence",
+        "image": "media/speakers/speaker-1.png"
+    },
+    {
+        "id": "speaker-2",
+        "name": "Marcus Thorne",
+        "affiliation": "The Archive Project",
+        "topic": "Diffusion of Lost Languages: A Network Perspective on Linguistic Extinction",
+        "image": "media/speakers/speaker-2.png"
+    },
+    {
+        "id": "speaker-3",
+        "name": "Dr. Sarah Chen",
+        "affiliation": "Urban Mycology Lab",
+        "topic": "Mycelial Networks as Models for Decentralized Digital Infrastructures",
+        "image": "media/speakers/speaker-3.png"
+    },
+    {
+        "id": "speaker-4",
+        "name": "Test: No Image Field",
+        "affiliation": "Fallback Testing",
+        "topic": "This speaker has no 'image' key in the JSON."
+    },
+    {
+        "id": "speaker-5",
+        "name": "Test: Broken Link",
+        "affiliation": "Fallback Testing",
+        "topic": "This speaker points to a non-existent-file.png.",
+        "image": "media/speakers/non-existent-file.png"
+    }
+]

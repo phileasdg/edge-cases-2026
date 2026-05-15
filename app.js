@@ -45,21 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadData() {
         try {
-            const [themesRes, speakersRes, networkRes, agendaRes] = await Promise.all([
+            const [themesRes, speakersRes, networkRes, agendaRes, settingsRes] = await Promise.all([
                 fetch('data/themes.json'),
                 fetch('data/speakers.json'),
                 fetch('data/network.json'),
-                fetch('data/agenda.json')
+                fetch('data/agenda.json'),
+                fetch('data/settings.json')
             ]);
 
             const themes = await themesRes.json();
             const speakers = await speakersRes.json();
             const agenda = await agendaRes.json();
+            const settings = await settingsRes.json();
             cachedNetworkData = await networkRes.json();
             cachedHubLabels = themes.map(t => t.title);
 
             renderThemes(themes);
-            renderSpeakers(speakers);
+            renderSpeakers(speakers, settings);
             renderAgenda(agenda);
             initNetwork(cachedNetworkData, cachedHubLabels);
 
@@ -81,43 +83,61 @@ document.addEventListener('DOMContentLoaded', () => {
         observeReveals();
     }
 
-    function renderSpeakers(speakers) {
-        // Update Teaser Text
-        const teaserText = document.getElementById('teaser-text');
-        if (teaserText) {
-            teaserText.innerHTML = `<strong>More information coming soon.</strong>`;
-        }
+    function renderSpeakers(speakers, settings) {
+        const container = document.getElementById('speakers-container');
+        if (!container) return;
 
-        const grid = document.getElementById('speakers-grid');
-        if (!grid) return;
-        grid.innerHTML = speakers.map(speaker => `
-            <div class="speaker-card" data-reveal>
-                <h3>${speaker.name}</h3>
-                <div class="affiliation">${speaker.affiliation}</div>
-                <p class="topic">${speaker.topic}</p>
-            </div>
-        `).join('');
+        const showPlaceholder = settings && settings.showPlaceholderOnMissingImage;
 
-        // Handle Login Logic
-        const loginLink = document.getElementById('login-link');
-        const speakersSection = document.getElementById('speakers-full');
-        const teaserSection = document.getElementById('speakers-teaser');
-
-        if (loginLink) {
-            loginLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const p = prompt('Please enter the password to view this website:');
-                if (p === 'edgecases2026secrets') {
-                    unlockSite();
-                } else if (p !== null) {
-                    alert('Incorrect password.');
-                }
-            });
-        }
-
-        function unlockSite() {
-            if (speakersSection) speakersSection.style.display = 'block';
-            if (teaserSection) teaserSection.style.display = 'none';
+        if (speakers && speakers.length > 0) {
+            // Show real speaker lineup
+            container.innerHTML = `
+                <h2 data-reveal>Featured Contributors</h2>
+                <div class="grid" id="speakers-grid" style="margin-top: var(--space-md);">
+                    ${speakers.map(speaker => {
+                        const hasImage = !!speaker.image;
+                        const finalImage = hasImage ? speaker.image : (showPlaceholder ? 'media/placeholder-user.png' : null);
+                        
+                        return `
+                            <div class="speaker-card ${finalImage ? 'has-image' : 'no-image'}" data-reveal>
+                                ${finalImage ? `
+                                    <div class="speaker-image">
+                                        <img src="${finalImage}" 
+                                             alt="${speaker.name}"
+                                             onerror="this.src='media/placeholder-user.png'; this.onerror=null;">
+                                    </div>
+                                ` : ''}
+                                <div class="speaker-info">
+                                    <h3>${speaker.name}</h3>
+                                    <div class="affiliation">${speaker.affiliation}</div>
+                                    <p class="topic">${speaker.topic}</p>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        } else {
+            // Show teaser/placeholder
+            container.innerHTML = `
+                <h2 data-reveal>Featured Contributors</h2>
+                <div style="margin-top: var(--space-md); text-align: center; padding: 4rem 2rem; background: rgba(0,0,0,0.02); border-radius: var(--radius-lg); border: 2px dashed var(--border-color);">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--primary-dark);">Speaker Lineup</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>More information coming soon.</strong>
+                    </p>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://www.wolframcloud.com/obj/phileasd/EdgeCases2026_Submission" target="_blank"
+                            class="primary-cta" style="display: inline-flex; justify-content: center;">
+                            Submit a Proposal
+                            <svg class="arrow-circle-icon" width="24" height="14" viewBox="-395 256 24 14" style="margin-left: 0.5rem;">
+                                <path fill="none" d="M-377 263h-17.6m15.4-2.2l2.2 2.2-2.2 2.2" stroke="currentColor" stroke-width="1.5" />
+                                <circle fill="none" cx="-378.1" cy="263" r="6.8" stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            `;
         }
 
         observeReveals();
