@@ -77,13 +77,13 @@ def generate_network_image(output_path):
     for i, hub in enumerate(selected_hubs):
         if i < len(theme_titles):
             x, y = pos[hub]
-            plt.text(x, y + 0.08, theme_titles[i], 
-                     fontsize=11, 
+            plt.text(x, y + 0.1, theme_titles[i], 
+                     fontsize=16, 
                      fontweight='bold',
                      fontfamily='sans-serif',
                      color=navy,
                      ha='center',
-                     bbox=dict(facecolor='white', alpha=0.9, edgecolor='none', pad=1.5))
+                     bbox=dict(facecolor='white', alpha=0.92, edgecolor='none', pad=2.5))
     
     # CROP: Set limits slightly narrower than the actual spread to "fill the box"
     # Spring layout usually puts things within [-1, 1]
