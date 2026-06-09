@@ -37,11 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
         centerStrength: 0.06,
         damping: 0.9,
         nodeRadius: 2.5,
-        hubRadius: 5,
-        activeColor: '#00a9b7',
-        edgeColor: 'rgba(0, 61, 91, 0.15)',
-        labelColor: 'rgba(26, 26, 26, 0.8)'
+        hubRadius: 5.5,
+        colors: ['#e56b6f', '#eaac8b', '#b5838d', '#6d597a', '#508484', '#355070'], // Creative palette
+        edgeColor: 'rgba(140, 130, 122, 0.12)', // Muted warm grey lines
+        labelColor: '#2b2623'   // Espresso
     };
+
+    // Mouse tracking for interactive network physics
+    const mouse = { x: null, y: null, active: false };
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = true;
+    });
+    canvas.addEventListener('mouseleave', () => {
+        mouse.active = false;
+    });
 
     async function loadData() {
         try {
@@ -73,14 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderThemes(themes) {
         const grid = document.getElementById('themes-grid');
         if (!grid) return;
-        grid.innerHTML = themes.map(theme => `
-            <div class="theme-card" data-reveal>
-                <div class="mono">${theme.id}</div>
-                <h3>${theme.title}</h3>
-                <p>${theme.description}</p>
-            </div>
-        `).join('');
+        const colors = CONFIG.colors;
+        const rgbVals = {
+            '#e56b6f': '229, 107, 111',
+            '#eaac8b': '234, 172, 139',
+            '#b5838d': '181, 131, 141',
+            '#6d597a': '109, 89, 122',
+            '#508484': '80, 132, 132',
+            '#355070': '53, 80, 112'
+        };
+        grid.innerHTML = themes.map((theme, index) => {
+            const color = colors[index % colors.length];
+            const rgb = rgbVals[color] || '80, 132, 132';
+            return `
+                <div class="theme-card" data-reveal style="--theme-color: ${color}; border-top: 4px solid ${color}; background-color: rgba(${rgb}, 0.045);">
+                    <div class="mono" style="color: ${color}; font-weight: 700;">${theme.id}</div>
+                    <h3>${theme.title}</h3>
+                    <p style="color: var(--muted-text);">${theme.description}</p>
+                </div>
+            `;
+        }).join('');
         observeReveals();
+    }
+
+    function getInitials(name) {
+        if (!name) return '??';
+        const parts = name.trim().split(/\s+/);
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        }
+        return name.slice(0, 2).toUpperCase();
     }
 
     function renderSpeakers(speakers, settings) {
@@ -88,25 +122,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         const showPlaceholder = settings && settings.showPlaceholderOnMissingImage;
+        const colors = CONFIG.colors;
 
         if (speakers && speakers.length > 0) {
             // Show real speaker lineup
             container.innerHTML = `
                 <h2 data-reveal>Featured Contributors</h2>
                 <div class="grid" id="speakers-grid" style="margin-top: var(--space-md);">
-                    ${speakers.map(speaker => {
+                    ${speakers.map((speaker, index) => {
                         const hasImage = !!speaker.image;
-                        const finalImage = hasImage ? speaker.image : (showPlaceholder ? 'media/placeholder-user.png' : null);
+                        const c1 = colors[index % colors.length];
+                        const c2 = colors[(index + 2) % colors.length];
+                        const gradientStyle = `background: linear-gradient(135deg, ${c1}, ${c2}); box-shadow: 0 4px 15px rgba(43, 38, 35, 0.12);`;
                         
                         return `
-                            <div class="speaker-card ${finalImage ? 'has-image' : 'no-image'}" data-reveal>
-                                ${finalImage ? `
+                            <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-reveal style="--theme-color: ${c1};">
+                                ${hasImage ? `
                                     <div class="speaker-image">
-                                        <img src="${finalImage}" 
+                                        <img src="${speaker.image}" 
                                              alt="${speaker.name}"
-                                             onerror="this.src='media/placeholder-user.png'; this.onerror=null;">
+                                             onerror="this.parentElement.className='speaker-image-placeholder'; this.parentElement.style='${gradientStyle}'; this.parentElement.innerHTML='${getInitials(speaker.name)}';">
                                     </div>
-                                ` : ''}
+                                ` : `
+                                    <div class="speaker-image-placeholder" style="${gradientStyle}">
+                                        ${getInitials(speaker.name)}
+                                    </div>
+                                `}
                                 <div class="speaker-info">
                                     <h3>${speaker.name}</h3>
                                     <div class="affiliation">${speaker.affiliation}</div>
@@ -204,7 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
             vx: 0,
             vy: 0,
             links: 0,
-            label: null
+            label: null,
+            color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)]
         }));
 
         links = data.links.map(l => ({
@@ -261,6 +303,21 @@ document.addEventListener('DOMContentLoaded', () => {
             link.target.vy -= fy;
         });
 
+        // Mouse interaction: nodes clear out slightly when the mouse is near
+        if (mouse.active) {
+            nodes.forEach(node => {
+                const dx = node.x - mouse.x;
+                const dy = node.y - mouse.y;
+                const distSq = dx * dx + dy * dy || 1;
+                const dist = Math.sqrt(distSq);
+                if (dist < 150) {
+                    const force = (150 - dist) * 0.06;
+                    node.vx += (dx / dist) * force;
+                    node.vy += (dy / dist) * force;
+                }
+            });
+        }
+
         nodes.forEach(node => {
             node.vx += (width / 2 - node.x) * CONFIG.centerStrength * 0.01;
             node.vy += (height / 2 - node.y) * CONFIG.centerStrength * 0.01;
@@ -314,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const baseAlpha = isHub ? Math.min(MAX_ALPHA, maskAlpha + 0.2) : maskAlpha * MAX_ALPHA;
 
             ctx.globalAlpha = baseAlpha;
-            ctx.fillStyle = isHub ? CONFIG.activeColor : '#bbb';
+            ctx.fillStyle = node.color;
             ctx.beginPath();
             ctx.arc(node.x, node.y, isHub ? CONFIG.hubRadius : CONFIG.nodeRadius, 0, Math.PI * 2);
             ctx.fill();

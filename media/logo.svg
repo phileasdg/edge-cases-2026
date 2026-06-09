@@ -1,0 +1,20 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Network Icon (centered vertically inside 40px height) -->
+  <g transform="translate(6, 4)">
+    <!-- Connection lines -->
+    <line x1="6" y1="26" x2="26" y2="26" stroke="#8c827a" stroke-width="1.5" />
+    <line x1="6" y1="26" x2="16" y2="8" stroke="#8c827a" stroke-width="1.5" />
+    <line x1="26" y1="26" x2="21" y2="12" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2 2" />
+    <line x1="16" y1="8" x2="21" y2="12" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2 2" />
+    
+    <!-- Nodes -->
+    <circle cx="6" cy="26" r="3.5" fill="#508484" />
+    <circle cx="16" cy="8" r="3.5" fill="#6d597a" />
+    <circle cx="26" cy="26" r="3.5" fill="#355070" />
+    <!-- The Edge Case node (glowing coral, offset) -->
+    <circle cx="21" cy="12" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+  </g>
+
+  <!-- Event Name Text (vertically centered next to icon) -->
+  <text x="42" y="27" font-family="'Outfit', 'Inter', 'Helvetica Neue', sans-serif" font-weight="800" font-size="20" fill="#2b2623" letter-spacing="-0.02em">Edge Cases</text>
+</svg>

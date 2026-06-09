@@ -1,15 +1,15 @@
 :root {
-  /* Colors - Ultra Light & Airy */
-  --bg-color: #fdfdfd;
-  --section-bg: #ffffff;
-  --text-color: #1a1a1a;
-  --accent-color: #00a9b7;
-  /* Primary Palette */
-  --primary-dark: #003d5b;
-  --muted-text: #666666;
+  /* Colors - Warm, Creative, Light & Simple */
+  --bg-color: #ffffff;       /* Crisp clean white */
+  --section-bg: #faf9f5;     /* Soft paper warm-grey */
+  --text-color: #2b2623;     /* Dark espresso charcoal */
+  --accent-color: #335c67;   /* Muted Slate Teal */
+  --secondary-accent: #e09f3e; /* Warm Ochre */
+  --primary-dark: #2b2623;   /* Espresso charcoal for strong contrast */
+  --muted-text: #5c5552;     /* Slightly darker warm grey for readability */
   --card-bg: #ffffff;
-  --border-color: #f0f0f0;
-  --nav-bg: rgba(253, 253, 253, 0.98);
+  --border-color: #e5e0d8;   /* Cleaner, slightly darker border */
+  --nav-bg: rgba(255, 255, 255, 0.96);
 
   /* Typography */
   --font-main: 'Inter', sans-serif;
@@ -22,14 +22,13 @@
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 3rem;
-  /* Aggressively reduced */
 
-  /* Rounding */
-  --radius-lg: 0.5rem;
+  /* Rounding - Softer, more creative */
+  --radius-lg: 0.75rem;
 
   /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-slow: 1s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -289,7 +288,7 @@ header .container {
 
 .hero p.tagline {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
-  max-width: 600px;
+  max-width: 720px;
   color: var(--muted-text);
   margin-bottom: var(--space-md);
   position: relative;
@@ -302,25 +301,28 @@ header .container {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.6rem;
   background: var(--accent-color);
-  color: white;
+  color: #fdfcf7;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: transform 0.2s, background 0.2s;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
   margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(51, 92, 103, 0.15);
 }
 
 .primary-cta:hover {
   background: var(--primary-dark);
+  color: #fdfcf7;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(43, 38, 35, 0.25);
 }
 
 .primary-cta svg {
   width: 20px;
   height: 20px;
-  stroke: white;
+  stroke: currentColor;
   transition: transform 0.2s;
 }
 
@@ -331,7 +333,7 @@ header .container {
 /* Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-md);
 }
 
@@ -344,9 +346,9 @@ header .container {
 }
 
 .theme-card:hover {
-  border-color: var(--accent-color);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-color: var(--theme-color);
+  transform: translateY(-4px) rotate(0.4deg);
+  box-shadow: 0 10px 24px rgba(43, 38, 35, 0.06);
 }
 
 .theme-card h3 {
@@ -372,13 +374,13 @@ header .container {
 
 .speaker-card.no-image {
   justify-content: center;
-  background: linear-gradient(to bottom, #ffffff, #fafafa);
+  background: linear-gradient(to bottom, #ffffff, var(--section-bg));
 }
 
 .speaker-card:hover {
-  border-color: var(--accent-color);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-color: var(--theme-color);
+  transform: translateY(-4px) rotate(-0.4deg);
+  box-shadow: 0 10px 24px rgba(43, 38, 35, 0.06);
 }
 
 .speaker-image {
@@ -388,7 +390,25 @@ header .container {
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--bg-color);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+}
+
+.speaker-image-placeholder {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2rem;
+  border: 3px solid var(--bg-color);
+  box-shadow: 0 4px 15px rgba(51, 92, 103, 0.15);
   flex-shrink: 0;
 }
 
