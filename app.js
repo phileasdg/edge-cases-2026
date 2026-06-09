@@ -390,6 +390,22 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(draw);
     }
 
+    // 2.5. Venue Tab Switching Logic
+    const tabButtons = document.querySelectorAll('#venue .tab-btn');
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabButtons.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#venue .tab-content').forEach(c => c.classList.remove('active'));
+            
+            btn.classList.add('active');
+            const targetId = `${btn.dataset.tab}-tab`;
+            const content = document.getElementById(targetId);
+            if (content) {
+                content.classList.add('active');
+            }
+        });
+    });
+
     // 3. Hamburger Logic
     const burger = document.getElementById('mobileBurger');
     const menu = document.getElementById('mobileMenu');

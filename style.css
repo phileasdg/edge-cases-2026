@@ -584,6 +584,147 @@ header .container {
   transform: translateY(0);
 }
 
+/* Venue Section Styling */
+.venue-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  align-items: start;
+}
+
+.venue-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.venue-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.venue-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.download-btn:hover {
+  border-color: var(--accent-color);
+  background: rgba(51, 92, 103, 0.04);
+  color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.venue-visuals {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--text-color);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+  border-color: var(--border-color);
+  background: var(--section-bg);
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+.image-preview-wrapper {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: #fdfcf7;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.preview-img:hover {
+  transform: scale(1.015);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .venue-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
