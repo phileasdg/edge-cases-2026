@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+    <style>
+        /* Default light mode styles */
+        .line-normal { stroke: #8c827a; }
+        .line-outlier { stroke: #e56b6f; }
+        .node-1 { fill: #508484; }
+        .node-2 { fill: #6d597a; }
+        .node-3 { fill: #355070; }
+        .node-outlier { fill: #e56b6f; stroke: #ffffff; }
+
+        /* Dark mode tab overrides */
+        @media (prefers-color-scheme: dark) {
+            .line-normal { stroke: #b5aba2; }
+            .node-3 { fill: #5a7fa8; }
+            .node-outlier { stroke: #1a1a1a; }
+        }
+    </style>
+    
+    <!-- Connection lines -->
+    <line class="line-normal" x1="6" y1="24" x2="14" y2="20" stroke-width="1.8" />
+    <line class="line-normal" x1="6" y1="24" x2="10" y2="12" stroke-width="1.8" />
+    <line class="line-normal" x1="14" y1="20" x2="10" y2="12" stroke-width="1.8" />
+    <!-- Outlier connection -->
+    <line class="line-outlier" x1="14" y1="20" x2="26" y2="8" stroke-width="2.2" stroke-dasharray="2 1.8" />
+    
+    <!-- Cluster Nodes -->
+    <circle class="node-1" cx="6" cy="24" r="4" />
+    <circle class="node-2" cx="10" cy="12" r="4" />
+    <circle class="node-3" cx="14" cy="20" r="4" />
+    <!-- The Edge Case outlier node -->
+    <circle class="node-outlier" cx="26" cy="8" r="5.5" stroke-width="1.2" />
+</svg>

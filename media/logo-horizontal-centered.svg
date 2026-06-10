@@ -1,0 +1,102 @@
+<svg width="900" height="200" viewBox="0 0 900 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .ec-title {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 72px;
+      fill: #2b2623;
+      letter-spacing: -0.03em;
+    }
+    .ec-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13.5px;
+      fill: #7a716d;
+      letter-spacing: 0.04em;
+    }
+    .ec-year {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      fill: #e56b6f;
+      letter-spacing: 0.08em;
+    }
+    .l-solid  { stroke: #8c827a; stroke-width: 1.4; }
+    .l-bridge { stroke: #e56b6f; stroke-width: 1.8; stroke-dasharray: 3 3; }
+    .l-ghost  { stroke: #8c827a; stroke-width: 0.8; stroke-opacity: 0.3; stroke-dasharray: 2 3; }
+    .n-core   { }
+    .n-out    { stroke: #ffffff; stroke-width: 2; }
+    .n-ghost  { fill-opacity: 0.25; }
+  </style>
+
+  <!--
+    LAYOUT (900 × 200):
+      Network icon:  x=30..180, vertically centred on y=80
+      Title text:    x=200, baseline y=105  ("Edge Cases" ~60px cap-height)
+      Subtitle:      x=200, y=130..145
+      Year badge:    top-right of icon area
+  -->
+
+  <!-- ═══════════════════════════════════════════════════
+       NETWORK ICON  (150 × 120 canvas, origin at 30,10)
+       Grammar: LEFT CLUSTER → BRIDGE NODE → RIGHT CLUSTER
+                with ghost arms trailing off both sides
+       ═══════════════════════════════════════════════════ -->
+  <g transform="translate(30, 10)">
+
+    <!-- Ghost arms trailing off the LEFT edge -->
+    <line x1="14"  y1="52"  x2="-10" y2="35"  class="l-ghost"/>
+    <line x1="14"  y1="52"  x2="-12" y2="68"  class="l-ghost"/>
+    <circle cx="-10" cy="35"  r="3" fill="#8c827a" class="n-ghost"/>
+    <circle cx="-12" cy="68"  r="3" fill="#8c827a" class="n-ghost"/>
+
+    <!-- LEFT CLUSTER  (tight triangle, all solid) -->
+    <line x1="14"  y1="52"  x2="36"  y2="36"  class="l-solid"/>
+    <line x1="36"  y1="36"  x2="48"  y2="60"  class="l-solid"/>
+    <line x1="48"  y1="60"  x2="14"  y2="52"  class="l-solid"/>
+
+    <!-- BRIDGE NODE connects left cluster to right cluster -->
+    <line x1="48"  y1="60"  x2="88"  y2="72"  class="l-bridge"/>
+    <line x1="36"  y1="36"  x2="88"  y2="72"  class="l-bridge"/>
+
+    <!-- RIGHT CLUSTER (tight triangle, all solid) -->
+    <line x1="88"  y1="72"  x2="114" y2="50"  class="l-solid"/>
+    <line x1="114" y1="50"  x2="126" y2="75"  class="l-solid"/>
+    <line x1="126" y1="75"  x2="88"  y2="72"  class="l-solid"/>
+
+    <!-- Ghost arms trailing off the RIGHT edge -->
+    <line x1="126" y1="75"  x2="154" y2="60"  class="l-ghost"/>
+    <line x1="114" y1="50"  x2="152" y2="38"  class="l-ghost"/>
+    <circle cx="154" cy="60"  r="3" fill="#8c827a" class="n-ghost"/>
+    <circle cx="152" cy="38"  r="3" fill="#8c827a" class="n-ghost"/>
+
+    <!-- LEFT CLUSTER nodes -->
+    <circle cx="14"  cy="52"  r="5.5" fill="#508484" class="n-core"/>
+    <circle cx="36"  cy="36"  r="5.5" fill="#6d597a" class="n-core"/>
+    <circle cx="48"  cy="60"  r="5.5" fill="#355070" class="n-core"/>
+
+    <!-- BRIDGE / OUTLIER node  (the "edge case" — large, coral) -->
+    <circle cx="88"  cy="72"  r="11"  fill="#e56b6f" class="n-out"/>
+
+    <!-- RIGHT CLUSTER nodes -->
+    <circle cx="114" cy="50"  r="5.5" fill="#6d597a" class="n-core"/>
+    <circle cx="126" cy="75"  r="5.5" fill="#355070" class="n-core"/>
+
+  </g>
+
+  <!-- ═══════════════════════════════════
+       TITLE  "Edge Cases"
+       ═══════════════════════════════════ -->
+  <text x="200" y="109" class="ec-title">Edge Cases</text>
+
+  <!-- ═══════════════════════════════════
+       SUBTITLE (two lines, small, muted)
+       ═══════════════════════════════════ -->
+  <text x="202" y="132" class="ec-subtitle">SURPRISING NETWORK SCIENCE · UNCONVENTIONAL DOMAINS</text>
+
+  <!-- ═══════════════════════════════════
+       YEAR BADGE  (anchored top-right of icon) 
+       ═══════════════════════════════════ -->
+  <text x="202" y="153" class="ec-subtitle" letter-spacing="0.06em" font-size="12">A NETWORK SCIENCE SATELLITE · 2026</text>
+
+</svg>
