@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const gradientStyle = `background: linear-gradient(135deg, ${c1}, ${c2}); box-shadow: 0 4px 15px rgba(43, 38, 35, 0.12);`;
                         
                         return `
-                            <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-reveal style="--theme-color: ${c1};">
+                            <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-id="${speaker.id}" data-reveal style="--theme-color: ${c1};">
                                 ${hasImage ? `
                                     <div class="speaker-image">
                                         <img src="${speaker.image}" 
@@ -158,6 +158,75 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).join('')}
                 </div>
             `;
+
+            // Modal elements
+            const modal = document.getElementById('speakerModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalSpeakerImage = document.getElementById('modalSpeakerImage');
+            const modalSpeakerName = document.getElementById('modalSpeakerName');
+            const modalSpeakerAffiliation = document.getElementById('modalSpeakerAffiliation');
+            const modalTalkTitle = document.getElementById('modalTalkTitle');
+            const modalTalkAbstract = document.getElementById('modalTalkAbstract');
+            const modalSpeakerBio = document.getElementById('modalSpeakerBio');
+
+            if (modal) {
+                // Event listener for each speaker card
+                container.querySelectorAll('.speaker-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const id = card.dataset.id;
+                        const speaker = speakers.find(s => s.id === id);
+                        if (!speaker) return;
+
+                        // Setup details
+                        modalSpeakerName.textContent = speaker.name;
+                        modalSpeakerAffiliation.textContent = speaker.affiliation;
+                        modalTalkTitle.textContent = speaker.topic;
+                        modalTalkAbstract.textContent = speaker.abstract || 'Abstract details coming soon.';
+                        modalSpeakerBio.textContent = speaker.bio || 'Biography coming soon.';
+
+                        // Find matching index for gradient fallback
+                        const index = speakers.indexOf(speaker);
+                        const c1 = colors[index % colors.length];
+                        const c2 = colors[(index + 2) % colors.length];
+                        const gradientStyle = `background: linear-gradient(135deg, ${c1}, ${c2}); box-shadow: 0 4px 15px rgba(43, 38, 35, 0.12);`;
+
+                        if (speaker.image) {
+                            modalSpeakerImage.className = 'modal-speaker-image';
+                            modalSpeakerImage.innerHTML = `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.parentElement.className='modal-speaker-image-placeholder'; this.parentElement.style='${gradientStyle}'; this.parentElement.innerHTML='${getInitials(speaker.name)}';">`;
+                        } else {
+                            modalSpeakerImage.className = 'modal-speaker-image-placeholder';
+                            modalSpeakerImage.style = gradientStyle;
+                            modalSpeakerImage.innerHTML = getInitials(speaker.name);
+                        }
+
+                        // Open modal
+                        modal.showModal();
+                        document.body.style.overflow = 'hidden'; // Stop background scrolling
+                    });
+                });
+
+                // Close modal listener
+                if (modalCloseBtn) {
+                    modalCloseBtn.addEventListener('click', () => {
+                        modal.close();
+                    });
+                }
+
+                // Close modal on clicking outside (the backdrop)
+                modal.addEventListener('click', (e) => {
+                    const rect = modal.getBoundingClientRect();
+                    const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
+                        && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+                    if (!isInDialog) {
+                        modal.close();
+                    }
+                });
+
+                // Restore scrolling when modal is closed
+                modal.addEventListener('close', () => {
+                    document.body.style.overflow = '';
+                });
+            }
         } else {
             // Show teaser/placeholder
             container.innerHTML = `

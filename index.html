@@ -270,6 +270,34 @@
         </div>
     </footer>
 
+    <!-- Speaker Detail Modal -->
+    <dialog id="speakerModal" class="speaker-detail-modal">
+        <div class="modal-wrapper">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="modal-speaker-image" id="modalSpeakerImage"></div>
+                    <div class="modal-speaker-meta">
+                        <h2 id="modalSpeakerName"></h2>
+                        <div class="modal-speaker-affiliation" id="modalSpeakerAffiliation"></div>
+                    </div>
+                </div>
+                <div class="modal-content-section">
+                    <div class="modal-talk-section">
+                        <span class="mono modal-section-tag">Presentation Title</span>
+                        <h3 id="modalTalkTitle" style="color: var(--accent-color); font-size: 1.5rem; margin: 0.5rem 0 1.25rem 0;"></h3>
+                        <span class="mono modal-section-tag">Abstract</span>
+                        <p id="modalTalkAbstract" class="modal-text" style="margin-top: 0.5rem; margin-bottom: 1.5rem; font-size: 0.98rem; line-height: 1.6; color: var(--text-color);"></p>
+                    </div>
+                    <div class="modal-bio-section" style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+                        <span class="mono modal-section-tag">Biography</span>
+                        <p id="modalSpeakerBio" class="modal-text" style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6; color: var(--muted-text);"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
     <script src="app.js"></script>
 </body>
 

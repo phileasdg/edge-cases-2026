@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "haily-merritt",
+    "name": "Haily Merritt",
+    "affiliation": "Network Science Institute, Northeastern University London",
+    "topic": "Brain Networks as Phenotypes",
+    "abstract": "Network approaches to neuroscience have shaped our understanding of development, disease, the neural underpinnings of behavior and cognition, and the link between brain structure and function. Traditionally, this work has sought to identify universal organizational principles of brain networks, but recent years have seen a shift to characterizing variability in brain network organization across people. That is, even though seemingly all brain networks display similar properties, there is substantial individual heterogeneity in the functional organization of brain network connectivity that cannot be accounted for by random fluctuations or task/cognitive state. Moreover, this variation in functional connectivity seems to be constrained by (epi)genetics and shaped by coupling with the environment. For this reason, I advocate for studying brain networks as phenotypes. This perspective has consequences for how we interpret and analyze brain networks and how we understand brain function and dynamics. Specifically, the functional connectivity associated with better mental health and better cognitive performance is distinguishable in different social environments. Put another way, adaptive brain network organization depends on context. While brain networks are certainly not uncommon at conferences like CCS, approaching them as phenotypes marks a significant departure from the standard perspective that stands to enhance our understanding of human neuroscience and the neural underpinnings of wellbeing and behavior.",
+    "bio": "Haily Merritt is a multidisciplinary researcher with expertise spanning network neuroscience, complex systems, social neuroecology, and philosophy of mind. Her work approaches brain science from a humanistic perspective, drawing from biological theory and complex systems science methods, with consequences for the social sciences. Currently, she is a Postdoctoral Researcher with Dr. Sofia Teixeira at the Network Science Institute at Northeastern University London. Previously, she completed dual PhDs in Informatics (Complex Networks and Systems) and Cognitive Science at Indiana University.",
+    "image": "media/speakers/haily_merritt.jpg"
+  }
+]
