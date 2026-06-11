@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getInitials(name) {
         if (!name) return '??';
+        if (name.toLowerCase().includes('mystery')) return '?';
         const parts = name.trim().split(/\s+/);
         if (parts.length >= 2) {
             return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
@@ -261,12 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let html = '';
         if (agenda.details) {
             html += `
-                <div class="agenda-header" data-reveal style="margin-bottom: 3rem; opacity: 0.8; font-size: 0.9rem;">
-                    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                        <div><strong>Duration:</strong> ${agenda.details.duration}</div>
-                        <div><strong>Speaker Goal:</strong> ${agenda.details.speakerGoal}</div>
-                        <div><strong>Structure:</strong> ${agenda.details.structure}</div>
-                    </div>
+                <div class="agenda-header" data-reveal style="margin-bottom: 2rem; opacity: 0.8; font-size: 0.95rem;">
+                    <div><strong>Duration:</strong> ${agenda.details.duration}</div>
                 </div>
             `;
         }
@@ -282,15 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
 
-        // Render Notes
-        if (agenda.notes) {
-            html += `
-                <div class="agenda-notes" data-reveal style="margin-top: 4rem; padding: 2rem; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 0.9rem; border-left: 4px solid var(--accent-color);">
-                    <h4 style="margin-bottom: 1rem;">Provisional Scaling & Extensions</h4>
-                    ${agenda.notes.map(note => `<p style="margin-bottom: 0.5rem; opacity: 0.8;">• ${note}</p>`).join('')}
-                </div>
-            `;
-        }
+
 
         list.innerHTML = html;
         observeReveals();

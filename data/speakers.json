@@ -7,5 +7,68 @@
     "abstract": "Network approaches to neuroscience have shaped our understanding of development, disease, the neural underpinnings of behavior and cognition, and the link between brain structure and function. Traditionally, this work has sought to identify universal organizational principles of brain networks, but recent years have seen a shift to characterizing variability in brain network organization across people. That is, even though seemingly all brain networks display similar properties, there is substantial individual heterogeneity in the functional organization of brain network connectivity that cannot be accounted for by random fluctuations or task/cognitive state. Moreover, this variation in functional connectivity seems to be constrained by (epi)genetics and shaped by coupling with the environment. For this reason, I advocate for studying brain networks as phenotypes. This perspective has consequences for how we interpret and analyze brain networks and how we understand brain function and dynamics. Specifically, the functional connectivity associated with better mental health and better cognitive performance is distinguishable in different social environments. Put another way, adaptive brain network organization depends on context. While brain networks are certainly not uncommon at conferences like CCS, approaching them as phenotypes marks a significant departure from the standard perspective that stands to enhance our understanding of human neuroscience and the neural underpinnings of wellbeing and behavior.",
     "bio": "Haily Merritt is a multidisciplinary researcher with expertise spanning network neuroscience, complex systems, social neuroecology, and philosophy of mind. Her work approaches brain science from a humanistic perspective, drawing from biological theory and complex systems science methods, with consequences for the social sciences. Currently, she is a Postdoctoral Researcher with Dr. Sofia Teixeira at the Network Science Institute at Northeastern University London. Previously, she completed dual PhDs in Informatics (Complex Networks and Systems) and Cognitive Science at Indiana University.",
     "image": "media/speakers/haily_merritt.jpg"
+  },
+  {
+    "id": "phileas-dazeley-gaist",
+    "name": "Phileas Dazeley-Gaist",
+    "affiliation": "Wolfram Research, Wolfram Institute",
+    "topic": "Growing a Sympoietic Art Organism: An Experiment Tracking the Micro-Dynamics of Cultural Evolution",
+    "abstract": "Empirical data recording how cultural artefacts, motifs, and lineages form in real time are of great benefit and interest in the study of cultural evolution. In this work, we introduce an experimental design (nicknamed “Sympoietic Art Organism” in a nod to Haraway[1]) that attempts to richly capture the bottom-up emergence of a shared cultural heritage in a small, controlled setting, as well as the influences at play throughout its evolution. Our approach calls for a small community of artists to engage in active collaborative artmaking over several months to build up a shared creative commons. After an initial “seeding phase” round of art contributions to the commons data repository, participants are asked to contribute at least five new artefacts to the commons every two weeks, over a series of “co-creative cycles”, and with the requirements that each shared piece engage with one or more pre-existing artworks (that is, artworks from earlier cycles) and that we record these influences between works to a shared ledger. We, the ten co-authors of this study, took part in our own experiment over three months, growing a dataset of 411 original artworks, and a network of 725 verified relationships between them. Our experiment yielded a complete history of the creation of cultural artefacts (artworks) by each participant, and of all acknowledged influences from other pieces, allowing us to reconstruct the citation network of contributed artworks. By enforcing synchronous updates within each co-creative cycle such that participants only engaged with artworks from earlier stages, we were able to model the network’s growth as a time series. Our results are well suited for multi-modal analysis. Quantitatively, we observed the structural evolution of the citation network from disconnected nodes into a consolidated core as the system matured. We found the network’s structural dynamics were consistent rich-get-richer feedback, showing that preferential attachment emerged endogenously around specific hub artworks. Qualitatively, the artworks provide a basis for tracing a kind of semantic phylogeny through visual inspection and comparison of contributed artworks, to see how participants adapted, remixed, or subverted specific aesthetic motifs across generations. We propose this experiment as a proof of concept for a scalable ethnographic tool in network science. This approach provides a transparent environment for investigating the mechanisms of cultural inheritance. This work was initiated at the 2025 Complexity Global School, organised by the Santa Fe Institute and TREES group at the Universidad de Los Andes.",
+    "bio": "Phileas is a human ecologist, creative technologist, and developer at Wolfram Research, working at the crossroads between human ecology and complexity science. Their work spans agent-based modeling, ecological and environmental systems modeling, GIS, and digital humanities, with a special focus on interdisciplinary, human-ecological projects.",
+    "image": "media/speakers/phileas_dazeley-gaist.png"
+  },
+  {
+    "id": "alejandra-ortiz-duran",
+    "name": "Alejandra Ortiz Duran",
+    "affiliation": "",
+    "topic": "",
+    "abstract": "",
+    "bio": "",
+    "image": ""
+  },
+  {
+    "id": "katie-spoon",
+    "name": "Katie Spoon",
+    "affiliation": "",
+    "topic": "",
+    "abstract": "",
+    "bio": "",
+    "image": ""
+  },
+  {
+    "id": "emmy-tither",
+    "name": "Emmy Tither",
+    "affiliation": "",
+    "topic": "",
+    "abstract": "",
+    "bio": "",
+    "image": ""
+  },
+  {
+    "id": "divya-sindhu-lekha",
+    "name": "Dr. Divya Sindhu Lekha",
+    "affiliation": "",
+    "topic": "",
+    "abstract": "",
+    "bio": "",
+    "image": ""
+  },
+  {
+    "id": "chathura-jayalath",
+    "name": "Chathura Jayalath, PhD",
+    "affiliation": "",
+    "topic": "",
+    "abstract": "",
+    "bio": "",
+    "image": ""
+  },
+  {
+    "id": "mystery-speaker",
+    "name": "Mystery Speaker",
+    "affiliation": "To Be Revealed",
+    "topic": "A Surprising Application of Network Science",
+    "abstract": "The details of this presentation are under wraps and will be unveiled during the symposium.",
+    "bio": "This contributor's details are currently undisclosed.",
+    "image": ""
   }
 ]

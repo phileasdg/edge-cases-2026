@@ -361,8 +361,32 @@ header .container {
   color: var(--muted-text);
 }
 
+#speakers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 500px) {
+  #speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  #speakers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  #speakers-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .speaker-card {
-  padding: var(--space-lg);
+  padding: 1.25rem;
   background: white;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
@@ -370,7 +394,7 @@ header .container {
   transition: var(--transition-fast);
   display: flex;
   flex-direction: column;
-  min-height: 380px; /* Consistent height for grid balance */
+  min-height: 290px;
   cursor: pointer;
 }
 
@@ -386,9 +410,9 @@ header .container {
 }
 
 .speaker-image {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.5rem;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--bg-color);
@@ -397,9 +421,9 @@ header .container {
 }
 
 .speaker-image-placeholder {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.5rem;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -408,7 +432,7 @@ header .container {
   color: white;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border: 3px solid var(--bg-color);
   box-shadow: 0 4px 15px rgba(51, 92, 103, 0.15);
   flex-shrink: 0;
@@ -428,25 +452,25 @@ header .container {
 }
 
 .speaker-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
   color: var(--primary-dark);
 }
 
 .speaker-card .affiliation {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .speaker-card .topic {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--muted-text);
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* Agenda */
