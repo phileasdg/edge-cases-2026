@@ -126,10 +126,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const colors = CONFIG.colors;
 
         if (speakers && speakers.length > 0) {
+            const isTeaserMode = speakers.some(s => s.name.startsWith('Contributor'));
+
+            if (isTeaserMode) {
+                // Show teaser with avatar stack
+                container.innerHTML = `
+                    <h2 data-reveal>Featured Contributors</h2>
+                    <div class="lineup-teaser-card" data-reveal>
+                        <div class="avatar-stack">
+                            ${speakers.map((speaker, index) => {
+                                const c1 = colors[index % colors.length];
+                                const c2 = colors[(index + 2) % colors.length];
+                                const style = `background: linear-gradient(135deg, ${c1}, ${c2}); z-index: ${speakers.length - index};`;
+                                return `
+                                    <div class="avatar-circle mystery-avatar" 
+                                         style="${style}" 
+                                         title="Symposium Session">
+                                        ?
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        <div class="teaser-content">
+                            <div class="teaser-subtext">Coming Soon</div>
+                            <h3>Symposium Program</h3>
+                            <p>We are wrapping up the final details of our symposium program, featuring 8 speakers spanning diverse and unconventional applications of network science. The full lineup of speakers, talk titles, abstracts, and biographies will be announced soon.</p>
+                        </div>
+                    </div>
+                `;
+                observeReveals();
+                return;
+            }
+
             // Show real speaker lineup
             container.innerHTML = `
                 <h2 data-reveal>Featured Contributors</h2>
-                <div class="grid" id="speakers-grid" style="margin-top: var(--space-md);">
+                <p class="section-description" data-reveal style="margin-top: 1rem; margin-bottom: 2.5rem; opacity: 0.85; max-width: 800px; font-size: 1.1rem; line-height: 1.6;">
+                    The full Edge Cases symposium lineup will be announced soon. Below is a preview of the upcoming sessions. Detailed talk titles, abstracts, and speaker biographies are coming soon.
+                </p>
+                <div class="grid" id="speakers-grid">
                     ${speakers.map((speaker, index) => {
                         const hasImage = !!speaker.image;
                         const c1 = colors[index % colors.length];
@@ -180,8 +215,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Setup details
                         modalSpeakerName.textContent = speaker.name;
-                        modalSpeakerAffiliation.textContent = speaker.affiliation;
-                        modalTalkTitle.textContent = speaker.topic;
+                        
+                        // Affiliation visibility
+                        if (speaker.affiliation) {
+                            modalSpeakerAffiliation.textContent = speaker.affiliation;
+                            modalSpeakerAffiliation.style.display = '';
+                        } else {
+                            modalSpeakerAffiliation.style.display = 'none';
+                        }
+                        
+                        // Talk Title visibility
+                        const titleLabel = modalTalkTitle.previousElementSibling;
+                        if (speaker.topic) {
+                            modalTalkTitle.textContent = speaker.topic;
+                            modalTalkTitle.style.display = '';
+                            if (titleLabel) titleLabel.style.display = '';
+                        } else {
+                            modalTalkTitle.style.display = 'none';
+                            if (titleLabel) titleLabel.style.display = 'none';
+                        }
+                        
                         modalTalkAbstract.textContent = speaker.abstract || 'Abstract details coming soon.';
                         modalSpeakerBio.textContent = speaker.bio || 'Biography coming soon.';
 
