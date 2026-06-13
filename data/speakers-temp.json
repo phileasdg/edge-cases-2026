@@ -18,57 +18,13 @@
     "image": "media/speakers/phileas_dazeley-gaist.png"
   },
   {
-    "id": "alejandra-ortiz-duran",
-    "name": "Alejandra Ortiz Duran",
-    "affiliation": "",
-    "topic": "",
-    "abstract": "",
+    "id": "yessica-herrera",
+    "name": "Yessica Herrera",
+    "affiliation": "University of Notre Dame",
+    "topic": "The Art World as a Network",
+    "abstract": "What actually makes an artist succeed? Talent is only part of it. Much of success and prestige travels through an invisible network of museums, art collectors, and influence passed through preferential collaborations. This talk follows that question and invites to think about the art world as a connected system, revealing how novel computational tools and AI can help discover network data, and what that network reveals about the mechanisms of prestige and success shaping the art world. Then we flip the question, asking what happens when we use network patterns not just to study art, but to create it.",
     "bio": "",
-    "image": ""
-  },
-  {
-    "id": "katie-spoon",
-    "name": "Katie Spoon",
-    "affiliation": "",
-    "topic": "",
-    "abstract": "",
-    "bio": "",
-    "image": ""
-  },
-  {
-    "id": "emmy-tither",
-    "name": "Emmy Tither",
-    "affiliation": "",
-    "topic": "",
-    "abstract": "",
-    "bio": "",
-    "image": ""
-  },
-  {
-    "id": "divya-sindhu-lekha",
-    "name": "Dr. Divya Sindhu Lekha",
-    "affiliation": "",
-    "topic": "",
-    "abstract": "",
-    "bio": "",
-    "image": ""
-  },
-  {
-    "id": "chathura-jayalath",
-    "name": "Chathura Jayalath, PhD",
-    "affiliation": "",
-    "topic": "",
-    "abstract": "",
-    "bio": "",
-    "image": ""
-  },
-  {
-    "id": "mystery-speaker",
-    "name": "Mystery Speaker",
-    "affiliation": "To Be Revealed",
-    "topic": "A Surprising Application of Network Science",
-    "abstract": "The details of this presentation are under wraps and will be unveiled during the symposium.",
-    "bio": "This contributor's details are currently undisclosed.",
-    "image": ""
+    "image": "media/speakers/yessica_herrera_guzman.jpeg",
+    "website": "https://yessicaherrera.com"
   }
 ]

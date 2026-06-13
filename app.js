@@ -224,6 +224,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             modalSpeakerAffiliation.style.display = 'none';
                         }
                         
+                        // Website link visibility
+                        const modalSpeakerLink = document.getElementById('modalSpeakerLink');
+                        if (modalSpeakerLink) {
+                            if (speaker.website) {
+                                modalSpeakerLink.href = speaker.website;
+                                const displayUrl = speaker.website.replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/$/, '');
+                                modalSpeakerLink.textContent = displayUrl;
+                                modalSpeakerLink.style.display = '';
+                            } else {
+                                modalSpeakerLink.style.display = 'none';
+                            }
+                        }
+                        
                         // Talk Title visibility
                         const titleLabel = modalTalkTitle.previousElementSibling;
                         if (speaker.topic) {
