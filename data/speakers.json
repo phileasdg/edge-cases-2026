@@ -18,6 +18,15 @@
     "image": "media/speakers/phileas_dazeley-gaist.png"
   },
   {
+    "id": "katie-spoon",
+    "name": "Katie Spoon",
+    "affiliation": "Stanford University",
+    "topic": "Your doctor visits as a network: Discovering high-risk health trajectories",
+    "abstract": "While life span is increasing, disparities are emerging in health span, or years spent in good health. Health outcomes result from long and complex life histories, yet most population health studies still estimate the short-term effect of a single factor on a single outcome. As a result, little is known about how events such as new diagnoses, residential changes, or disruptions in care continuity, combine to form long-term trajectories toward health or illness, at population scale. This nuance is central to understanding when and where health trajectories diverge in later life, and why some older adults thrive in later life and others don’t. Here we use network science to turn 90 million primary-care visits for 8 million U.S. patients from 2010-2024 into a state-transition graph of health trajectories.\n\nUsing Electronic Health Records from the American Family Cohort, we first learn a small set of recurrent “snapshot states” by clustering visit-level feature vectors that summarize recent clinical status, continuity of care, and neighborhood context. We then build a directed, weighted graph over these states, where edges represent observed transitions between states across visits. Each patient’s history becomes a path on this shared state space. Applying graph-based representation learning to this network, we derive patient-level trajectory embeddings and cluster patients into trajectory types.\n\nThis framework lets us ask questions such as: which paths through the state space are most strongly associated with accelerated deterioration, and which neighborhoods and demographic groups are most likely to follow those paths? Unlike transformer-based approaches that operate as a black box, interpretable graph-based approaches allow us to pinpoint where health trajectories diverge. In addition, these representations can serve as rich, interpretable pre-exposure histories for causal analyses, e.g., how losing a primary-care provider changes downstream health outcomes.",
+    "bio": "",
+    "image": ""
+  },
+  {
     "id": "yessica-herrera",
     "name": "Yessica Herrera",
     "affiliation": "University of Notre Dame",
