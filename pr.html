@@ -1544,6 +1544,10 @@
             background-size: 30px 30px;
             background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
         }
+
+        body.hide-promo-times .promo-time-wrapper {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -1715,6 +1719,13 @@
             <h2 class="sheet-section-title">
                 General Event Promo Assets <span class="badge">Event Branding</span>
             </h2>
+            <div style="background: var(--sheet-panel); border: 1px solid var(--sheet-border); padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-family: var(--font-heading); font-weight: 500; font-size: 0.95rem; color: var(--sheet-text);">Options:</span>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; color: var(--sheet-muted); user-select: none;">
+                    <input type="checkbox" id="toggle-promo-times" checked style="accent-color: var(--sheet-accent); width: 16px; height: 16px; cursor: pointer;">
+                    Include times on promo cards (2:30 PM – 5:45 PM)
+                </label>
+            </div>
             <div class="cards-grid">
                 
                 <!-- 1.1 General Promo Banner -->
@@ -1730,7 +1741,7 @@
                         <div class="card-export-container size-banner" id="promo-banner">
                             <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University<span class="promo-time-wrapper"> | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></span></div>
                                 <div class="template-general-banner">
                                     <h1>
                                         <svg width="110" height="110" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; flex-shrink: 0;">
@@ -1781,7 +1792,7 @@
                         <div class="card-export-container size-square" id="promo-square">
                             <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University<span class="promo-time-wrapper"> | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></span></div>
                                 <div class="template-general-square">
                                     <h1>
                                         <svg width="140" height="140" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
@@ -1862,7 +1873,7 @@
                         <div class="card-export-container size-banner" id="wildcard-lineup-banner">
                             <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></div>
                                 <div class="template-wildcard-banner">
                                     <div class="wildcard-left">
                                         <h1>
@@ -1919,7 +1930,7 @@
                         <div class="card-export-container size-square" id="wildcard-lineup-square">
                             <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></div>
                                 <div class="template-wildcard-square">
                                     <div class="wildcard-square-header">
                                         <h1>
@@ -2465,6 +2476,19 @@
 
         // --- DYNAMIC RENDERING FROM JSON ---
         document.addEventListener('DOMContentLoaded', () => {
+            // Toggle promo times listener
+            const togglePromoTimes = document.getElementById('toggle-promo-times');
+            if (togglePromoTimes) {
+                togglePromoTimes.addEventListener('change', function() {
+                    document.body.classList.toggle('hide-promo-times', !this.checked);
+                });
+
+                if (window.location.search.includes('hideTimes=true')) {
+                    togglePromoTimes.checked = false;
+                    document.body.classList.add('hide-promo-times');
+                }
+            }
+
             fetch('data/speakers.json')
                 .then(res => res.json())
                 .then(speakers => {
@@ -2562,7 +2586,7 @@
                                 <div class="card-export-container size-banner" id="${speaker.id}-banner">
                                     ${landscapeSvgBg}
                                     <div class="card-content">
-                                        <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                        <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></div>
                                         <div class="template-speaker-banner">
                                             <div class="speaker-left">
                                                 <div class="photo-frame">
@@ -2626,7 +2650,7 @@
                                 <div class="card-export-container size-square" id="${speaker.id}-square">
                                     ${squareSvgBg}
                                     <div class="card-content">
-                                        <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                        <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></div>
                                         <div class="template-speaker-square">
                                             <div class="speaker-square-left">
                                                 <div class="photo-frame">
