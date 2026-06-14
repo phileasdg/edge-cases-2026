@@ -532,19 +532,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2.5. Venue Tab Switching Logic
     const tabButtons = document.querySelectorAll('#venue .tab-btn');
+    
+    function switchVenueTab(tabName) {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#venue .tab-content').forEach(c => c.classList.remove('active'));
+        
+        const matchingBtn = document.querySelector(`#venue .tab-btn[data-tab="${tabName}"]`);
+        if (matchingBtn) {
+            matchingBtn.classList.add('active');
+        }
+        const targetId = `${tabName}-tab`;
+        const content = document.getElementById(targetId);
+        if (content) {
+            content.classList.add('active');
+        }
+    }
+
     tabButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            tabButtons.forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#venue .tab-content').forEach(c => c.classList.remove('active'));
-            
-            btn.classList.add('active');
-            const targetId = `${btn.dataset.tab}-tab`;
-            const content = document.getElementById(targetId);
-            if (content) {
-                content.classList.add('active');
-            }
+            const tabName = btn.dataset.tab;
+            switchVenueTab(tabName);
+            history.replaceState(null, null, '#' + tabName);
         });
     });
+
+    // Handle initial hash routing for venue tabs on load
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash === 'floorplan' || initialHash === 'schedule') {
+        setTimeout(() => {
+            switchVenueTab(initialHash);
+            const venueSec = document.getElementById('venue');
+            if (venueSec) {
+                venueSec.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    }
 
     // 3. Hamburger Logic
     const burger = document.getElementById('mobileBurger');

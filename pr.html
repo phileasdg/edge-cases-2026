@@ -1235,6 +1235,178 @@
             border-bottom: 2px solid var(--primary-dark);
         }
 
+        /* Compact versions to fit higher speaker counts (6+) without visual overflows */
+        .timeline-container.compact-timeline {
+            gap: 0.2rem;
+            height: 94%;
+        }
+        .timeline-container.compact-timeline .timeline-item {
+            gap: 0.75rem;
+        }
+        .timeline-container.compact-timeline .timeline-speaker-photo {
+            width: 32px;
+            height: 32px;
+        }
+        .timeline-container.compact-timeline .timeline-speaker-photo-placeholder {
+            font-size: 0.8rem;
+        }
+        .timeline-container.compact-timeline .timeline-content h4 {
+            font-size: 0.95rem;
+        }
+        .timeline-container.compact-timeline .timeline-content p {
+            font-size: 0.72rem;
+            line-height: 1.15;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .timeline-container.compact-timeline .timeline-time {
+            font-size: 0.8rem;
+            min-width: 50px;
+        }
+        .timeline-container.compact-timeline .timeline-item::before {
+            left: calc(-2.25rem - 4.5px);
+            width: 8px;
+            height: 8px;
+        }
+
+        .template-wildcard-stripes.compact-stripes {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 0.75rem 1.25rem;
+            height: 92%;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-column {
+            padding: 0.75rem 1rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-photo {
+            width: 60px;
+            height: 60px;
+            border-width: 2px;
+            margin-bottom: 0.4rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-photo-placeholder {
+            font-size: 1.1rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-info {
+            gap: 0.2rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-info h4 {
+            font-size: 1rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-info p.affiliation {
+            font-size: 0.7rem;
+            min-height: auto;
+            margin-bottom: 0.2rem;
+        }
+        .template-wildcard-stripes.compact-stripes .stripe-info p.topic {
+            font-size: 0.72rem;
+            -webkit-line-clamp: 2;
+        }
+
+        .template-wildcard-stripes-square.compact-stripes-square {
+            gap: 1.25rem 1.5rem;
+            padding: 1.5rem 0;
+            margin: 0.5rem 0;
+        }
+        .template-wildcard-stripes-square.compact-stripes-square .stripe-column {
+            padding: 1rem;
+        }
+        .template-wildcard-stripes-square.compact-stripes-square .stripe-photo {
+            width: 75px;
+            height: 75px;
+        }
+        .template-wildcard-stripes-square.compact-stripes-square .stripe-info h4 {
+            font-size: 1.1rem;
+        }
+        .template-wildcard-stripes-square.compact-stripes-square .stripe-info p.affiliation {
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            min-height: auto;
+        }
+        .template-wildcard-stripes-square.compact-stripes-square .stripe-info p.topic {
+            font-size: 0.78rem;
+            -webkit-line-clamp: 2;
+        }
+
+        .typo-speakers-list.compact-typo-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 2rem;
+            padding-left: 2rem;
+            width: 100%;
+        }
+        .typo-speakers-list.compact-typo-list .typo-speaker-item {
+            gap: 0.1rem;
+        }
+        .typo-speakers-list.compact-typo-list .typo-speaker-item h3 {
+            font-size: 1.05rem;
+        }
+        .typo-speakers-list.compact-typo-list .typo-speaker-item p.topic {
+            font-size: 0.78rem;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .typo-speakers-list.compact-typo-list .typo-speaker-item p.affiliation {
+            font-size: 0.68rem;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .typo-speakers-grid-square.compact-typo-grid-square {
+            gap: 1.5rem 2rem;
+            margin: 1rem 0;
+            padding: 1.5rem 0;
+        }
+        .typo-speakers-grid-square.compact-typo-grid-square .typo-speaker-item h3 {
+            font-size: 1.25rem;
+        }
+        .typo-speakers-grid-square.compact-typo-grid-square .typo-speaker-item p.topic {
+            font-size: 0.9rem;
+        }
+        .typo-speakers-grid-square.compact-typo-grid-square .typo-speaker-item p.affiliation {
+            font-size: 0.78rem;
+        }
+
+        .timeline-container-square.compact-timeline-square {
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+            padding-left: 2rem;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-item {
+            gap: 0.75rem;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-speaker-photo {
+            width: 36px;
+            height: 36px;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-speaker-photo-placeholder {
+            font-size: 0.9rem;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-content h4 {
+            font-size: 1.1rem;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-content p {
+            font-size: 0.8rem;
+            line-height: 1.2;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-time {
+            font-size: 0.85rem;
+            min-width: 55px;
+        }
+        .timeline-container-square.compact-timeline-square .timeline-item::before {
+            left: calc(-2rem - 5px);
+            width: 9px;
+            height: 9px;
+            top: calc(50% - 4.5px);
+        }
+
         /* Fullscreen Isolated Preview Modal Styles */
         .isolated-modal {
             display: none;
@@ -1465,6 +1637,7 @@
         <button class="tab-button" data-tab="tab-speaker-squares" onclick="switchTab('tab-speaker-squares')">Speaker Squares (1:1)</button>
         <button class="tab-button" data-tab="tab-wildcards" onclick="switchTab('tab-wildcards')">Wildcard Lineups</button>
         <button class="tab-button" data-tab="tab-wildcards-creative" onclick="switchTab('tab-wildcards-creative')">Creative Wildcards</button>
+        <button class="tab-button" data-tab="tab-logos" onclick="switchTab('tab-logos')">Logos & Icons</button>
     </nav>
 
     <!-- Tab Panels -->
@@ -1942,6 +2115,186 @@
             </div>
         </div>
 
+        <!-- TAB 6: LOGOS & ICONS -->
+        <div class="tab-panel" id="tab-logos">
+            <h2 class="sheet-section-title">
+                Official Event Logos & Icons <span class="badge">Branding Assets</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <!-- 6.1 Light Horizontal Logo -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Horizontal Logo (Light)<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-horizontal-light')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-horizontal-light')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-banner-wrapper">
+                        <div class="card-export-container size-banner" id="logo-horizontal-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5;">
+                                <div style="display: flex; align-items: center; gap: 2.5rem;">
+                                    <svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4.2" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4.2" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4.2" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.6" />
+                                    </svg>
+                                    <div style="font-family: var(--font-heading); font-size: 7.5rem; font-weight: 800; color: var(--primary-dark); letter-spacing: -0.04em; user-select: none;">Edge Cases</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.2 Dark Horizontal Logo -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Horizontal Logo (Dark)<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-horizontal-dark')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-horizontal-dark')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-banner-wrapper">
+                        <div class="card-export-container size-banner" id="logo-horizontal-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 2.5rem;">
+                                    <svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4.5" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4.5" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4.5" fill="#355070" />
+                                        <circle cx="26" cy="8" r="6" fill="#e56b6f" stroke="#2b2623" stroke-width="1.8" />
+                                    </svg>
+                                    <div style="font-family: var(--font-heading); font-size: 7.5rem; font-weight: 800; color: #faf9f5; letter-spacing: -0.04em; user-select: none;">Edge Cases</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.3 Light Stacked Logo -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Stacked Logo (Light)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-stacked-light')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-stacked-light')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper">
+                        <div class="card-export-container size-square" id="logo-stacked-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5; flex-direction: column; gap: 3rem;">
+                                <svg width="220" height="220" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="6" cy="24" r="4.2" fill="#508484" />
+                                    <circle cx="10" cy="12" r="4.2" fill="#6d597a" />
+                                    <circle cx="14" cy="20" r="4.2" fill="#355070" />
+                                    <circle cx="26" cy="8" r="5.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.6" />
+                                </svg>
+                                <div style="font-family: var(--font-heading); font-size: 8rem; font-weight: 800; color: var(--primary-dark); letter-spacing: -0.04em; text-align: center; line-height: 1; user-select: none;">Edge Cases</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.4 Dark Stacked Logo -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Stacked Logo (Dark)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-stacked-dark')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-stacked-dark')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper">
+                        <div class="card-export-container size-square" id="logo-stacked-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1); flex-direction: column; gap: 3rem;">
+                                <svg width="220" height="220" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="6" cy="24" r="4.5" fill="#508484" />
+                                    <circle cx="10" cy="12" r="4.5" fill="#6d597a" />
+                                    <circle cx="14" cy="20" r="4.5" fill="#355070" />
+                                    <circle cx="26" cy="8" r="6" fill="#e56b6f" stroke="#2b2623" stroke-width="1.8" />
+                                </svg>
+                                <div style="font-family: var(--font-heading); font-size: 8rem; font-weight: 800; color: #faf9f5; letter-spacing: -0.04em; text-align: center; line-height: 1; user-select: none;">Edge Cases</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.5 Light Standalone Emblem -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Emblem Icon (Light)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('emblem-light')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('emblem-light')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper">
+                        <div class="card-export-container size-square" id="emblem-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5;">
+                                <svg width="500" height="500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="6" cy="24" r="4.2" fill="#508484" />
+                                    <circle cx="10" cy="12" r="4.2" fill="#6d597a" />
+                                    <circle cx="14" cy="20" r="4.2" fill="#355070" />
+                                    <circle cx="26" cy="8" r="5.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.6" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.6 Dark Standalone Emblem -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Emblem Icon (Dark)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('emblem-dark')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('emblem-dark')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper">
+                        <div class="card-export-container size-square" id="emblem-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1);">
+                                <svg width="500" height="500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="2.2" opacity="0.4" />
+                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="6" cy="24" r="4.5" fill="#508484" />
+                                    <circle cx="10" cy="12" r="4.5" fill="#6d597a" />
+                                    <circle cx="14" cy="20" r="4.5" fill="#355070" />
+                                    <circle cx="26" cy="8" r="6" fill="#e56b6f" stroke="#2b2623" stroke-width="1.8" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
     <!-- Fullscreen Isolated Preview Modal Dialog -->
@@ -1963,6 +2316,9 @@
             // Add active class to selected button and panel
             document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
             document.getElementById(tabId).classList.add('active');
+            
+            // Update hash in URL
+            history.replaceState(null, null, '#' + tabId);
         }
 
         // Fullscreen preview handler
@@ -1997,11 +2353,11 @@
         function saveCard(cardId) {
             const cardElement = document.getElementById(cardId);
             
-            // Run export at pristine resolution with background color matching var(--section-bg)
+            // Run export at pristine resolution with background color auto-detected from element
             html2canvas(cardElement, {
                 scale: 2, // 2x retina boost
                 useCORS: true,
-                backgroundColor: '#faf9f5',
+                backgroundColor: null,
                 allowTaint: true
             }).then(canvasExport => {
                 const link = document.createElement('a');
@@ -2022,6 +2378,12 @@
                 .then(res => res.json())
                 .then(speakers => {
                     renderDynamicPR(speakers);
+                    
+                    // Route to specific tab from hash if present
+                    const hash = window.location.hash.substring(1);
+                    if (hash && document.getElementById(hash)) {
+                        switchTab(hash);
+                    }
                 })
                 .catch(err => {
                     console.error('Failed to load speakers for PR dynamic rendering:', err);
@@ -2214,6 +2576,13 @@
             // 3. Populating Tab 4 (Wildcard Lineups)
             const bannerSpeakersContainer = document.getElementById('wildcard-banner-speakers');
             if (bannerSpeakersContainer) {
+                if (speakers.length > 6) {
+                    bannerSpeakersContainer.style.gap = '1rem 2rem';
+                    bannerSpeakersContainer.style.height = 'auto';
+                } else {
+                    bannerSpeakersContainer.style.gap = '';
+                    bannerSpeakersContainer.style.height = '';
+                }
                 bannerSpeakersContainer.innerHTML = speakers.map((speaker, index) => {
                     const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
                     const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
@@ -2237,6 +2606,15 @@
 
             const squareSpeakersContainer = document.getElementById('wildcard-square-speakers');
             if (squareSpeakersContainer) {
+                if (speakers.length > 6) {
+                    squareSpeakersContainer.style.gap = '1.5rem 2rem';
+                    squareSpeakersContainer.style.padding = '1.5rem 0';
+                    squareSpeakersContainer.style.margin = '1rem 0';
+                } else {
+                    squareSpeakersContainer.style.gap = '';
+                    squareSpeakersContainer.style.padding = '';
+                    squareSpeakersContainer.style.margin = '';
+                }
                 squareSpeakersContainer.innerHTML = speakers.map((speaker, index) => {
                     const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
                     const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
@@ -2345,15 +2723,35 @@
             `;
 
             const scheduleBannerTimeline = document.getElementById('schedule-banner-timeline');
-            if (scheduleBannerTimeline) scheduleBannerTimeline.innerHTML = timelineHTML;
+            if (scheduleBannerTimeline) {
+                if (speakers.length > 5) {
+                    scheduleBannerTimeline.classList.add('compact-timeline');
+                } else {
+                    scheduleBannerTimeline.classList.remove('compact-timeline');
+                }
+                scheduleBannerTimeline.innerHTML = timelineHTML;
+            }
 
             const scheduleSquareTimeline = document.getElementById('schedule-square-timeline');
-            if (scheduleSquareTimeline) scheduleSquareTimeline.innerHTML = timelineHTML;
+            if (scheduleSquareTimeline) {
+                if (speakers.length > 5) {
+                    scheduleSquareTimeline.classList.add('compact-timeline-square');
+                } else {
+                    scheduleSquareTimeline.classList.remove('compact-timeline-square');
+                }
+                scheduleSquareTimeline.innerHTML = timelineHTML;
+            }
 
             // Columns layout (Stripe Columns Banner)
             const stripesBannerCols = document.getElementById('stripes-banner-cols');
             if (stripesBannerCols) {
-                stripesBannerCols.style.gridTemplateColumns = `repeat(${speakers.length}, 1fr)`;
+                if (speakers.length > 5) {
+                    stripesBannerCols.classList.add('compact-stripes');
+                    stripesBannerCols.style.gridTemplateColumns = '';
+                } else {
+                    stripesBannerCols.classList.remove('compact-stripes');
+                    stripesBannerCols.style.gridTemplateColumns = `repeat(${speakers.length}, 1fr)`;
+                }
                 stripesBannerCols.innerHTML = speakers.map((speaker, index) => {
                     const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
                     const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
@@ -2380,6 +2778,12 @@
             const stripesSquareCols = document.getElementById('stripes-square-cols');
             if (stripesSquareCols) {
                 if (speakers.length > 4) {
+                    stripesSquareCols.classList.add('compact-stripes-square');
+                    stripesSquareCols.style.gap = '';
+                    stripesSquareCols.style.height = '';
+                    stripesSquareCols.style.margin = '';
+                } else {
+                    stripesSquareCols.classList.remove('compact-stripes-square');
                     stripesSquareCols.style.gap = '1.25rem 2rem';
                     stripesSquareCols.style.height = 'auto';
                     stripesSquareCols.style.margin = '1rem 0';
@@ -2409,6 +2813,11 @@
             // Typographic list (Typographic Poster Banner)
             const typoBannerList = document.getElementById('typo-banner-list');
             if (typoBannerList) {
+                if (speakers.length > 5) {
+                    typoBannerList.classList.add('compact-typo-list');
+                } else {
+                    typoBannerList.classList.remove('compact-typo-list');
+                }
                 typoBannerList.innerHTML = speakers.map(speaker => `
                     <div class="typo-speaker-item">
                         <h3>${speaker.name}</h3>
@@ -2422,6 +2831,12 @@
             const typoSquareGrid = document.getElementById('typo-square-grid');
             if (typoSquareGrid) {
                 if (speakers.length > 4) {
+                    typoSquareGrid.classList.add('compact-typo-grid-square');
+                    typoSquareGrid.style.gap = '';
+                    typoSquareGrid.style.margin = '';
+                    typoSquareGrid.style.padding = '';
+                } else {
+                    typoSquareGrid.classList.remove('compact-typo-grid-square');
                     typoSquareGrid.style.gap = '1.5rem 2rem';
                     typoSquareGrid.style.margin = '1rem 0';
                     typoSquareGrid.style.padding = '1.5rem 0';
