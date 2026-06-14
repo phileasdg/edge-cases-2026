@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Cases | PR Materials Generator</title>
+    <link rel="stylesheet" href="pr-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- html2canvas for instant client-side exports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Controls -->
+        <aside class="control-sidebar">
+            <div class="sidebar-header">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="6" y1="24" x2="14" y2="20" stroke="#e56b6f" stroke-width="1.8" />
+                    <line x1="6" y1="24" x2="10" y2="12" stroke="#e56b6f" stroke-width="1.8" />
+                    <line x1="14" y1="20" x2="10" y2="12" stroke="#e56b6f" stroke-width="1.8" />
+                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2" stroke-dasharray="2 2" />
+                    <circle cx="6" cy="24" r="3" fill="#e56b6f" />
+                    <circle cx="10" cy="12" r="3" fill="#e56b6f" />
+                    <circle cx="14" cy="20" r="3" fill="#e56b6f" />
+                    <circle cx="26" cy="8" r="4" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                </svg>
+                <h2>PR Generator</h2>
+            </div>
+            
+            <div class="sidebar-content">
+                <!-- Template Selection -->
+                <div class="control-group">
+                    <label for="templateSelect">Template Type</label>
+                    <select id="templateSelect" class="control-select">
+                        <option value="general-banner">General Event Banner (16:9)</option>
+                        <option value="general-square">General Event Square (1:1)</option>
+                        <option value="speaker-banner">Speaker Feature Banner (16:9)</option>
+                        <option value="speaker-square">Speaker Feature Square (1:1)</option>
+                    </select>
+                </div>
+
+                <!-- Speaker Section (Shown for speaker templates) -->
+                <div id="speakerControls" class="control-group" style="display: none;">
+                    <label for="speakerSelect">Select Confirmed Speaker</label>
+                    <select id="speakerSelect" class="control-select">
+                        <option value="custom">-- Custom / Manual Entry --</option>
+                        <!-- Populated dynamically -->
+                    </select>
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div class="control-group">
+                            <label for="speakerName">Speaker Name</label>
+                            <input type="text" id="speakerName" class="control-input" placeholder="Speaker Name">
+                        </div>
+                        <div class="control-group">
+                            <label for="speakerAffiliation">Affiliation</label>
+                            <input type="text" id="speakerAffiliation" class="control-input" placeholder="Institution/Affiliation">
+                        </div>
+                        <div class="control-group">
+                            <label for="talkTitle">Talk Title</label>
+                            <input type="text" id="talkTitle" class="control-input" placeholder="Talk Topic/Title">
+                        </div>
+                        <div class="control-group">
+                            <label for="talkAbstract">Abstract Snippet</label>
+                            <textarea id="talkAbstract" class="control-textarea" placeholder="Abstract text..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Event Customizer -->
+                <div id="generalControls" class="control-group">
+                    <div class="control-group" style="margin-bottom: 0.75rem;">
+                        <label for="eventMeta">Date & Venue Header</label>
+                        <input type="text" id="eventMeta" class="control-input" value="Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM">
+                    </div>
+                    <div class="control-group">
+                        <label for="eventTagline">Tagline / Subtitle Text</label>
+                        <textarea id="eventTagline" class="control-textarea" placeholder="Event tagline...">Highlighting surprising network science research, and applications of network science in unconventional domains.</textarea>
+                    </div>
+                </div>
+
+                <!-- Footer URL customization -->
+                <div class="control-group">
+                    <label for="footerWeb">Footer Website URL</label>
+                    <input type="text" id="footerWeb" class="control-input" value="edgecases2026.org">
+                </div>
+            </div>
+
+            <!-- Download actions -->
+            <div class="sidebar-actions">
+                <button id="downloadBtn" class="action-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    Download PNG
+                </button>
+                <button id="resetBtn" class="action-btn secondary">Reset Form</button>
+            </div>
+        </aside>
+
+        <!-- Workspace Preview -->
+        <main class="preview-workspace">
+            <div class="preview-wrapper" id="previewWrapper">
+                <div class="card-export-container size-banner" id="card-preview">
+                    <!-- Background Canvas for Seeded Network Grid -->
+                    <canvas id="cardBackground" class="card-background-canvas"></canvas>
+                    
+                    <div class="card-content" id="cardContent">
+                        <!-- Dynamic Card Structure Injected Here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevTools Screenshot Instructions -->
+            <div class="guide-panel">
+                <h4>💡 Tip: High-Res Retina Export</h4>
+                <p>For perfect pixel-accurate graphics (e.g. 2x/3x Retina resolution for publications):</p>
+                <p style="margin-top: 0.5rem;">
+                    1. Right-click the preview card and select <code>Inspect</code>.<br>
+                    2. Press <code>Cmd+Shift+P</code> (macOS) or <code>Ctrl+Shift+P</code> (Windows) to open the Command Menu.<br>
+                    3. Type <code>Capture node screenshot</code> and hit enter. Your browser will download a pristine full-resolution PNG.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generator Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let speakersData = [];
+            const speakersMap = new Map();
+
+            // Dom elements
+            const templateSelect = document.getElementById('templateSelect');
+            const speakerControls = document.getElementById('speakerControls');
+            const generalControls = document.getElementById('generalControls');
+            const speakerSelect = document.getElementById('speakerSelect');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            // Input elements
+            const speakerName = document.getElementById('speakerName');
+            const speakerAffiliation = document.getElementById('speakerAffiliation');
+            const talkTitle = document.getElementById('talkTitle');
+            const talkAbstract = document.getElementById('talkAbstract');
+            const eventMeta = document.getElementById('eventMeta');
+            const eventTagline = document.getElementById('eventTagline');
+            const footerWeb = document.getElementById('footerWeb');
+            
+            // Preview containers
+            const cardPreview = document.getElementById('card-preview');
+            const cardContent = document.getElementById('cardContent');
+            const canvas = document.getElementById('cardBackground');
+            const previewWrapper = document.getElementById('previewWrapper');
+
+            // Set up scale of preview container to fit the viewport nicely
+            function adjustPreviewSize() {
+                const workspace = document.querySelector('.preview-workspace');
+                const pad = 60;
+                const availableWidth = workspace.clientWidth - pad * 2;
+                const availableHeight = workspace.clientHeight - pad * 2 - 120; // leaves space for instructions
+                
+                const cardWidth = cardPreview.offsetWidth;
+                const cardHeight = cardPreview.offsetHeight;
+                
+                const scaleX = availableWidth / cardWidth;
+                const scaleY = availableHeight / cardHeight;
+                let scale = Math.min(scaleX, scaleY, 1); // don't scale up past 100%
+                
+                previewWrapper.style.transform = `scale(${scale})`;
+            }
+
+            window.addEventListener('resize', adjustPreviewSize);
+
+            // Fetch speakers and initialize
+            async function init() {
+                try {
+                    const res = await fetch('data/speakers.json');
+                    speakersData = await res.json();
+                    
+                    // Populate speaker dropdown
+                    speakersData.forEach(speaker => {
+                        speakersMap.set(speaker.id, speaker);
+                        const opt = document.createElement('option');
+                        opt.value = speaker.id;
+                        opt.textContent = speaker.name;
+                        speakerSelect.appendChild(opt);
+                    });
+                } catch (err) {
+                    console.error('Failed to load speakers:', err);
+                }
+
+                // Render default template
+                render();
+            }
+
+            // Draw network background using a seeded random algorithm for consistency
+            function drawNetworkBackground(width, height) {
+                if (!canvas) return;
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, width, height);
+
+                // Simple LCG seeded random generator
+                let seed = 42;
+                function random() {
+                    let x = Math.sin(seed++) * 10000;
+                    return x - Math.floor(x);
+                }
+
+                const nodeCount = 35;
+                const nodes = [];
+
+                // Colors from our creative palette
+                const colors = ['#e56b6f', '#eaac8b', '#b5838d', '#6d597a', '#508484', '#355070'];
+
+                // Generate nodes
+                for (let i = 0; i < nodeCount; i++) {
+                    nodes.push({
+                        x: random() * width,
+                        y: random() * height,
+                        radius: random() * 3 + 2, // 2px to 5px
+                        color: colors[Math.floor(random() * colors.length)]
+                    });
+                }
+
+                // Draw connections for nodes close to each other
+                ctx.strokeStyle = 'rgba(140, 130, 122, 0.08)'; // Fine warm grey lines
+                ctx.lineWidth = 1.0;
+                for (let i = 0; i < nodeCount; i++) {
+                    for (let j = i + 1; j < nodeCount; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 220) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw node circles
+                nodes.forEach(node => {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = node.color;
+                    ctx.globalAlpha = 0.15;
+                    ctx.fill();
+                    ctx.globalAlpha = 1.0;
+                });
+
+                // Add a few larger outline hubs to create depth
+                for (let i = 0; i < 4; i++) {
+                    const x = random() * width;
+                    const y = random() * height;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 14, 0, Math.PI * 2);
+                    ctx.strokeStyle = colors[Math.floor(random() * colors.length)];
+                    ctx.lineWidth = 1.0;
+                    ctx.globalAlpha = 0.12;
+                    ctx.stroke();
+                    ctx.globalAlpha = 1.0;
+                }
+            }
+
+            // Init values on template change
+            templateSelect.addEventListener('change', () => {
+                const val = templateSelect.value;
+                
+                // Toggle controls visibility
+                if (val.startsWith('speaker')) {
+                    speakerControls.style.display = 'block';
+                    generalControls.style.display = 'none';
+                    if (speakerSelect.value === 'custom') {
+                        // Keep current manual fields
+                    } else {
+                        loadSpeakerFields(speakerSelect.value);
+                    }
+                } else {
+                    speakerControls.style.display = 'none';
+                    generalControls.style.display = 'block';
+                }
+
+                // Toggle canvas dimensions
+                if (val.endsWith('square')) {
+                    cardPreview.className = 'card-export-container size-square';
+                } else {
+                    cardPreview.className = 'card-export-container size-banner';
+                }
+
+                render();
+            });
+
+            // Speaker selector change
+            speakerSelect.addEventListener('change', () => {
+                const speakerId = speakerSelect.value;
+                if (speakerId === 'custom') {
+                    // clear fields for manual input
+                    speakerName.value = '';
+                    speakerAffiliation.value = '';
+                    talkTitle.value = '';
+                    talkAbstract.value = '';
+                } else {
+                    loadSpeakerFields(speakerId);
+                }
+                render();
+            });
+
+            function loadSpeakerFields(id) {
+                const speaker = speakersMap.get(id);
+                if (!speaker) return;
+                speakerName.value = speaker.name;
+                speakerAffiliation.value = speaker.affiliation;
+                talkTitle.value = speaker.topic;
+                talkAbstract.value = speaker.abstract;
+            }
+
+            // Real-time updates
+            [speakerName, speakerAffiliation, talkTitle, talkAbstract, eventMeta, eventTagline, footerWeb].forEach(elem => {
+                elem.addEventListener('input', render);
+            });
+
+            // Get Initials for placeholder
+            function getInitials(name) {
+                if (!name) return 'EC';
+                return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            }
+
+            // Generate deterministic HSL gradient colors for initials placeholder
+            function getInitialsColors(name) {
+                if (!name) return ['#508484', '#355070'];
+                let hash = 0;
+                for (let i = 0; i < name.length; i++) {
+                    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                const h1 = Math.abs(hash % 360);
+                const h2 = (h1 + 40) % 360;
+                return [
+                    `hsl(${h1}, 65%, 45%)`,
+                    `hsl(${h2}, 70%, 55%)`
+                ];
+            }
+
+            // Main Render Function
+            function render() {
+                const template = templateSelect.value;
+                const width = cardPreview.offsetWidth;
+                const height = cardPreview.offsetHeight;
+                
+                // Draw background network canvas
+                drawNetworkBackground(width, height);
+
+                // Build header meta section
+                const metaText = eventMeta.value;
+                const taglineText = eventTagline.value;
+                const webURL = footerWeb.value;
+                
+                let contentHTML = '';
+
+                // Header meta line (matching styling perfectly)
+                const headerHTML = `<div class="card-header-meta">${metaText}</div>`;
+                
+                // Footer branding
+                const logoSVG = `
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                        <!-- Connection lines -->
+                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                        <!-- Outlier connection -->
+                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                        <!-- Cluster Nodes -->
+                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                        <!-- The Edge Case node -->
+                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                    </svg>
+                `;
+
+                const footerHTML = `
+                    <div class="card-footer">
+                        <div class="card-footer-logo">
+                            ${logoSVG}
+                            <span>Edge Cases</span>
+                        </div>
+                        <div class="card-footer-web">${webURL}</div>
+                    </div>
+                `;
+
+                if (template === 'general-banner') {
+                    contentHTML = `
+                        <div class="template-general-banner">
+                            ${headerHTML}
+                            <h1>
+                                ${logoSVG}
+                                <span>Edge Cases</span>
+                            </h1>
+                            <p class="tagline">${taglineText}</p>
+                            ${footerHTML}
+                        </div>
+                    `;
+                } else if (template === 'general-square') {
+                    contentHTML = `
+                        <div class="template-general-square">
+                            <div class="card-header-meta large-font">${metaText}</div>
+                            <h1>
+                                ${logoSVG}
+                                <span style="font-size: 5.5rem;">Edge Cases</span>
+                            </h1>
+                            <p class="tagline">${taglineText}</p>
+                            ${footerHTML}
+                        </div>
+                    `;
+                } else if (template === 'speaker-banner') {
+                    const sName = speakerName.value || 'Speaker Name';
+                    const sAffiliation = speakerAffiliation.value || 'Institution / Affiliation';
+                    const sTopic = talkTitle.value || 'Presentation Topic';
+                    const sAbstract = talkAbstract.value || 'Abstract snippet goes here...';
+                    
+                    // Determine image preview or placeholder
+                    let imgHTML = '';
+                    const selectedId = speakerSelect.value;
+                    const speaker = speakersMap.get(selectedId);
+                    
+                    if (speaker && speaker.image) {
+                        imgHTML = `<img src="${speaker.image}" alt="${sName}">`;
+                    } else {
+                        const [c1, c2] = getInitialsColors(sName);
+                        imgHTML = `<div class="speaker-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2});">${getInitials(sName)}</div>`;
+                    }
+
+                    contentHTML = `
+                        <div class="template-speaker-banner">
+                            <div class="speaker-left-col">
+                                <div class="speaker-photo-wrapper">${imgHTML}</div>
+                                <h3>${sName}</h3>
+                                <p class="affiliation">${sAffiliation}</p>
+                            </div>
+                            <div class="speaker-right-col">
+                                <span class="section-tag">Featured Presentation</span>
+                                <h2 class="talk-title">${sTopic}</h2>
+                                <p class="talk-abstract">${sAbstract}</p>
+                                ${footerHTML}
+                            </div>
+                        </div>
+                    `;
+                } else if (template === 'speaker-square') {
+                    const sName = speakerName.value || 'Speaker Name';
+                    const sAffiliation = speakerAffiliation.value || 'Institution / Affiliation';
+                    const sTopic = talkTitle.value || 'Presentation Topic';
+                    
+                    let imgHTML = '';
+                    const selectedId = speakerSelect.value;
+                    const speaker = speakersMap.get(selectedId);
+                    
+                    if (speaker && speaker.image) {
+                        imgHTML = `<img src="${speaker.image}" alt="${sName}">`;
+                    } else {
+                        const [c1, c2] = getInitialsColors(sName);
+                        imgHTML = `<div class="speaker-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2});">${getInitials(sName)}</div>`;
+                    }
+
+                    contentHTML = `
+                        <div class="template-speaker-square">
+                            <div class="speaker-square-top">
+                                <div class="speaker-photo-wrapper">${imgHTML}</div>
+                                <h3>${sName}</h3>
+                                <p class="affiliation">${sAffiliation}</p>
+                            </div>
+                            <div class="speaker-square-bottom">
+                                <span class="section-tag">Featured Speaker</span>
+                                <h2 class="talk-title">${sTopic}</h2>
+                            </div>
+                            ${footerHTML}
+                        </div>
+                    `;
+                }
+
+                cardContent.innerHTML = contentHTML;
+                adjustPreviewSize();
+            }
+
+            // Trigger export download
+            downloadBtn.addEventListener('click', () => {
+                const val = templateSelect.value;
+                const nameSlug = val.startsWith('speaker') 
+                    ? (speakerName.value ? speakerName.value.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'speaker')
+                    : 'general';
+                
+                // Temporarily force transform to scale(1) so html2canvas renders the card at true resolution
+                const originalTransform = previewWrapper.style.transform;
+                previewWrapper.style.transform = 'scale(1)';
+                
+                html2canvas(cardPreview, {
+                    useCORS: true,
+                    scale: 2, // 2x resolution boost for crisp rendering
+                    allowTaint: true,
+                    backgroundColor: '#faf9f5' // match var(--section-bg)
+                }).then(canvasExport => {
+                    // Restore preview scale
+                    previewWrapper.style.transform = originalTransform;
+                    
+                    const link = document.createElement('a');
+                    link.download = `edgecases-pr-${val}-${nameSlug}.png`;
+                    link.href = canvasExport.toDataURL('image/png');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }).catch(err => {
+                    console.error('Error generating card image:', err);
+                    alert('Failed to generate image client-side. Please try using the DevTools screenshot method described below.');
+                });
+            });
+
+            // Reset Form to default values
+            resetBtn.addEventListener('click', () => {
+                templateSelect.value = 'general-banner';
+                speakerSelect.value = 'custom';
+                speakerControls.style.display = 'none';
+                generalControls.style.display = 'block';
+                cardPreview.className = 'card-export-container size-banner';
+                
+                speakerName.value = '';
+                speakerAffiliation.value = '';
+                talkTitle.value = '';
+                talkAbstract.value = '';
+                
+                eventMeta.value = 'Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM';
+                eventTagline.value = 'Highlighting surprising network science research, and applications of network science in unconventional domains.';
+                footerWeb.value = 'edgecases2026.org';
+                
+                render();
+            });
+
+            // Initialize
+            init();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+/* PR Generator Dashboard & Export Card Styles */
+
+:root {
+  /* Site branding matching style.css */
+  --bg-color: #ffffff;
+  --section-bg: #faf9f5;
+  --text-color: #2b2623;
+  --accent-color: #335c67;   /* Slate Teal */
+  --secondary-accent: #e09f3e; /* Ochre */
+  --primary-dark: #2b2623;
+  --muted-text: #5c5552;
+  --border-color: #e5e0d8;
+  
+  /* Dashboard layout colors */
+  --dash-bg: #1e1b19;
+  --dash-panel: #2b2623;
+  --dash-border: #403a35;
+  --dash-text: #eae6df;
+  --dash-muted: #a69e97;
+  --dash-accent: #e56b6f; /* Glowing Coral */
+
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+/* Dashboard UI Layout */
+body.dashboard-body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dash-bg);
+  color: var(--dash-text);
+  font-family: var(--font-main);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Control Panel Sidebar */
+.control-sidebar {
+  width: 360px;
+  background-color: var(--dash-panel);
+  border-right: 1px solid var(--dash-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--dash-border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebar-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--dash-text);
+}
+
+.sidebar-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dash-muted);
+}
+
+.control-input, .control-select, .control-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 6px;
+  color: var(--dash-text);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.control-input:focus, .control-select:focus, .control-textarea:focus {
+  outline: none;
+  border-color: var(--dash-accent);
+}
+
+.control-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.sidebar-actions {
+  padding: 1.5rem;
+  border-top: 1px solid var(--dash-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-btn:hover {
+  background-color: #437885;
+  transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+  background-color: transparent;
+  border: 1px solid var(--dash-border);
+  color: var(--dash-text);
+}
+
+.action-btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Workspace Preview Area */
+.preview-workspace {
+  flex-grow: 1;
+  background-color: var(--dash-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: auto;
+  position: relative;
+}
+
+.preview-wrapper {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+.guide-panel {
+  margin-top: 1.5rem;
+  max-width: 600px;
+  background-color: var(--dash-panel);
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--dash-muted);
+  line-height: 1.5;
+}
+
+.guide-panel h4 {
+  color: var(--dash-text);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.guide-panel code {
+  background: var(--dash-bg);
+  padding: 0.15rem 0.3rem;
+  border-radius: 3px;
+  color: var(--dash-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* ==========================================
+   EXPORT CARD TEMPLATE STYLES 
+   ========================================== */
+
+.card-export-container {
+  position: relative;
+  background-color: var(--section-bg);
+  color: var(--text-color);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Base Dimensions */
+.card-export-container.size-banner {
+  width: 1200px;
+  height: 630px;
+  padding: 4.5rem;
+}
+
+.card-export-container.size-square {
+  width: 1080px;
+  height: 1080px;
+  padding: 5.5rem;
+}
+
+/* Background Network Canvas */
+.card-background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Card Header Date/Location Block */
+.card-header-meta {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-color);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.card-header-meta.large-font {
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+}
+
+/* Template 1: General Event Banner Layout */
+.template-general-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.75rem;
+  height: 100%;
+}
+
+.template-general-banner h1 {
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  line-height: 1.05;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.template-general-banner p.tagline {
+  font-family: var(--font-main);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--muted-text);
+  line-height: 1.5;
+  max-width: 850px;
+  margin: 0;
+}
+
+/* Template 2: General Event Square Layout */
+.template-general-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2.5rem;
+  height: 100%;
+}
+
+.template-general-square h1 {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  line-height: 1.05;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.template-general-square p.tagline {
+  font-family: var(--font-main);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--muted-text);
+  line-height: 1.55;
+  max-width: 800px;
+  margin: 0;
+}
+
+/* Template 3: Speaker Feature Banner Layout */
+.template-speaker-banner {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  align-items: center;
+  height: 100%;
+}
+
+.speaker-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.speaker-photo-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid var(--bg-color);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speaker-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 3.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.speaker-left-col h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.speaker-left-col p.affiliation {
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+  line-height: 1.4;
+  max-width: 300px;
+}
+
+.speaker-right-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  border-left: 1px solid var(--border-color);
+  padding-left: 3.5rem;
+  height: 85%;
+}
+
+.speaker-right-col .section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary-accent);
+}
+
+.speaker-right-col h2.talk-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.speaker-right-col p.talk-abstract {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--muted-text);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Template 4: Speaker Feature Square Layout */
+.template-speaker-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.speaker-square-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.speaker-square-top .speaker-photo-wrapper {
+  width: 220px;
+  height: 220px;
+}
+
+.speaker-square-top h3 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.speaker-square-top p.affiliation {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+  max-width: 600px;
+}
+
+.speaker-square-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.speaker-square-bottom .section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary-accent);
+}
+
+.speaker-square-bottom h2.talk-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+  line-height: 1.25;
+  max-width: 800px;
+}
+
+/* Footer branding for all cards */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: auto;
+}
+
+.card-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.card-footer-web {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.05em;
+}
