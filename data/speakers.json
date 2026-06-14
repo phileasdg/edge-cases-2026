@@ -45,5 +45,35 @@
     "bio": "Emmy Tither is a PhD student in the Informatics program at the University of Illinois Urbana-Champaign. Her research focus is grounded in complex systems theory, mapping sociotechnical systems using mixed methods, data governance, armed conflict, humanitarian crises, and the intersection of sound, violence, and international law.",
     "image": "",
     "note": "Tile information is not final, revisit later"
+  },
+  {
+    "id": "divya-sindhu-lekha",
+    "name": "Dr. Divya Sindhu Lekha",
+    "affiliation": "Indian Institute of Information Technology Kottayam",
+    "topic": "Winning at Chess Without Search: Predicting Game Outcomes from Evolving Interaction Networks",
+    "abstract": "Chess is traditionally approached through search, handcrafted evaluation functions, or reinforcement learning. In this work, we take a different perspective by modeling a chess game as a dynamic interaction network, where pieces and positions form an evolving graph shaped by strategic decisions.\n\nWe construct game graphs that encode relationships such as attacks, mobility, and piece interactions over time, and apply graph neural networks to predict game outcomes (win/loss) from partial game trajectories. Rather than relying on deep lookahead or domain-specific heuristics, the model learns outcome-relevant structure directly from the evolving network representation.\n\nWe show that network-based representations capture strategic signals that are predictive of game outcomes well before the game concludes, highlighting how global outcomes emerge from local interactions. Beyond chess, this approach illustrates how competitive, sequential decision-making processes can be reframed as evolving networks, opening the door to applying network science tools to a broad class of strategic and adversarial systems.",
+    "bio": "",
+    "image": "",
+    "note": "Pending confirmation, biography, and headshot photo"
+  },
+  {
+    "id": "chathura-jayalath",
+    "name": "Chathura Jayalath",
+    "affiliation": "University of Central Florida",
+    "topic": "Generative Model Discovery",
+    "abstract": "We propose a new paradigm for modeling complex social systems by integrating mechanistic network models with multimodal generative AI. Social behavior emerges from dynamic interactions on multilayer, temporal networks that are non-linear and non-ergodic, and cannot be captured by traditional statistical methods alone. Our approach, called Generative Model Discovery (GMD), functions as a meta-model that learns and evolves candidate network mechanisms capable of reproducing observed macro-level outcomes from micro-level interactions. GMD bridges explainable agent-based modeling with data-rich generative foundation models, enabling causal, interpretable, and scalable inference over network dynamics.",
+    "bio": "",
+    "image": "",
+    "note": "Pending confirmation, biography, and headshot photo"
+  },
+  {
+    "id": "alejandra-ortiz-duran",
+    "name": "Alejandra Ortiz Durán",
+    "affiliation": "Wolfram Research",
+    "topic": "Reaction-Diffusion on Graphs",
+    "abstract": "Exploring pattern formation and dynamical processes on complex network topologies.",
+    "bio": "",
+    "image": "",
+    "note": "Pending final confirmation, abstract, biography, and headshot photo"
   }
 ]
