@@ -91,11 +91,55 @@
             font-size: 0.8rem;
         }
 
-        /* Section dividers */
+        /* Tab Navigation Bar */
+        .tab-nav {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin: 2.5rem auto 1.5rem auto;
+            max-width: 800px;
+            border-bottom: 1px solid var(--sheet-border);
+            padding-bottom: 1rem;
+        }
+
+        .tab-button {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--sheet-muted);
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-button:hover {
+            color: var(--sheet-text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-button.active {
+            color: white;
+            background: var(--sheet-accent);
+            border-color: var(--sheet-accent);
+            box-shadow: 0 4px 12px rgba(229, 107, 111, 0.25);
+        }
+
+        /* Tab panels container */
         .sheet-section {
-            padding: 3rem;
+            padding: 2rem 3rem;
             max-width: 1600px;
             margin: 0 auto;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
         }
 
         .sheet-section-title {
@@ -732,515 +776,537 @@
         </svg>
     </svg>
 
-    <!-- SECTION 1: LANDSCAPE BANNERS (1200 x 630) -->
-    <section class="sheet-section">
-        <h2 class="sheet-section-title">
-            Landscape Promo Banners <span class="badge">1200 x 630 px</span>
-        </h2>
-        <div class="cards-grid">
-            
-            <!-- 1.1 General Promo Banner -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>General Event Promo<span class="dimensions">1200 x 630</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('promo-banner')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('promo-banner')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-banner" id="promo-banner">
-                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-general-banner">
-                                <h1>
-                                    <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </h1>
-                                <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
+    <!-- Tab Navigation Bar -->
+    <nav class="tab-nav">
+        <button class="tab-button active" data-tab="tab-general" onclick="switchTab('tab-general')">General Event Promo</button>
+        <button class="tab-button" data-tab="tab-speaker-banners" onclick="switchTab('tab-speaker-banners')">Speaker Banners (16:9)</button>
+        <button class="tab-button" data-tab="tab-speaker-squares" onclick="switchTab('tab-speaker-squares')">Speaker Squares (1:1)</button>
+    </nav>
+
+    <!-- Tab Panels -->
+    <main class="sheet-section">
+        
+        <!-- TAB 1: GENERAL EVENT PROMO -->
+        <div class="tab-panel active" id="tab-general">
+            <h2 class="sheet-section-title">
+                General Event Promo Assets <span class="badge">Event Branding</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <!-- 1.1 General Promo Banner -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>General Event Banner<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('promo-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('promo-banner')">💾 Save PNG</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 1.2 Haily Merritt Speaker Banner -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Haily Merritt<span class="dimensions">1200 x 630</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('haily-banner')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('haily-banner')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-banner" id="haily-banner">
-                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-banner">
-                                <div class="speaker-left">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="promo-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-general-banner">
+                                    <h1>
+                                        <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </h1>
+                                    <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
                                     </div>
-                                    <h3>Haily Merritt</h3>
-                                    <p class="affiliation">Northeastern University London</p>
+                                    <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
-                                <div class="speaker-right">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Brain Networks as Phenotypes</h2>
-                                    <p class="talk-abstract">Advocating for studying brain networks as phenotypes. Highlighting individual functional heterogeneity constrained by genetics and co-creative coupling with social environments.</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 1.3 Phileas Dazeley-Gaist Speaker Banner -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1200 x 630</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('phileas-banner')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('phileas-banner')">💾 Save PNG</button>
+                <!-- 1.2 General Promo Square -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>General Event Square<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('promo-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('promo-square')">💾 Save PNG</button>
+                        </div>
                     </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-banner" id="phileas-banner">
-                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-banner">
-                                <div class="speaker-left">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="promo-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-general-square">
+                                    <h1>
+                                        <svg width="90" height="90" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span style="font-size: 5.5rem;">Edge Cases</span>
+                                    </h1>
+                                    <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
                                     </div>
-                                    <h3>Phileas Dazeley-Gaist</h3>
-                                    <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                    <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
-                                <div class="speaker-right">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
-                                    <p class="talk-abstract">Tracking co-creative micro-dynamics of cultural evolution. Modeling citation network growths and tracing phylogenies through visual adaptation of creative motifs.</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 1.4 Katie Spoon Speaker Banner -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Katie Spoon<span class="dimensions">1200 x 630</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('katie-banner')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('katie-banner')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-banner" id="katie-banner">
-                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-banner">
-                                <div class="speaker-left">
-                                    <div class="photo-frame">
-                                        <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
-                                    </div>
-                                    <h3>Katie Spoon</h3>
-                                    <p class="affiliation">Stanford University</p>
-                                </div>
-                                <div class="speaker-right">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Your doctor visits as a network</h2>
-                                    <p class="talk-abstract">Using network science and graph-based representation learning to convert 90 million primary-care visits for 8 million U.S. patients into models of high-risk health trajectories.</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <!-- 1.5 Yessica Herrera Speaker Banner -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Yessica Herrera<span class="dimensions">1200 x 630</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('yessica-banner')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('yessica-banner')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-banner" id="yessica-banner">
-                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-banner">
-                                <div class="speaker-left">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
-                                    </div>
-                                    <h3>Yessica Herrera</h3>
-                                    <p class="affiliation">University of Notre Dame</p>
-                                </div>
-                                <div class="speaker-right">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">The Art World as a Network</h2>
-                                    <p class="talk-abstract">Exploring the art world as a connected system, revealing how novel computational tools map prestige and success, and how we can use network patterns to create new art.</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
 
-    <!-- SECTION 2: SQUARE ASSETS (1080 x 1080) -->
-    <section class="sheet-section">
-        <h2 class="sheet-section-title">
-            Square Instagram Assets <span class="badge">1080 x 1080 px</span>
-        </h2>
-        <div class="cards-grid square-grid">
-            
-            <!-- 2.1 General Promo Square -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>General Event Square<span class="dimensions">1080 x 1080</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('promo-square')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('promo-square')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-square" id="promo-square">
-                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-general-square">
-                                <h1>
-                                    <svg width="90" height="90" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span style="font-size: 5.5rem;">Edge Cases</span>
-                                </h1>
-                                <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
+        <!-- TAB 2: SPEAKER BANNERS (16:9) -->
+        <div class="tab-panel" id="tab-speaker-banners">
+            <h2 class="sheet-section-title">
+                Speaker Announcement Banners <span class="badge">1200 x 630 px</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <!-- Haily Merritt -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Haily Merritt<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('haily-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('haily-banner')">💾 Save PNG</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 2.2 Haily Merritt Speaker Square -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Haily Merritt<span class="dimensions">1080 x 1080</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('haily-square')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('haily-square')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-square" id="haily-square">
-                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-square">
-                                <div class="speaker-square-top">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="haily-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-banner">
+                                    <div class="speaker-left">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                                        </div>
+                                        <h3>Haily Merritt</h3>
+                                        <p class="affiliation">Northeastern University London</p>
                                     </div>
-                                    <h3>Haily Merritt</h3>
-                                    <p class="affiliation">Northeastern University London</p>
-                                </div>
-                                <div class="speaker-square-bottom">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Brain Networks as Phenotypes</h2>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2.3 Phileas Dazeley-Gaist Speaker Square -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1080 x 1080</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('phileas-square')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('phileas-square')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-square" id="phileas-square">
-                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-square">
-                                <div class="speaker-square-top">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                                    <div class="speaker-right">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Brain Networks as Phenotypes</h2>
+                                        <p class="talk-abstract">Advocating for studying brain networks as phenotypes. Highlighting individual functional heterogeneity constrained by genetics and co-creative coupling with social environments.</p>
                                     </div>
-                                    <h3>Phileas Dazeley-Gaist</h3>
-                                    <p class="affiliation">Wolfram Research, Wolfram Institute</p>
                                 </div>
-                                <div class="speaker-square-bottom">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2.4 Katie Spoon Speaker Square -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Katie Spoon<span class="dimensions">1080 x 1080</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('katie-square')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('katie-square')">💾 Save PNG</button>
-                    </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-square" id="katie-square">
-                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-square">
-                                <div class="speaker-square-top">
-                                    <div class="photo-frame">
-                                        <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
                                     </div>
-                                    <h3>Katie Spoon</h3>
-                                    <p class="affiliation">Stanford University</p>
+                                    <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
-                                <div class="speaker-square-bottom">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">Your doctor visits as a network</h2>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 2.5 Yessica Herrera Speaker Square -->
-            <div class="card-container-wrapper">
-                <div class="card-label">
-                    <div>Speaker: Yessica Herrera<span class="dimensions">1080 x 1080</span></div>
-                    <div class="card-actions">
-                        <button class="card-action-btn" onclick="previewCard('yessica-square')">👁️ Preview</button>
-                        <button class="card-action-btn" onclick="saveCard('yessica-square')">💾 Save PNG</button>
+                <!-- Phileas Dazeley-Gaist -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('phileas-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('phileas-banner')">💾 Save PNG</button>
+                        </div>
                     </div>
-                </div>
-                <div class="preview-scale-wrapper">
-                    <div class="card-export-container size-square" id="yessica-square">
-                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
-                        <div class="card-content">
-                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                            <div class="template-speaker-square">
-                                <div class="speaker-square-top">
-                                    <div class="photo-frame">
-                                        <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="phileas-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-banner">
+                                    <div class="speaker-left">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                                        </div>
+                                        <h3>Phileas Dazeley-Gaist</h3>
+                                        <p class="affiliation">Wolfram Research, Wolfram Institute</p>
                                     </div>
-                                    <h3>Yessica Herrera</h3>
-                                    <p class="affiliation">University of Notre Dame</p>
+                                    <div class="speaker-right">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
+                                        <p class="talk-abstract">Tracking co-creative micro-dynamics of cultural evolution. Modeling citation network growths and tracing phylogenies through visual adaptation of creative motifs.</p>
+                                    </div>
                                 </div>
-                                <div class="speaker-square-bottom">
-                                    <span class="section-tag">Featured Presentation</span>
-                                    <h2 class="talk-title">The Art World as a Network</h2>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-footer-logo">
-                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                        <circle cx="6" cy="24" r="4" fill="#508484" />
-                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                        <circle cx="14" cy="20" r="4" fill="#355070" />
-                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                    </svg>
-                                    <span>Edge Cases</span>
-                                </div>
-                                <div class="card-footer-web">edgecases2026.org</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Katie Spoon -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Katie Spoon<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('katie-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('katie-banner')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="katie-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-banner">
+                                    <div class="speaker-left">
+                                        <div class="photo-frame">
+                                            <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
+                                        </div>
+                                        <h3>Katie Spoon</h3>
+                                        <p class="affiliation">Stanford University</p>
+                                    </div>
+                                    <div class="speaker-right">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Your doctor visits as a network</h2>
+                                        <p class="talk-abstract">Using network science and graph-based representation learning to convert 90 million primary-care visits for 8 million U.S. patients into models of high-risk health trajectories.</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yessica Herrera -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Yessica Herrera<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('yessica-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('yessica-banner')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="yessica-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-banner">
+                                    <div class="speaker-left">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
+                                        </div>
+                                        <h3>Yessica Herrera</h3>
+                                        <p class="affiliation">University of Notre Dame</p>
+                                    </div>
+                                    <div class="speaker-right">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">The Art World as a Network</h2>
+                                        <p class="talk-abstract">Exploring the art world as a connected system, revealing how novel computational tools map prestige and success, and how we can use network patterns to create new art.</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </section>
+
+        <!-- TAB 3: SPEAKER SQUARES (1:1) -->
+        <div class="tab-panel" id="tab-speaker-squares">
+            <h2 class="sheet-section-title">
+                Speaker Announcement Squares <span class="badge">1080 x 1080 px</span>
+            </h2>
+            <div class="cards-grid square-grid">
+                
+                <!-- Haily Merritt -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Haily Merritt<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('haily-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('haily-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="haily-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-square">
+                                    <div class="speaker-square-top">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                                        </div>
+                                        <h3>Haily Merritt</h3>
+                                        <p class="affiliation">Northeastern University London</p>
+                                    </div>
+                                    <div class="speaker-square-bottom">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Brain Networks as Phenotypes</h2>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phileas Dazeley-Gaist -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('phileas-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('phileas-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="phileas-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-square">
+                                    <div class="speaker-square-top">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                                        </div>
+                                        <h3>Phileas Dazeley-Gaist</h3>
+                                        <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                    </div>
+                                    <div class="speaker-square-bottom">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Katie Spoon -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Katie Spoon<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('katie-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('katie-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="katie-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-square">
+                                    <div class="speaker-square-top">
+                                        <div class="photo-frame">
+                                            <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
+                                        </div>
+                                        <h3>Katie Spoon</h3>
+                                        <p class="affiliation">Stanford University</p>
+                                    </div>
+                                    <div class="speaker-square-bottom">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">Your doctor visits as a network</h2>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yessica Herrera -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Speaker: Yessica Herrera<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('yessica-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('yessica-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="yessica-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-speaker-square">
+                                    <div class="speaker-square-top">
+                                        <div class="photo-frame">
+                                            <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
+                                        </div>
+                                        <h3>Yessica Herrera</h3>
+                                        <p class="affiliation">University of Notre Dame</p>
+                                    </div>
+                                    <div class="speaker-square-bottom">
+                                        <span class="section-tag">Featured Presentation</span>
+                                        <h2 class="talk-title">The Art World as a Network</h2>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="4" fill="#508484" />
+                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="4" fill="#355070" />
+                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
 
     <!-- Fullscreen Isolated Preview Modal Dialog -->
     <div class="isolated-modal" id="previewModal">
@@ -1252,6 +1318,17 @@
 
     <!-- Interactive Script -->
     <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Remove active class from all buttons and panels
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            
+            // Add active class to selected button and panel
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
         // Fullscreen preview handler
         function previewCard(cardId) {
             const originalCard = document.getElementById(cardId);
@@ -1286,7 +1363,6 @@
         // Client-side PNG export handler using html2canvas
         function saveCard(cardId) {
             const cardElement = document.getElementById(cardId);
-            const initialTransform = cardElement.style.transform;
             
             // Run export at pristine resolution with background color matching var(--section-bg)
             html2canvas(cardElement, {
