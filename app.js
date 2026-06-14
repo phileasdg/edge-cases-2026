@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = `
                 <h2 data-reveal>Featured Contributors</h2>
                 <p class="section-description" data-reveal style="margin-top: 1rem; margin-bottom: 2.5rem; opacity: 0.85; max-width: 800px; font-size: 1.1rem; line-height: 1.6;">
-                    The full Edge Cases symposium lineup will be announced soon. Below is a preview of the upcoming sessions. Detailed talk titles, abstracts, and speaker biographies are coming soon.
+                    Below is the current lineup of confirmed speakers. Click on any card to view their presentation title, abstract, and biography.
                 </p>
                 <div class="grid" id="speakers-grid">
                     ${speakers.map((speaker, index) => {
