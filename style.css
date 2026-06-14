@@ -437,6 +437,16 @@ header .container {
   box-shadow: 0 10px 24px rgba(43, 38, 35, 0.06);
 }
 
+.speaker-card.is-anonymous {
+  cursor: default;
+}
+
+.speaker-card.is-anonymous:hover {
+  border-color: var(--border-color);
+  transform: none;
+  box-shadow: none;
+}
+
 .speaker-image {
   width: 90px;
   height: 90px;

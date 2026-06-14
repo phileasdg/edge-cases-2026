@@ -130,7 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const showIndicators = !isProduction && !isReleaseMode;
 
         if (speakers && speakers.length > 0) {
-            const isTeaserMode = speakers.some(s => s.name.startsWith('Contributor'));
+            let renderedSpeakers = [...speakers];
+            if (!showIndicators) {
+                renderedSpeakers.sort((a, b) => {
+                    const aNeeds = !a.image || !a.bio || !!a.note;
+                    const bNeeds = !b.image || !b.bio || !!b.note;
+                    if (aNeeds && !bNeeds) return 1;
+                    if (!aNeeds && bNeeds) return -1;
+                    return 0;
+                });
+            }
+
+            const isTeaserMode = renderedSpeakers.some(s => s.name.startsWith('Contributor'));
 
             if (isTeaserMode) {
                 // Show teaser with avatar stack
@@ -138,15 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 data-reveal>Featured Contributors</h2>
                     <div class="lineup-teaser-card" data-reveal>
                         <div class="avatar-stack">
-                            ${speakers.map((speaker, index) => {
+                            ${renderedSpeakers.map((speaker, index) => {
                                 const c1 = colors[index % colors.length];
                                 const c2 = colors[(index + 2) % colors.length];
-                                const style = `background: linear-gradient(135deg, ${c1}, ${c2}); z-index: ${speakers.length - index};`;
+                                const style = `background: linear-gradient(135deg, ${c1}, ${c2}); z-index: ${renderedSpeakers.length - index};`;
                                 return `
                                     <div class="avatar-circle mystery-avatar" 
                                          style="${style}" 
                                          title="Symposium Session">
-                                        ?
+                                         ?
                                     </div>
                                 `;
                             }).join('')}
@@ -169,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Below is the current lineup of confirmed speakers. Click on any card to view their presentation title, abstract, and biography.
                 </p>
                 <div class="grid" id="speakers-grid">
-                    ${speakers.map((speaker, index) => {
+                    ${renderedSpeakers.map((speaker, index) => {
                         const hasImage = !!speaker.image;
                         const c1 = colors[index % colors.length];
                         const c2 = colors[(index + 2) % colors.length];
@@ -183,8 +194,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         const needsUpdate = reasons.length > 0;
                         const badgeHtml = (showIndicators && needsUpdate) ? 
-                            `<div class="update-badge" title="Pending updates:\n${reasons.map(r => `• ${r}`).join('\n')}">Update Needed</div>` : 
+                            `<div class="update-badge" title="[Draft: ${speaker.name}]\nPending updates:\n${reasons.map(r => `• ${r}`).join('\n')}">Update Needed</div>` : 
                             '';
+
+                        const isAnonymous = !showIndicators && needsUpdate;
+
+                        if (isAnonymous) {
+                            return `
+                                <div class="speaker-card no-image is-anonymous" data-reveal style="--theme-color: ${c1};">
+                                    ${badgeHtml}
+                                    <div class="speaker-image-placeholder" style="${gradientStyle}">
+                                        ?
+                                    </div>
+                                    <div class="speaker-info">
+                                        <h3>TBA</h3>
+                                        <div class="affiliation">Symposium Session</div>
+                                        <p class="topic">Presentation details coming soon</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
 
                         return `
                             <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-id="${speaker.id}" data-reveal style="--theme-color: ${c1};">
