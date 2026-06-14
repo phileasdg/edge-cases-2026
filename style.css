@@ -285,7 +285,7 @@ header .container {
   margin: 0.5rem 0;
   text-shadow: 0 0 40px rgba(253, 253, 253, 1), 0 0 20px rgba(253, 253, 253, 0.8);
   /* Stronger glow for legibility */
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .hero p.tagline {
