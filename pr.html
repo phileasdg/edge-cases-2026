@@ -97,7 +97,7 @@
             gap: 0.75rem;
             justify-content: center;
             margin: 2.5rem auto 1.5rem auto;
-            max-width: 800px;
+            max-width: 1000px;
             border-bottom: 1px solid var(--sheet-border);
             padding-bottom: 1rem;
         }
@@ -165,7 +165,7 @@
             color: var(--sheet-muted);
         }
 
-        /* Cards Layout Grid */
+        /* Cards Grid */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
@@ -261,7 +261,7 @@
             padding: 4.5rem;
             /* Scale down for preview gallery */
             transform: scale(0.48);
-            margin: -164px -312px; /* Pull margins back to account for scale */
+            margin: -164px -312px;
         }
 
         .size-square {
@@ -575,6 +575,654 @@
             max-width: 800px;
         }
 
+        /* Wildcards Banners & Squares */
+        .template-wildcard-banner {
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 3rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .wildcard-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.25rem;
+            height: 85%;
+        }
+
+        .wildcard-left h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .wildcard-left p.sub {
+            font-family: var(--font-main);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            line-height: 1.4;
+        }
+
+        .wildcard-left p.date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted-text);
+        }
+
+        .wildcard-right-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            border-left: 1px solid var(--border-color);
+            padding-left: 3.5rem;
+            height: 85%;
+            align-content: center;
+        }
+
+        .wildcard-speaker-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .wildcard-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wildcard-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .wildcard-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .wildcard-speaker-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .wildcard-speaker-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.15rem;
+            line-height: 1.2;
+        }
+
+        .wildcard-speaker-info p {
+            font-family: var(--font-main);
+            font-size: 0.78rem;
+            color: var(--muted-text);
+            line-height: 1.3;
+        }
+
+        /* Wildcard Square Style */
+        .template-wildcard-square {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .wildcard-square-header {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .wildcard-square-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .wildcard-square-header p.sub {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-top: 0.4rem;
+        }
+
+        .wildcard-square-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem 2rem;
+            width: 100%;
+            padding: 2.25rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin: 1.5rem 0;
+        }
+
+        .wildcard-square-grid .wildcard-speaker-row {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.65rem;
+        }
+
+        .wildcard-square-grid .wildcard-photo {
+            width: 95px;
+            height: 95px;
+        }
+
+        .wildcard-square-grid .wildcard-speaker-info h4 {
+            font-size: 1.25rem;
+        }
+
+        .wildcard-square-grid .wildcard-speaker-info p {
+            font-size: 0.82rem;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Creative Group Lineups & Schedule Styles */
+        .template-wildcard-schedule {
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 3rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .schedule-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .schedule-left h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .schedule-left p.sub {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            line-height: 1.4;
+        }
+
+        .schedule-left p.date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted-text);
+        }
+
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            border-left: 1px solid var(--border-color);
+            padding-left: 2.25rem;
+            height: 90%;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2.25rem - 6.5px);
+            top: calc(50% - 6px);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 2.5px solid var(--section-bg);
+            box-shadow: 0 0 0 2.5px var(--accent-color);
+            z-index: 2;
+        }
+
+        .timeline-item.break::before {
+            background-color: var(--secondary-accent);
+            box-shadow: 0 0 0 2.5px var(--secondary-accent);
+        }
+
+        .timeline-time {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            min-width: 65px;
+            flex-shrink: 0;
+        }
+
+        .timeline-speaker-photo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .timeline-speaker-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .timeline-speaker-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .timeline-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .timeline-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .timeline-content p {
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            color: var(--muted-text);
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        /* Timeline Square Specific Styles */
+        .template-wildcard-schedule-square {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+
+        .schedule-square-header {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .schedule-square-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .schedule-square-header p.sub {
+            font-family: var(--font-main);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-top: 0.3rem;
+        }
+
+        .timeline-container-square {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            border-left: 1px solid var(--border-color);
+            padding-left: 2.5rem;
+            margin: 2rem 0;
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline-container-square .timeline-item::before {
+            left: calc(-2.5rem - 6.5px);
+            top: calc(50% - 6px);
+            width: 12px;
+            height: 12px;
+        }
+
+        .timeline-container-square .timeline-content h4 {
+            font-size: 1.35rem;
+        }
+
+        .timeline-container-square .timeline-content p {
+            font-size: 0.95rem;
+        }
+
+        /* Split Columns / Stripes Layout */
+        .template-wildcard-stripes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            height: 88%;
+            align-items: stretch;
+            margin: auto 0;
+        }
+
+        .stripe-column {
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.75rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .stripe-column:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+        }
+
+        .stripe-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3.5px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .stripe-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stripe-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .stripe-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .stripe-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.15rem;
+            line-height: 1.2;
+        }
+
+        .stripe-info p.affiliation {
+            font-family: var(--font-main);
+            font-size: 0.78rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            min-height: 2.4em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stripe-info p.topic {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Stripes Square layout */
+        .template-wildcard-stripes-square {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 2rem;
+            height: 85%;
+            margin: auto 0;
+        }
+
+        .template-wildcard-stripes-square .stripe-column {
+            flex-direction: row;
+            text-align: left;
+            padding: 2rem;
+            align-items: center;
+            gap: 1.5rem;
+            justify-content: flex-start;
+        }
+
+        .template-wildcard-stripes-square .stripe-photo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .template-wildcard-stripes-square .stripe-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+
+        .template-wildcard-stripes-square .stripe-info h4 {
+            font-size: 1.5rem;
+        }
+
+        .template-wildcard-stripes-square .stripe-info p.affiliation {
+            font-size: 0.95rem;
+            height: auto;
+            justify-content: flex-start;
+            margin-bottom: 0.4rem;
+            min-height: 0;
+        }
+
+        .template-wildcard-stripes-square .stripe-info p.topic {
+            font-size: 0.95rem;
+            -webkit-line-clamp: 2;
+        }
+
+        /* Typographic Minimalist Layout */
+        .template-wildcard-typo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .typo-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .typo-left h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+
+        .typo-left p.sub {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+        }
+
+        .typo-speakers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border-left: 2px solid var(--primary-dark);
+            padding-left: 3rem;
+        }
+
+        .typo-speaker-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .typo-speaker-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .typo-speaker-item p.topic {
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        .typo-speaker-item p.affiliation {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            color: var(--muted-text);
+        }
+
+        /* Typographic Square Styles */
+        .template-wildcard-typo-square {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+
+        .typo-square-header {
+            margin-top: 1rem;
+        }
+
+        .typo-square-header h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+
+        .typo-square-header p.sub {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
+
+        .typo-speakers-grid-square {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem 2rem;
+            margin: 2rem 0;
+            padding: 2.25rem 0;
+            border-top: 2px solid var(--primary-dark);
+            border-bottom: 2px solid var(--primary-dark);
+        }
+
         /* Fullscreen Isolated Preview Modal Styles */
         .isolated-modal {
             display: none;
@@ -781,10 +1429,11 @@
         <button class="tab-button active" data-tab="tab-general" onclick="switchTab('tab-general')">General Event Promo</button>
         <button class="tab-button" data-tab="tab-speaker-banners" onclick="switchTab('tab-speaker-banners')">Speaker Banners (16:9)</button>
         <button class="tab-button" data-tab="tab-speaker-squares" onclick="switchTab('tab-speaker-squares')">Speaker Squares (1:1)</button>
+        <button class="tab-button" data-tab="tab-wildcards" onclick="switchTab('tab-wildcards')">Wildcard Lineups</button>
+        <button class="tab-button" data-tab="tab-wildcards-creative" onclick="switchTab('tab-wildcards-creative')">Creative Wildcards</button>
     </nav>
 
-    <!-- Tab Panels -->
-    <main class="sheet-section">
+    <!-- Tab Panels --    <main class="sheet-section">
         
         <!-- TAB 1: GENERAL EVENT PROMO -->
         <div class="tab-panel active" id="tab-general">
@@ -903,34 +1552,62 @@
             <h2 class="sheet-section-title">
                 Speaker Announcement Banners <span class="badge">1200 x 630 px</span>
             </h2>
+            <div class="cards-grid" id="speaker-banners-grid">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+
+        <!-- TAB 3: SPEAKER SQUARES (1:1) -->
+        <div class="tab-panel" id="tab-speaker-squares">
+            <h2 class="sheet-section-title">
+                Speaker Announcement Squares <span class="badge">1080 x 1080 px</span>
+            </h2>
+            <div class="cards-grid square-grid" id="speaker-squares-grid">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+
+        <!-- TAB 4: WILDCARD LINEUPS -->
+        <div class="tab-panel" id="tab-wildcards">
+            <h2 class="sheet-section-title">
+                Wildcard Lineups & Highlights <span class="badge">Full Program Banners & Squares</span>
+            </h2>
             <div class="cards-grid">
                 
-                <!-- Haily Merritt -->
+                <!-- 4.1 Full Lineup Banner -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Haily Merritt<span class="dimensions">1200 x 630</span></div>
+                        <div>Full Lineup Banner<span class="dimensions">1200 x 630</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('haily-banner')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('haily-banner')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('wildcard-lineup-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('wildcard-lineup-banner')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-banner" id="haily-banner">
+                        <div class="card-export-container size-banner" id="wildcard-lineup-banner">
                             <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
                                 <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-banner">
-                                    <div class="speaker-left">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
-                                        </div>
-                                        <h3>Haily Merritt</h3>
-                                        <p class="affiliation">Northeastern University London</p>
+                                <div class="template-wildcard-banner">
+                                    <div class="wildcard-left">
+                                        <h1>
+                                            <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                            </svg>
+                                            <span>Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">CCS 2026 Satellite Symposium on Unconventional Network Science</p>
+                                        <p class="date">Wednesday, October 14</p>
                                     </div>
-                                    <div class="speaker-right">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Brain Networks as Phenotypes</h2>
-                                        <p class="talk-abstract">Advocating for studying brain networks as phenotypes. Highlighting individual functional heterogeneity constrained by genetics and co-creative coupling with social environments.</p>
+                                    <div class="wildcard-right-grid" id="wildcard-banner-speakers">
+                                        <!-- Dynamically Populated -->
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -954,130 +1631,39 @@
                     </div>
                 </div>
 
-                <!-- Phileas Dazeley-Gaist -->
+                <!-- 4.2 Full Lineup Square -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1200 x 630</span></div>
+                        <div>Full Lineup Square<span class="dimensions">1080 x 1080</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('phileas-banner')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('phileas-banner')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('wildcard-lineup-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('wildcard-lineup-square')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-banner" id="phileas-banner">
-                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-export-container size-square" id="wildcard-lineup-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-banner">
-                                    <div class="speaker-left">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
-                                        </div>
-                                        <h3>Phileas Dazeley-Gaist</h3>
-                                        <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                <div class="template-wildcard-square">
+                                    <div class="wildcard-square-header">
+                                        <h1>
+                                            <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                            </svg>
+                                            <span style="font-size: 4rem;">Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">Symposium Speakers & Presenters</p>
                                     </div>
-                                    <div class="speaker-right">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
-                                        <p class="talk-abstract">Tracking co-creative micro-dynamics of cultural evolution. Modeling citation network growths and tracing phylogenies through visual adaptation of creative motifs.</p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
-                                    </div>
-                                    <div class="card-footer-web">edgecases2026.org</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Katie Spoon -->
-                <div class="card-container-wrapper">
-                    <div class="card-label">
-                        <div>Speaker: Katie Spoon<span class="dimensions">1200 x 630</span></div>
-                        <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('katie-banner')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('katie-banner')">💾 Save PNG</button>
-                        </div>
-                    </div>
-                    <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-banner" id="katie-banner">
-                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                            <div class="card-content">
-                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-banner">
-                                    <div class="speaker-left">
-                                        <div class="photo-frame">
-                                            <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
-                                        </div>
-                                        <h3>Katie Spoon</h3>
-                                        <p class="affiliation">Stanford University</p>
-                                    </div>
-                                    <div class="speaker-right">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Your doctor visits as a network</h2>
-                                        <p class="talk-abstract">Using network science and graph-based representation learning to convert 90 million primary-care visits for 8 million U.S. patients into models of high-risk health trajectories.</p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
-                                    </div>
-                                    <div class="card-footer-web">edgecases2026.org</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Yessica Herrera -->
-                <div class="card-container-wrapper">
-                    <div class="card-label">
-                        <div>Speaker: Yessica Herrera<span class="dimensions">1200 x 630</span></div>
-                        <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('yessica-banner')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('yessica-banner')">💾 Save PNG</button>
-                        </div>
-                    </div>
-                    <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-banner" id="yessica-banner">
-                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
-                            <div class="card-content">
-                                <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-banner">
-                                    <div class="speaker-left">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
-                                        </div>
-                                        <h3>Yessica Herrera</h3>
-                                        <p class="affiliation">University of Notre Dame</p>
-                                    </div>
-                                    <div class="speaker-right">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">The Art World as a Network</h2>
-                                        <p class="talk-abstract">Exploring the art world as a connected system, revealing how novel computational tools map prestige and success, and how we can use network patterns to create new art.</p>
+                                    <div class="wildcard-square-grid" id="wildcard-square-speakers">
+                                        <!-- Dynamically Populated -->
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -1104,54 +1690,51 @@
             </div>
         </div>
 
-        <!-- TAB 3: SPEAKER SQUARES (1:1) -->
-        <div class="tab-panel" id="tab-speaker-squares">
+        <!-- TAB 5: CREATIVE WILDCARDS -->
+        <div class="tab-panel" id="tab-wildcards-creative">
             <h2 class="sheet-section-title">
-                Speaker Announcement Squares <span class="badge">1080 x 1080 px</span>
+                Creative Group & Lineup Promos <span class="badge">Schedules, Columns & Typographic Highlights</span>
             </h2>
-            <div class="cards-grid square-grid">
-                
-                <!-- Haily Merritt -->
+            <div class="cards-grid">
+
+                <!-- 5.1 Program Schedule Banner -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Haily Merritt<span class="dimensions">1080 x 1080</span></div>
+                        <div>Symposium Schedule Banner<span class="dimensions">1200 x 630</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('haily-square')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('haily-square')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-schedule-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-schedule-banner')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-square" id="haily-square">
-                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-export-container size-banner" id="creative-schedule-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-square">
-                                    <div class="speaker-square-top">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
-                                        </div>
-                                        <h3>Haily Merritt</h3>
-                                        <p class="affiliation">Northeastern University London</p>
+                                <div class="card-header-meta">Symposium Schedule | Wednesday, Oct 14</div>
+                                <div class="template-wildcard-schedule">
+                                    <div class="schedule-left">
+                                        <h1>
+                                            <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                            </svg>
+                                            <span>Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">CCS 2026 Satellite on Unconventional Network Science</p>
+                                        <p class="date">Lecture Hall 10, Binghamton University</p>
                                     </div>
-                                    <div class="speaker-square-bottom">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Brain Networks as Phenotypes</h2>
+                                    <div class="timeline-container" id="schedule-banner-timeline">
+                                        <!-- Dynamically Populated -->
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
-                                    </div>
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
                                     <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
                             </div>
@@ -1159,47 +1742,43 @@
                     </div>
                 </div>
 
-                <!-- Phileas Dazeley-Gaist -->
+                <!-- 5.2 Program Schedule Square -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1080 x 1080</span></div>
+                        <div>Symposium Schedule Square<span class="dimensions">1080 x 1080</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('phileas-square')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('phileas-square')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-schedule-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-schedule-square')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-square" id="phileas-square">
+                        <div class="card-export-container size-square" id="creative-schedule-square">
                             <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-square">
-                                    <div class="speaker-square-top">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
-                                        </div>
-                                        <h3>Phileas Dazeley-Gaist</h3>
-                                        <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                <div class="card-header-meta large">Wednesday, Oct 14 | Lecture Hall 10</div>
+                                <div class="template-wildcard-schedule-square">
+                                    <div class="schedule-square-header">
+                                        <h1>
+                                            <svg width="54" height="54" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                            </svg>
+                                            <span style="font-size: 3.8rem; margin-left: 0.25rem;">Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">Symposium Program Itinerary</p>
                                     </div>
-                                    <div class="speaker-square-bottom">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
+                                    <div class="timeline-container-square" id="schedule-square-timeline">
+                                        <!-- Dynamically Populated -->
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
-                                    </div>
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
                                     <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
                             </div>
@@ -1207,47 +1786,25 @@
                     </div>
                 </div>
 
-                <!-- Katie Spoon -->
+                <!-- 5.3 Striped Columns Banner -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Katie Spoon<span class="dimensions">1080 x 1080</span></div>
+                        <div>Stripe Columns Banner<span class="dimensions">1200 x 630</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('katie-square')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('katie-square')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-stripes-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-stripes-banner')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-square" id="katie-square">
-                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-export-container size-banner" id="creative-stripes-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-square">
-                                    <div class="speaker-square-top">
-                                        <div class="photo-frame">
-                                            <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
-                                        </div>
-                                        <h3>Katie Spoon</h3>
-                                        <p class="affiliation">Stanford University</p>
-                                    </div>
-                                    <div class="speaker-square-bottom">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">Your doctor visits as a network</h2>
-                                    </div>
+                                <div class="card-header-meta">Symposium Lineup | Confirmed Speakers</div>
+                                <div class="template-wildcard-stripes" id="stripes-banner-cols">
+                                    <!-- Dynamically Populated -->
                                 </div>
                                 <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
-                                    </div>
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
                                     <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
                             </div>
@@ -1255,47 +1812,91 @@
                     </div>
                 </div>
 
-                <!-- Yessica Herrera -->
+                <!-- 5.4 Striped Columns Square -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Speaker: Yessica Herrera<span class="dimensions">1080 x 1080</span></div>
+                        <div>Stripe Columns Square<span class="dimensions">1080 x 1080</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('yessica-square')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('yessica-square')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-stripes-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-stripes-square')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper">
-                        <div class="card-export-container size-square" id="yessica-square">
+                        <div class="card-export-container size-square" id="creative-stripes-square">
                             <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
-                                <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
-                                <div class="template-speaker-square">
-                                    <div class="speaker-square-top">
-                                        <div class="photo-frame">
-                                            <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
-                                        </div>
-                                        <h3>Yessica Herrera</h3>
-                                        <p class="affiliation">University of Notre Dame</p>
+                                <div class="card-header-meta large">CCS 2026 Confirmed Speaker Lineup</div>
+                                <div class="template-wildcard-stripes-square" id="stripes-square-cols">
+                                    <!-- Dynamically Populated -->
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.5 Typographic Poster Banner -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Typographic Poster Banner<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('creative-typo-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-typo-banner')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-banner" id="creative-typo-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Wednesday, Oct 14 | Binghamton University</div>
+                                <div class="template-wildcard-typo">
+                                    <div class="typo-left">
+                                        <p class="sub">CCS 2026 Symposium</p>
+                                        <h1>EDGE<br>CASES</h1>
+                                        <p class="sub" style="color: var(--muted-text);">Unconventional Network Science</p>
                                     </div>
-                                    <div class="speaker-square-bottom">
-                                        <span class="section-tag">Featured Presentation</span>
-                                        <h2 class="talk-title">The Art World as a Network</h2>
+                                    <div class="typo-speakers-list" id="typo-banner-list">
+                                        <!-- Dynamically Populated -->
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="card-footer-logo">
-                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
-                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
-                                            <circle cx="6" cy="24" r="4" fill="#508484" />
-                                            <circle cx="10" cy="12" r="4" fill="#6d597a" />
-                                            <circle cx="14" cy="20" r="4" fill="#355070" />
-                                            <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
-                                        </svg>
-                                        <span>Edge Cases</span>
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.6 Typographic Poster Square -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Typographic Poster Square<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('creative-typo-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-typo-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper">
+                        <div class="card-export-container size-square" id="creative-typo-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Wednesday, Oct 14 | Lecture Hall 10</div>
+                                <div class="template-wildcard-typo-square">
+                                    <div class="typo-square-header">
+                                        <p class="sub">CCS 2026 SATELLITE SYMPOSIUM</p>
+                                        <h1>EDGE CASES</h1>
+                                        <p class="sub" style="color: var(--secondary-accent); font-weight: 700;">UNCONVENTIONAL NETWORK SCIENCE</p>
                                     </div>
+                                    <div class="typo-speakers-grid-square" id="typo-square-grid">
+                                        <!-- Dynamically Populated -->
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">Edge Cases 2026</div>
                                     <div class="card-footer-web">edgecases2026.org</div>
                                 </div>
                             </div>
@@ -1381,6 +1982,426 @@
                 console.error('Failed to generate PNG card image:', err);
                 alert('Export failed. Please try right-clicking the card -> Inspect -> Capture node screenshot in your DevTools command menu.');
             });
+        }
+
+        // --- DYNAMIC RENDERING FROM JSON ---
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('data/speakers.json')
+                .then(res => res.json())
+                .then(speakers => {
+                    renderDynamicPR(speakers);
+                })
+                .catch(err => {
+                    console.error('Failed to load speakers for PR dynamic rendering:', err);
+                });
+        });
+
+        const CONFIG_COLORS = ['#e56b6f', '#eaac8b', '#b5838d', '#6d597a', '#508484', '#355070'];
+
+        function getInitials(name) {
+            if (!name) return '??';
+            if (name.toLowerCase().includes('mystery')) return '?';
+            const parts = name.trim().split(/\s+/);
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+            }
+            return name.slice(0, 2).toUpperCase();
+        }
+
+        function getShortAffiliation(aff) {
+            if (!aff) return '';
+            if (aff.includes('Northeastern')) return 'Northeastern';
+            if (aff.includes('Wolfram')) return 'Wolfram';
+            if (aff.includes('Stanford')) return 'Stanford';
+            if (aff.includes('Notre Dame')) return 'Notre Dame';
+            if (aff.includes('Illinois')) return 'UIUC';
+            return aff.split(',')[0].trim();
+        }
+
+        function getSessionATimes(count) {
+            if (count === 1) return ['14:40'];
+            if (count === 2) return ['14:40', '15:20'];
+            if (count === 3) return ['14:40', '15:05', '15:30'];
+            if (count === 4) return ['14:40', '15:00', '15:20', '15:40'];
+            const times = [];
+            for (let i = 0; i < count; i++) {
+                const totalMins = 40 + i * Math.floor(80 / count);
+                const hrs = 14 + Math.floor(totalMins / 60);
+                const mins = totalMins % 60;
+                times.push(`${hrs}:${String(mins).padStart(2, '0')}`);
+            }
+            return times;
+        }
+
+        function getSessionBTimes(count) {
+            if (count === 1) return ['16:15'];
+            if (count === 2) return ['16:15', '16:45'];
+            if (count === 3) return ['16:15', '16:35', '16:55'];
+            if (count === 4) return ['16:15', '16:35', '16:55', '17:15'];
+            const times = [];
+            for (let i = 0; i < count; i++) {
+                const totalMins = 15 + i * Math.floor(60 / count);
+                const hrs = 16 + Math.floor(totalMins / 60);
+                const mins = totalMins % 60;
+                times.push(`${hrs}:${String(mins).padStart(2, '0')}`);
+            }
+            return times;
+        }
+
+        function renderDynamicPR(speakers) {
+            const landscapeSvgBg = document.getElementById('svg-bg-landscape').innerHTML;
+            const squareSvgBg = document.getElementById('svg-bg-square').innerHTML;
+
+            // 1. Populating Tab 2 (Speaker Banners)
+            const bannersGrid = document.getElementById('speaker-banners-grid');
+            if (bannersGrid) {
+                bannersGrid.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const photoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+                    
+                    const draftBadge = speaker.note ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
+
+                    return `
+                        <div class="card-container-wrapper">
+                            <div class="card-label">
+                                <div>Speaker: ${speaker.name}${draftBadge}<span class="dimensions">1200 x 630</span></div>
+                                <div class="card-actions">
+                                    <button class="card-action-btn" onclick="previewCard('${speaker.id}-banner')">👁️ Preview</button>
+                                    <button class="card-action-btn" onclick="saveCard('${speaker.id}-banner')">💾 Save PNG</button>
+                                </div>
+                            </div>
+                            <div class="preview-scale-wrapper">
+                                <div class="card-export-container size-banner" id="${speaker.id}-banner">
+                                    ${landscapeSvgBg}
+                                    <div class="card-content">
+                                        <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                        <div class="template-speaker-banner">
+                                            <div class="speaker-left">
+                                                <div class="photo-frame">
+                                                    ${photoHTML}
+                                                </div>
+                                                <h3>${speaker.name}</h3>
+                                                <p class="affiliation">${speaker.affiliation || ''}</p>
+                                            </div>
+                                            <div class="speaker-right">
+                                                <span class="section-tag">Featured Presentation</span>
+                                                <h2 class="talk-title">${speaker.topic || ''}</h2>
+                                                <p class="talk-abstract">${speaker.abstract || 'Abstract details coming soon.'}</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-footer-logo">
+                                                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                    <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                    <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                    <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                    <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                                </svg>
+                                                <span>Edge Cases</span>
+                                            </div>
+                                            <div class="card-footer-web">edgecases2026.org</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // 2. Populating Tab 3 (Speaker Squares)
+            const squaresGrid = document.getElementById('speaker-squares-grid');
+            if (squaresGrid) {
+                squaresGrid.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const photoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+                    
+                    const draftBadge = speaker.note ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
+
+                    return `
+                        <div class="card-container-wrapper">
+                            <div class="card-label">
+                                <div>Speaker: ${speaker.name}${draftBadge}<span class="dimensions">1080 x 1080</span></div>
+                                <div class="card-actions">
+                                    <button class="card-action-btn" onclick="previewCard('${speaker.id}-square')">👁️ Preview</button>
+                                    <button class="card-action-btn" onclick="saveCard('${speaker.id}-square')">💾 Save PNG</button>
+                                </div>
+                            </div>
+                            <div class="preview-scale-wrapper">
+                                <div class="card-export-container size-square" id="${speaker.id}-square">
+                                    ${squareSvgBg}
+                                    <div class="card-content">
+                                        <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                                        <div class="template-speaker-square">
+                                            <div class="speaker-square-top">
+                                                <div class="photo-frame">
+                                                    ${photoHTML}
+                                                </div>
+                                                <h3>${speaker.name}</h3>
+                                                <p class="affiliation">${speaker.affiliation || ''}</p>
+                                            </div>
+                                            <div class="speaker-square-bottom">
+                                                <span class="section-tag">Featured Presentation</span>
+                                                <h2 class="talk-title">${speaker.topic || ''}</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-footer-logo">
+                                                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                                    <circle cx="6" cy="24" r="4" fill="#508484" />
+                                                    <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                                    <circle cx="14" cy="20" r="4" fill="#355070" />
+                                                    <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                                </svg>
+                                                <span>Edge Cases</span>
+                                            </div>
+                                            <div class="card-footer-web">edgecases2026.org</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // 3. Populating Tab 4 (Wildcard Lineups)
+            const bannerSpeakersContainer = document.getElementById('wildcard-banner-speakers');
+            if (bannerSpeakersContainer) {
+                bannerSpeakersContainer.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const wPhotoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;wildcard-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="wildcard-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+                    
+                    return `
+                        <div class="wildcard-speaker-row">
+                            <div class="wildcard-photo">
+                                ${wPhotoHTML}
+                            </div>
+                            <div class="wildcard-speaker-info">
+                                <h4>${speaker.name}</h4>
+                                <p>${getShortAffiliation(speaker.affiliation)}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const squareSpeakersContainer = document.getElementById('wildcard-square-speakers');
+            if (squareSpeakersContainer) {
+                squareSpeakersContainer.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const wPhotoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;wildcard-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="wildcard-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+                    
+                    return `
+                        <div class="wildcard-speaker-row">
+                            <div class="wildcard-photo">
+                                ${wPhotoHTML}
+                            </div>
+                            <div class="wildcard-speaker-info">
+                                <h4>${speaker.name}</h4>
+                                <p>${getShortAffiliation(speaker.affiliation)}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // 4. Populating Tab 5 (Creative Wildcards)
+            // Divide speakers into Session A and Session B
+            const half = Math.ceil(speakers.length / 2);
+            const sessionASpeakers = speakers.slice(0, half);
+            const sessionBSpeakers = speakers.slice(half);
+
+            const sessionATimes = getSessionATimes(sessionASpeakers.length);
+            const sessionBTimes = getSessionBTimes(sessionBSpeakers.length);
+
+            // Construct timeline HTML
+            let timelineHTML = `
+                <div class="timeline-item">
+                    <div class="timeline-time">14:30</div>
+                    <div class="timeline-content">
+                        <h4>Welcome & Introduction</h4>
+                    </div>
+                </div>
+            `;
+
+            sessionASpeakers.forEach((speaker, index) => {
+                const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                const tPhotoHTML = speaker.image ? 
+                    `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;timeline-speaker-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                    `<div class="timeline-speaker-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+
+                timelineHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-time">${sessionATimes[index]}</div>
+                        <div class="timeline-speaker-photo">
+                            ${tPhotoHTML}
+                        </div>
+                        <div class="timeline-content">
+                            <h4>${speaker.name}</h4>
+                            <p>${speaker.topic} (${getShortAffiliation(speaker.affiliation)})</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            timelineHTML += `
+                <div class="timeline-item break">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-content">
+                        <h4>Coffee & Networking Break</h4>
+                    </div>
+                </div>
+            `;
+
+            sessionBSpeakers.forEach((speaker, index) => {
+                const globalIndex = half + index;
+                const c1 = CONFIG_COLORS[globalIndex % CONFIG_COLORS.length];
+                const c2 = CONFIG_COLORS[(globalIndex + 2) % CONFIG_COLORS.length];
+                const tPhotoHTML = speaker.image ? 
+                    `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;timeline-speaker-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                    `<div class="timeline-speaker-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+
+                timelineHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-time">${sessionBTimes[index]}</div>
+                        <div class="timeline-speaker-photo">
+                            ${tPhotoHTML}
+                        </div>
+                        <div class="timeline-content">
+                            <h4>${speaker.name}</h4>
+                            <p>${speaker.topic} (${getShortAffiliation(speaker.affiliation)})</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            timelineHTML += `
+                <div class="timeline-item">
+                    <div class="timeline-time">17:15</div>
+                    <div class="timeline-content">
+                        <h4>Group Discussion & Q&A</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">17:35</div>
+                    <div class="timeline-content">
+                        <h4>Closing Remarks</h4>
+                    </div>
+                </div>
+            `;
+
+            const scheduleBannerTimeline = document.getElementById('schedule-banner-timeline');
+            if (scheduleBannerTimeline) scheduleBannerTimeline.innerHTML = timelineHTML;
+
+            const scheduleSquareTimeline = document.getElementById('schedule-square-timeline');
+            if (scheduleSquareTimeline) scheduleSquareTimeline.innerHTML = timelineHTML;
+
+            // Columns layout (Stripe Columns Banner)
+            const stripesBannerCols = document.getElementById('stripes-banner-cols');
+            if (stripesBannerCols) {
+                stripesBannerCols.style.gridTemplateColumns = `repeat(${speakers.length}, 1fr)`;
+                stripesBannerCols.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const sPhotoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;stripe-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="stripe-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+
+                    return `
+                        <div class="stripe-column">
+                            <div class="stripe-photo">
+                                ${sPhotoHTML}
+                            </div>
+                            <div class="stripe-info">
+                                <h4>${speaker.name}</h4>
+                                <p class="affiliation">${getShortAffiliation(speaker.affiliation)}</p>
+                                <p class="topic">${speaker.topic}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Columns layout (Stripe Columns Square)
+            const stripesSquareCols = document.getElementById('stripes-square-cols');
+            if (stripesSquareCols) {
+                if (speakers.length > 4) {
+                    stripesSquareCols.style.gap = '1.25rem 2rem';
+                    stripesSquareCols.style.height = 'auto';
+                    stripesSquareCols.style.margin = '1rem 0';
+                }
+                stripesSquareCols.innerHTML = speakers.map((speaker, index) => {
+                    const c1 = CONFIG_COLORS[index % CONFIG_COLORS.length];
+                    const c2 = CONFIG_COLORS[(index + 2) % CONFIG_COLORS.length];
+                    const sPhotoHTML = speaker.image ? 
+                        `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;stripe-photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
+                        `<div class="stripe-photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
+
+                    return `
+                        <div class="stripe-column">
+                            <div class="stripe-photo">
+                                ${sPhotoHTML}
+                            </div>
+                            <div class="stripe-info">
+                                <h4>${speaker.name}</h4>
+                                <p class="affiliation">${speaker.affiliation || ''}</p>
+                                <p class="topic">${speaker.topic || ''}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Typographic list (Typographic Poster Banner)
+            const typoBannerList = document.getElementById('typo-banner-list');
+            if (typoBannerList) {
+                typoBannerList.innerHTML = speakers.map(speaker => `
+                    <div class="typo-speaker-item">
+                        <h3>${speaker.name}</h3>
+                        <p class="topic">${speaker.topic || ''}</p>
+                        <p class="affiliation">${speaker.affiliation || ''}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Typographic grid (Typographic Poster Square)
+            const typoSquareGrid = document.getElementById('typo-square-grid');
+            if (typoSquareGrid) {
+                if (speakers.length > 4) {
+                    typoSquareGrid.style.gap = '1.5rem 2rem';
+                    typoSquareGrid.style.margin = '1rem 0';
+                    typoSquareGrid.style.padding = '1.5rem 0';
+                }
+                typoSquareGrid.innerHTML = speakers.map(speaker => `
+                    <div class="typo-speaker-item">
+                        <h3>${speaker.name}</h3>
+                        <p class="topic">${speaker.topic || ''}</p>
+                        <p class="affiliation">${speaker.affiliation || ''}</p>
+                    </div>
+                `).join('');
+            }
         }
     </script>
 </body>

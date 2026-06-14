@@ -35,5 +35,15 @@
     "bio": "Yessica Herrera is a scientist who blends social complexity with behavioral research, network science, and data visualization to explore how art, science, and technology shape—and are shaped by—human creativity and social behavior.",
     "image": "media/speakers/yessica_herrera_guzman.jpeg",
     "website": "https://yessicaherrera.com"
+  },
+  {
+    "id": "emmy-tither",
+    "name": "Emmy Tither",
+    "affiliation": "University of Illinois Urbana-Champaign",
+    "topic": "Building Networks Using Qualitative Data",
+    "abstract": "We often conceptualize network analysis methods to use mainly (or solely) quantitative data. But the options are a bit more expansive than that. This presentation explores this possibility using, as an example, Socio-Technical Interaction Network (STIN) models as applied to data governance in Latin America and the Caribbean.",
+    "bio": "Emmy Tither is a PhD student in the Informatics program at the University of Illinois Urbana-Champaign. Her research focus is grounded in complex systems theory, mapping sociotechnical systems using mixed methods, data governance, armed conflict, humanitarian crises, and the intersection of sound, violence, and international law.",
+    "image": "",
+    "note": "Tile information is not final, revisit later"
   }
 ]

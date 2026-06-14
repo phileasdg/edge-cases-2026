@@ -125,6 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const showPlaceholder = settings && settings.showPlaceholderOnMissingImage;
         const colors = CONFIG.colors;
 
+        const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+        const isReleaseMode = settings && settings.releaseMode === true;
+        const showIndicators = !isProduction && !isReleaseMode;
+
         if (speakers && speakers.length > 0) {
             const isTeaserMode = speakers.some(s => s.name.startsWith('Contributor'));
 
@@ -171,8 +175,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         const c2 = colors[(index + 2) % colors.length];
                         const gradientStyle = `background: linear-gradient(135deg, ${c1}, ${c2}); box-shadow: 0 4px 15px rgba(43, 38, 35, 0.12);`;
                         
+                        // Check what requires revision
+                        const reasons = [];
+                        if (!speaker.image) reasons.push('Missing headshot image');
+                        if (!speaker.bio) reasons.push('Missing biography');
+                        if (speaker.note) reasons.push(`Draft note: ${speaker.note}`);
+                        
+                        const needsUpdate = reasons.length > 0;
+                        const badgeHtml = (showIndicators && needsUpdate) ? 
+                            `<div class="update-badge" title="Pending updates:\n${reasons.map(r => `• ${r}`).join('\n')}">Update Needed</div>` : 
+                            '';
+
                         return `
                             <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-id="${speaker.id}" data-reveal style="--theme-color: ${c1};">
+                                ${badgeHtml}
                                 ${hasImage ? `
                                     <div class="speaker-image">
                                         <img src="${speaker.image}" 

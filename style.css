@@ -387,6 +387,7 @@ header .container {
 }
 
 .speaker-card {
+  position: relative;
   padding: 1.25rem;
   background: white;
   border-radius: var(--radius-lg);
@@ -397,6 +398,32 @@ header .container {
   flex-direction: column;
   min-height: 290px;
   cursor: pointer;
+}
+
+.update-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(224, 159, 62, 0.92); /* Elegant secondary amber accent */
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 8px rgba(224, 159, 62, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 5;
+  transition: all 0.2s ease;
+}
+
+.speaker-card:hover .update-badge {
+  background: #e09f3e;
+  transform: scale(1.05);
 }
 
 .speaker-card.no-image {

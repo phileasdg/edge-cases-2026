@@ -1,3 +1,4 @@
 {
-    "showPlaceholderOnMissingImage": false
+    "showPlaceholderOnMissingImage": false,
+    "releaseMode": false
 }
