@@ -37,14 +37,14 @@
     "website": "https://yessicaherrera.com"
   },
   {
-    "id": "emmy-tither",
-    "name": "Emmy Tither",
-    "affiliation": "University of Illinois Urbana-Champaign",
-    "topic": "Building Networks Using Qualitative Data",
-    "abstract": "We often conceptualize network analysis methods to use mainly (or solely) quantitative data. But the options are a bit more expansive than that. This presentation explores this possibility using, as an example, Socio-Technical Interaction Network (STIN) models as applied to data governance in Latin America and the Caribbean.",
-    "bio": "Emmy Tither is a PhD student in the Informatics program at the University of Illinois Urbana-Champaign. Her research focus is grounded in complex systems theory, mapping sociotechnical systems using mixed methods, data governance, armed conflict, humanitarian crises, and the intersection of sound, violence, and international law.",
-    "image": "",
-    "note": "Tile information is not final, revisit later"
+    "id": "arhan-vora",
+    "name": "Arhan Vora",
+    "affiliation": "University of Montpellier",
+    "topic": "Sailing through Phenotype Space : Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
+    "abstract": "Fitness Landscapes like Fisher's Geometric Model allow us a way to define the distribution of fitness effects for mutations of an individual. We modify this model to allow us to follow these distributions in changing environments. I shall describe how we discretise this landscape to create a network of phenotypes (where the network records the transition probabilities of mutating between the different types) and then use the Backward Kolmogorov equation to create a framework to calculate extinction probabilities in these changing environments.",
+    "bio": "",
+    "image": "media/speakers/arhan_vora.jpeg",
+    "note": "Pending biography"
   },
   {
     "id": "divya-sindhu-lekha",
