@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- html2canvas for instant client-side exports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root {
@@ -150,6 +152,36 @@
 
         .card-label span.dimensions {
             color: var(--sheet-accent);
+            margin-left: 0.5rem;
+            font-weight: 500;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .card-action-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--sheet-border);
+            color: var(--sheet-text);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .card-action-btn:hover {
+            background: var(--sheet-accent);
+            border-color: var(--sheet-accent);
+            color: white;
+            transform: translateY(-1px);
         }
 
         /* Scale preview to fit on screen nicely without altering the actual pixel resolution */
@@ -498,6 +530,59 @@
             line-height: 1.25;
             max-width: 800px;
         }
+
+        /* Fullscreen Isolated Preview Modal Styles */
+        .isolated-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 13, 12, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+            padding: 3rem;
+        }
+
+        .isolated-modal.active {
+            display: flex;
+        }
+
+        .isolated-modal-holder {
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--section-bg);
+        }
+
+        .isolated-modal-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 1010;
+        }
+
+        .isolated-modal-close:hover {
+            background: var(--sheet-accent);
+        }
     </style>
 </head>
 
@@ -519,8 +604,8 @@
             <h1>Edge Cases — PR Assets Sheet</h1>
         </div>
         <div class="header-info">
-            Statically rendered layout for PR cards. To export high-resolution assets: <br>
-            Right-click any card &rarr; <code>Inspect</code> &rarr; <code>Cmd+Shift+P</code> (Mac) / <code>Ctrl+Shift+P</code> (Win) &rarr; type <code>Capture node screenshot</code>.
+            Interactive showcase of PR cards. Adjust text in this file if needed. <br>
+            Use <strong>Preview</strong> to see cards full-size, or click <strong>Save PNG</strong> to export.
         </div>
     </header>
 
@@ -657,12 +742,14 @@
             <!-- 1.1 General Promo Banner -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>General Event Promo</span>
-                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                    <div>General Event Promo<span class="dimensions">1200 x 630</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('promo-banner')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('promo-banner')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-banner" id="promo-banner">
-                        <!-- BG injected via script or directly inlined -->
                         <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                         <div class="card-content">
                             <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
@@ -706,8 +793,11 @@
             <!-- 1.2 Haily Merritt Speaker Banner -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Haily Merritt</span>
-                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                    <div>Speaker: Haily Merritt<span class="dimensions">1200 x 630</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('haily-banner')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('haily-banner')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-banner" id="haily-banner">
@@ -752,8 +842,11 @@
             <!-- 1.3 Phileas Dazeley-Gaist Speaker Banner -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Phileas Dazeley-Gaist</span>
-                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                    <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1200 x 630</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('phileas-banner')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('phileas-banner')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-banner" id="phileas-banner">
@@ -798,8 +891,11 @@
             <!-- 1.4 Katie Spoon Speaker Banner -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Katie Spoon</span>
-                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                    <div>Speaker: Katie Spoon<span class="dimensions">1200 x 630</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('katie-banner')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('katie-banner')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-banner" id="katie-banner">
@@ -844,8 +940,11 @@
             <!-- 1.5 Yessica Herrera Speaker Banner -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Yessica Herrera</span>
-                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                    <div>Speaker: Yessica Herrera<span class="dimensions">1200 x 630</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('yessica-banner')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('yessica-banner')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-banner" id="yessica-banner">
@@ -900,8 +999,11 @@
             <!-- 2.1 General Promo Square -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>General Event Square</span>
-                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                    <div>General Event Square<span class="dimensions">1080 x 1080</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('promo-square')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('promo-square')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-square" id="promo-square">
@@ -948,8 +1050,11 @@
             <!-- 2.2 Haily Merritt Speaker Square -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Haily Merritt</span>
-                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                    <div>Speaker: Haily Merritt<span class="dimensions">1080 x 1080</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('haily-square')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('haily-square')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-square" id="haily-square">
@@ -993,8 +1098,11 @@
             <!-- 2.3 Phileas Dazeley-Gaist Speaker Square -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Phileas Dazeley-Gaist</span>
-                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                    <div>Speaker: Phileas Dazeley-Gaist<span class="dimensions">1080 x 1080</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('phileas-square')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('phileas-square')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-square" id="phileas-square">
@@ -1038,8 +1146,11 @@
             <!-- 2.4 Katie Spoon Speaker Square -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Katie Spoon</span>
-                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                    <div>Speaker: Katie Spoon<span class="dimensions">1080 x 1080</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('katie-square')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('katie-square')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-square" id="katie-square">
@@ -1083,8 +1194,11 @@
             <!-- 2.5 Yessica Herrera Speaker Square -->
             <div class="card-container-wrapper">
                 <div class="card-label">
-                    <span>Speaker: Yessica Herrera</span>
-                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                    <div>Speaker: Yessica Herrera<span class="dimensions">1080 x 1080</span></div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="previewCard('yessica-square')">👁️ Preview</button>
+                        <button class="card-action-btn" onclick="saveCard('yessica-square')">💾 Save PNG</button>
+                    </div>
                 </div>
                 <div class="preview-scale-wrapper">
                     <div class="card-export-container size-square" id="yessica-square">
@@ -1127,6 +1241,72 @@
 
         </div>
     </section>
+
+    <!-- Fullscreen Isolated Preview Modal Dialog -->
+    <div class="isolated-modal" id="previewModal">
+        <button class="isolated-modal-close" onclick="closePreview()">&times;</button>
+        <div class="isolated-modal-holder" id="isolated-card-holder">
+            <!-- Selected Card gets injected here dynamically without scaling -->
+        </div>
+    </div>
+
+    <!-- Interactive Script -->
+    <script>
+        // Fullscreen preview handler
+        function previewCard(cardId) {
+            const originalCard = document.getElementById(cardId);
+            const holder = document.getElementById('isolated-card-holder');
+            
+            // Clone the original card elements
+            holder.innerHTML = originalCard.innerHTML;
+            holder.className = originalCard.className;
+            
+            // Strip any container preview scaling styles
+            holder.style.transform = 'none';
+            holder.style.margin = '0';
+            
+            // Show modal
+            document.getElementById('previewModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.remove('active');
+            document.getElementById('isolated-card-holder').innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal if clicked outside card container
+        document.getElementById('previewModal').addEventListener('click', (e) => {
+            if (e.target.id === 'previewModal') {
+                closePreview();
+            }
+        });
+
+        // Client-side PNG export handler using html2canvas
+        function saveCard(cardId) {
+            const cardElement = document.getElementById(cardId);
+            const initialTransform = cardElement.style.transform;
+            
+            // Run export at pristine resolution with background color matching var(--section-bg)
+            html2canvas(cardElement, {
+                scale: 2, // 2x retina boost
+                useCORS: true,
+                backgroundColor: '#faf9f5',
+                allowTaint: true
+            }).then(canvasExport => {
+                const link = document.createElement('a');
+                link.download = `edgecases-pr-${cardId}.png`;
+                link.href = canvasExport.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(err => {
+                console.error('Failed to generate PNG card image:', err);
+                alert('Export failed. Please try right-clicking the card -> Inspect -> Capture node screenshot in your DevTools command menu.');
+            });
+        }
+    </script>
 </body>
 
 </html>
