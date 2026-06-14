@@ -1510,6 +1510,40 @@
         .isolated-modal-close:hover {
             background: var(--sheet-accent);
         }
+
+        /* Transparent logo exports */
+        .card-export-container.transparent-bg {
+            background-color: transparent !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+        .card-export-container.transparent-bg .card-content {
+            background-color: transparent !important;
+            background: transparent !important;
+        }
+
+        /* Transparency checkerboard backgrounds for previewing transparent assets */
+        .preview-scale-wrapper.checkerboard-light {
+            background-color: #faf9f5;
+            background-image: 
+                linear-gradient(45deg, #e5e0d8 25%, transparent 25%), 
+                linear-gradient(-45deg, #e5e0d8 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #e5e0d8 75%), 
+                linear-gradient(-45deg, transparent 75%, #e5e0d8 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+        }
+
+        .preview-scale-wrapper.checkerboard-dark {
+            background-color: #2b2623;
+            background-image: 
+                linear-gradient(45deg, #36302c 25%, transparent 25%), 
+                linear-gradient(-45deg, #36302c 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #36302c 75%), 
+                linear-gradient(-45deg, transparent 75%, #36302c 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+        }
     </style>
 </head>
 
@@ -2096,7 +2130,19 @@
                                 <div class="template-wildcard-typo">
                                     <div class="typo-left">
                                         <p class="sub">CCS 2026 Symposium</p>
-                                        <h1>EDGE<br>CASES</h1>
+                                        <div style="display: flex; align-items: center; gap: 2rem; margin: 0.5rem 0;">
+                                            <svg width="120" height="120" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                            </svg>
+                                            <h1 style="margin: 0;">EDGE<br>CASES</h1>
+                                        </div>
                                         <p class="sub" style="color: var(--muted-text);">Unconventional Network Science</p>
                                     </div>
                                     <div class="typo-speakers-list" id="typo-banner-list">
@@ -2129,7 +2175,19 @@
                                 <div class="template-wildcard-typo-square">
                                     <div class="typo-square-header">
                                         <p class="sub">CCS 2026 SATELLITE SYMPOSIUM</p>
-                                        <h1>EDGE CASES</h1>
+                                        <div style="display: flex; align-items: center; gap: 1.5rem; margin: 0.5rem 0;">
+                                            <svg width="72" height="72" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                            </svg>
+                                            <h1 style="margin: 0; line-height: 1;">EDGE CASES</h1>
+                                        </div>
                                         <p class="sub" style="color: var(--secondary-accent); font-weight: 700;">UNCONVENTIONAL NETWORK SCIENCE</p>
                                     </div>
                                     <div class="typo-speakers-grid-square" id="typo-square-grid">
@@ -2164,9 +2222,9 @@
                             <button class="card-action-btn" onclick="saveCard('logo-horizontal-light')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-banner-wrapper">
-                        <div class="card-export-container size-banner" id="logo-horizontal-light">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5;">
+                    <div class="preview-scale-wrapper size-banner-wrapper checkerboard-light">
+                        <div class="card-export-container size-banner transparent-bg" id="logo-horizontal-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
                                 <div style="display: flex; align-items: center; gap: 2.5rem;">
                                     <svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
@@ -2194,9 +2252,9 @@
                             <button class="card-action-btn" onclick="saveCard('logo-horizontal-dark')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-banner-wrapper">
-                        <div class="card-export-container size-banner" id="logo-horizontal-dark">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1);">
+                    <div class="preview-scale-wrapper size-banner-wrapper checkerboard-dark">
+                        <div class="card-export-container size-banner transparent-bg" id="logo-horizontal-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
                                 <div style="display: flex; align-items: center; gap: 2.5rem;">
                                     <svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.2" opacity="0.4" />
@@ -2224,9 +2282,9 @@
                             <button class="card-action-btn" onclick="saveCard('logo-stacked-light')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-square-wrapper">
-                        <div class="card-export-container size-square" id="logo-stacked-light">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5; flex-direction: column; gap: 3rem;">
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-light">
+                        <div class="card-export-container size-square transparent-bg" id="logo-stacked-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent; flex-direction: column; gap: 3rem;">
                                 <svg width="220" height="220" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
                                     <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
@@ -2252,9 +2310,9 @@
                             <button class="card-action-btn" onclick="saveCard('logo-stacked-dark')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-square-wrapper">
-                        <div class="card-export-container size-square" id="logo-stacked-dark">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1); flex-direction: column; gap: 3rem;">
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-dark">
+                        <div class="card-export-container size-square transparent-bg" id="logo-stacked-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent; flex-direction: column; gap: 3rem;">
                                 <svg width="220" height="220" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.2" opacity="0.4" />
                                     <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.2" opacity="0.4" />
@@ -2280,9 +2338,9 @@
                             <button class="card-action-btn" onclick="saveCard('emblem-light')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-square-wrapper">
-                        <div class="card-export-container size-square" id="emblem-light">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #faf9f5;">
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-light">
+                        <div class="card-export-container size-square transparent-bg" id="emblem-light">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
                                 <svg width="500" height="500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
                                     <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
@@ -2307,9 +2365,9 @@
                             <button class="card-action-btn" onclick="saveCard('emblem-dark')">💾 Save PNG</button>
                         </div>
                     </div>
-                    <div class="preview-scale-wrapper size-square-wrapper">
-                        <div class="card-export-container size-square" id="emblem-dark">
-                            <div class="card-content" style="justify-content: center; align-items: center; background: #2b2623; border: 1px solid rgba(250, 249, 245, 0.1);">
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-dark">
+                        <div class="card-export-container size-square transparent-bg" id="emblem-dark">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
                                 <svg width="500" height="500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.2" opacity="0.4" />
                                     <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.2" opacity="0.4" />
