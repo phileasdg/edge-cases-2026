@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Cases 2026 | PR Assets Draft Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --section-bg: #faf9f5;
+            --text-color: #2b2623;
+            --accent-color: #335c67;
+            --secondary-accent: #e09f3e;
+            --primary-dark: #2b2623;
+            --muted-text: #5c5552;
+            --border-color: #e5e0d8;
+            
+            --sheet-bg: #1e1b19;
+            --sheet-panel: #2b2623;
+            --sheet-border: #403a35;
+            --sheet-text: #eae6df;
+            --sheet-muted: #a69e97;
+            --sheet-accent: #e56b6f;
+
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--sheet-bg);
+            color: var(--sheet-text);
+            font-family: var(--font-main);
+            padding-bottom: 5rem;
+        }
+
+        /* Sheet Header */
+        header.sheet-header {
+            background-color: var(--sheet-panel);
+            border-bottom: 1px solid var(--sheet-border);
+            padding: 1.5rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--sheet-text);
+        }
+
+        .header-info {
+            font-size: 0.85rem;
+            color: var(--sheet-muted);
+            max-width: 600px;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .header-info code {
+            background: var(--sheet-bg);
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            color: var(--sheet-accent);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        /* Section dividers */
+        .sheet-section {
+            padding: 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .sheet-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--sheet-border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--sheet-text);
+        }
+
+        .sheet-section-title span.badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--sheet-border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            color: var(--sheet-muted);
+        }
+
+        /* Cards Layout Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 3rem;
+        }
+
+        .square-grid {
+            grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+        }
+
+        .card-container-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card-label {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--sheet-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-label span.dimensions {
+            color: var(--sheet-accent);
+        }
+
+        /* Scale preview to fit on screen nicely without altering the actual pixel resolution */
+        .preview-scale-wrapper {
+            background-color: #151312;
+            border: 1px solid var(--sheet-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fixed export resolutions */
+        .card-export-container {
+            position: relative;
+            background-color: var(--section-bg);
+            color: var(--text-color);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .size-banner {
+            width: 1200px;
+            height: 630px;
+            padding: 4.5rem;
+            /* Scale down for preview gallery */
+            transform: scale(0.48);
+            margin: -164px -312px; /* Pull margins back to account for scale */
+        }
+
+        .size-square {
+            width: 1080px;
+            height: 1080px;
+            padding: 5.5rem;
+            /* Scale down for preview gallery */
+            transform: scale(0.48);
+            margin: -280px -280px;
+        }
+
+        /* Vector Network Background */
+        .vector-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Card Content Layer */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Metainfo Header */
+        .card-header-meta {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header-meta.large {
+            font-size: 1.05rem;
+            letter-spacing: 0.14em;
+        }
+
+        /* Footer Branding */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: auto;
+        }
+
+        .card-footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .card-footer-web {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 0.05em;
+        }
+
+        /* Banners Specific Styles */
+        .template-general-banner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1.5rem;
+            height: 100%;
+        }
+
+        .template-general-banner h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.05;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .template-general-banner p.tagline {
+            font-family: var(--font-main);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--muted-text);
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0;
+        }
+
+        /* Square Specific Styles */
+        .template-general-square {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 2.25rem;
+            height: 100%;
+        }
+
+        .template-general-square h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.05;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .template-general-square p.tagline {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--muted-text);
+            line-height: 1.55;
+            max-width: 820px;
+            margin: 0;
+        }
+
+        /* Speaker Banner Style */
+        .template-speaker-banner {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 4rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .speaker-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.25rem;
+        }
+
+        .photo-frame {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 3.5rem;
+        }
+
+        .speaker-left h3 {
+            font-family: var(--font-heading);
+            font-size: 2.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0;
+            line-height: 1.15;
+        }
+
+        .speaker-left p.affiliation {
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1.4;
+            max-width: 300px;
+        }
+
+        .speaker-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.25rem;
+            border-left: 1px solid var(--border-color);
+            padding-left: 3.5rem;
+            height: 85%;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-accent);
+        }
+
+        .talk-title {
+            font-family: var(--font-heading);
+            font-size: 2.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .talk-abstract {
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            line-height: 1.65;
+            color: var(--muted-text);
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Speaker Square Style */
+        .template-speaker-square {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .speaker-square-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .speaker-square-top .photo-frame {
+            width: 220px;
+            height: 220px;
+        }
+
+        .speaker-square-top h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        .speaker-square-top p.affiliation {
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            max-width: 600px;
+        }
+
+        .speaker-square-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .speaker-square-bottom h2.talk-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1.25;
+            max-width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Block -->
+    <header class="sheet-header">
+        <div class="header-title">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connection lines -->
+                <line x1="6" y1="24" x2="14" y2="20" stroke="#eae6df" stroke-width="2" />
+                <line x1="6" y1="24" x2="10" y2="12" stroke="#eae6df" stroke-width="2" />
+                <line x1="14" y1="20" x2="10" y2="12" stroke="#eae6df" stroke-width="2" />
+                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.2" stroke-dasharray="2 2" />
+                <circle cx="6" cy="24" r="3.5" fill="#eae6df" />
+                <circle cx="10" cy="12" r="3.5" fill="#eae6df" />
+                <circle cx="14" cy="20" r="3.5" fill="#eae6df" />
+                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#2b2623" stroke-width="1" />
+            </svg>
+            <h1>Edge Cases — PR Assets Sheet</h1>
+        </div>
+        <div class="header-info">
+            Statically rendered layout for PR cards. To export high-resolution assets: <br>
+            Right-click any card &rarr; <code>Inspect</code> &rarr; <code>Cmd+Shift+P</code> (Mac) / <code>Ctrl+Shift+P</code> (Win) &rarr; type <code>Capture node screenshot</code>.
+        </div>
+    </header>
+
+    <!-- Vector BG template to inject -->
+    <!-- Landscape 16:9 Vector BG Definition -->
+    <svg id="svg-bg-landscape" style="display:none;">
+        <svg class="vector-bg" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+            <line x1="150" y1="100" x2="300" y2="220" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="150" y1="100" x2="100" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="150" y1="100" x2="450" y2="150" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="150" y1="100" x2="600" y2="100" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="300" y1="220" x2="100" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="300" y1="220" x2="250" y2="480" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="300" y1="220" x2="450" y2="150" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="300" y1="220" x2="350" y2="380" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="100" y1="350" x2="250" y2="480" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="100" y1="350" x2="350" y2="380" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="250" y1="480" x2="350" y2="380" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="250" y1="480" x2="550" y2="400" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="450" y1="150" x2="550" y2="400" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="450" y1="150" x2="600" y2="100" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="450" y1="150" x2="700" y2="180" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="550" y1="400" x2="350" y2="380" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="550" y1="400" x2="750" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="550" y1="400" x2="800" y2="480" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="700" y1="180" x2="600" y2="100" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="700" y1="180" x2="950" y2="120" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="700" y1="180" x2="850" y2="280" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="700" y1="180" x2="750" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="800" y1="480" x2="1000" y2="500" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="800" y1="480" x2="750" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="800" y1="480" x2="1100" y2="320" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="950" y1="120" x2="1100" y2="320" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="950" y1="120" x2="850" y2="280" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="1100" y1="320" x2="1000" y2="500" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="1100" y1="320" x2="850" y2="280" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="1000" y1="500" x2="850" y2="280" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="850" y1="280" x2="750" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            <line x1="350" y1="380" x2="750" y2="350" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.5" />
+            
+            <!-- Outline hub circles for premium style -->
+            <circle cx="300" cy="220" r="15" stroke="#355070" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="550" cy="400" r="20" stroke="#6d597a" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="700" cy="180" r="18" stroke="#508484" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="850" cy="280" r="16" stroke="#b5838d" stroke-width="1" fill="none" opacity="0.12" />
+
+            <!-- Hub filled nodes -->
+            <circle cx="150" cy="100" r="3" fill="#e56b6f" opacity="0.2" />
+            <circle cx="300" cy="220" r="4.5" fill="#355070" opacity="0.25" />
+            <circle cx="100" cy="350" r="3.5" fill="#eaac8b" opacity="0.2" />
+            <circle cx="250" cy="480" r="4" fill="#b5838d" opacity="0.2" />
+            <circle cx="450" cy="150" r="3" fill="#6d597a" opacity="0.2" />
+            <circle cx="550" cy="400" r="5" fill="#6d597a" opacity="0.25" />
+            <circle cx="700" cy="180" r="4" fill="#508484" opacity="0.25" />
+            <circle cx="800" cy="480" r="3" fill="#355070" opacity="0.2" />
+            <circle cx="950" cy="120" r="3.5" fill="#e56b6f" opacity="0.2" />
+            <circle cx="1100" cy="320" r="4" fill="#eaac8b" opacity="0.25" />
+            <circle cx="1000" cy="500" r="3" fill="#508484" opacity="0.2" />
+            <circle cx="600" cy="100" r="3" fill="#b5838d" opacity="0.15" />
+            <circle cx="350" cy="380" r="3.5" fill="#355070" opacity="0.2" />
+            <circle cx="850" cy="280" r="4.5" fill="#b5838d" opacity="0.25" />
+            <circle cx="750" cy="350" r="3.5" fill="#eaac8b" opacity="0.2" />
+        </svg>
+    </svg>
+
+    <!-- Square 1:1 Vector BG Definition -->
+    <svg id="svg-bg-square" style="display:none;">
+        <svg class="vector-bg" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+            <line x1="135" y1="170" x2="270" y2="375" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="135" y1="170" x2="90" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="135" y1="170" x2="405" y2="255" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="135" y1="170" x2="540" y2="170" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="270" y1="375" x2="90" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="270" y1="375" x2="225" y2="820" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="270" y1="375" x2="405" y2="255" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="270" y1="375" x2="315" y2="650" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="90" y1="600" x2="225" y2="820" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="90" y1="600" x2="315" y2="650" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="225" y1="820" x2="315" y2="650" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="225" y1="820" x2="495" y2="685" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="405" y1="255" x2="495" y2="685" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="405" y1="255" x2="540" y2="170" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="405" y1="255" x2="630" y2="305" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="495" y1="685" x2="315" y2="650" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="495" y1="685" x2="675" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="495" y1="685" x2="720" y2="820" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="630" y1="305" x2="540" y2="170" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="630" y1="305" x2="855" y2="205" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="630" y1="305" x2="765" y2="475" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="630" y1="305" x2="675" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="720" y1="820" x2="900" y2="855" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="720" y1="820" x2="675" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="720" y1="820" x2="990" y2="545" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="855" y1="205" x2="990" y2="545" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="855" y1="205" x2="765" y2="475" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="990" y1="545" x2="900" y2="855" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="990" y1="545" x2="765" y2="475" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="900" y1="855" x2="765" y2="475" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="765" y1="475" x2="675" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+            <line x1="315" y1="650" x2="675" y2="600" stroke="rgba(140, 130, 122, 0.08)" stroke-width="1.8" />
+
+            <!-- Outline hubs -->
+            <circle cx="270" cy="375" r="24" stroke="#355070" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="495" cy="685" r="32" stroke="#6d597a" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="630" cy="305" r="28" stroke="#508484" stroke-width="1" fill="none" opacity="0.12" />
+            <circle cx="765" cy="475" r="26" stroke="#b5838d" stroke-width="1" fill="none" opacity="0.12" />
+
+            <!-- Hub filled nodes -->
+            <circle cx="135" cy="170" r="5" fill="#e56b6f" opacity="0.2" />
+            <circle cx="270" cy="375" r="7" fill="#355070" opacity="0.25" />
+            <circle cx="90" cy="600" r="6" fill="#eaac8b" opacity="0.2" />
+            <circle cx="225" cy="820" r="6.5" fill="#b5838d" opacity="0.2" />
+            <circle cx="405" cy="255" r="5" fill="#6d597a" opacity="0.2" />
+            <circle cx="495" cy="685" r="8" fill="#6d597a" opacity="0.25" />
+            <circle cx="630" cy="305" r="6.5" fill="#508484" opacity="0.25" />
+            <circle cx="720" cy="820" r="5" fill="#355070" opacity="0.2" />
+            <circle cx="855" cy="205" r="5.5" fill="#e56b6f" opacity="0.2" />
+            <circle cx="990" cy="545" r="6.5" fill="#eaac8b" opacity="0.25" />
+            <circle cx="900" cy="855" r="5" fill="#508484" opacity="0.2" />
+            <circle cx="540" cy="170" r="5" fill="#b5838d" opacity="0.15" />
+            <circle cx="315" cy="650" r="5.5" fill="#355070" opacity="0.2" />
+            <circle cx="765" cy="475" r="7" fill="#b5838d" opacity="0.25" />
+            <circle cx="675" cy="600" r="5.5" fill="#eaac8b" opacity="0.2" />
+        </svg>
+    </svg>
+
+    <!-- SECTION 1: LANDSCAPE BANNERS (1200 x 630) -->
+    <section class="sheet-section">
+        <h2 class="sheet-section-title">
+            Landscape Promo Banners <span class="badge">1200 x 630 px</span>
+        </h2>
+        <div class="cards-grid">
+            
+            <!-- 1.1 General Promo Banner -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>General Event Promo</span>
+                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-banner" id="promo-banner">
+                        <!-- BG injected via script or directly inlined -->
+                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-general-banner">
+                                <h1>
+                                    <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </h1>
+                                <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.2 Haily Merritt Speaker Banner -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Haily Merritt</span>
+                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-banner" id="haily-banner">
+                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-banner">
+                                <div class="speaker-left">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                                    </div>
+                                    <h3>Haily Merritt</h3>
+                                    <p class="affiliation">Northeastern University London</p>
+                                </div>
+                                <div class="speaker-right">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Brain Networks as Phenotypes</h2>
+                                    <p class="talk-abstract">Advocating for studying brain networks as phenotypes. Highlighting individual functional heterogeneity constrained by genetics and co-creative coupling with social environments.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.3 Phileas Dazeley-Gaist Speaker Banner -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Phileas Dazeley-Gaist</span>
+                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-banner" id="phileas-banner">
+                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-banner">
+                                <div class="speaker-left">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                                    </div>
+                                    <h3>Phileas Dazeley-Gaist</h3>
+                                    <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                </div>
+                                <div class="speaker-right">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
+                                    <p class="talk-abstract">Tracking co-creative micro-dynamics of cultural evolution. Modeling citation network growths and tracing phylogenies through visual adaptation of creative motifs.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.4 Katie Spoon Speaker Banner -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Katie Spoon</span>
+                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-banner" id="katie-banner">
+                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-banner">
+                                <div class="speaker-left">
+                                    <div class="photo-frame">
+                                        <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
+                                    </div>
+                                    <h3>Katie Spoon</h3>
+                                    <p class="affiliation">Stanford University</p>
+                                </div>
+                                <div class="speaker-right">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Your doctor visits as a network</h2>
+                                    <p class="talk-abstract">Using network science and graph-based representation learning to convert 90 million primary-care visits for 8 million U.S. patients into models of high-risk health trajectories.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.5 Yessica Herrera Speaker Banner -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Yessica Herrera</span>
+                    <span class="dimensions">1200 x 630 (X/LinkedIn)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-banner" id="yessica-banner">
+                        <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-banner">
+                                <div class="speaker-left">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
+                                    </div>
+                                    <h3>Yessica Herrera</h3>
+                                    <p class="affiliation">University of Notre Dame</p>
+                                </div>
+                                <div class="speaker-right">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">The Art World as a Network</h2>
+                                    <p class="talk-abstract">Exploring the art world as a connected system, revealing how novel computational tools map prestige and success, and how we can use network patterns to create new art.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: SQUARE ASSETS (1080 x 1080) -->
+    <section class="sheet-section">
+        <h2 class="sheet-section-title">
+            Square Instagram Assets <span class="badge">1080 x 1080 px</span>
+        </h2>
+        <div class="cards-grid square-grid">
+            
+            <!-- 2.1 General Promo Square -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>General Event Square</span>
+                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-square" id="promo-square">
+                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-general-square">
+                                <h1>
+                                    <svg width="90" height="90" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span style="font-size: 5.5rem;">Edge Cases</span>
+                                </h1>
+                                <p class="tagline">Highlighting surprising network science research, and applications of network science in unconventional domains.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.2 Haily Merritt Speaker Square -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Haily Merritt</span>
+                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-square" id="haily-square">
+                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-square">
+                                <div class="speaker-square-top">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/haily_merritt.jpg" alt="Haily Merritt">
+                                    </div>
+                                    <h3>Haily Merritt</h3>
+                                    <p class="affiliation">Northeastern University London</p>
+                                </div>
+                                <div class="speaker-square-bottom">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Brain Networks as Phenotypes</h2>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.3 Phileas Dazeley-Gaist Speaker Square -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Phileas Dazeley-Gaist</span>
+                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-square" id="phileas-square">
+                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-square">
+                                <div class="speaker-square-top">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/phileas_dazeley-gaist.png" alt="Phileas Dazeley-Gaist">
+                                    </div>
+                                    <h3>Phileas Dazeley-Gaist</h3>
+                                    <p class="affiliation">Wolfram Research, Wolfram Institute</p>
+                                </div>
+                                <div class="speaker-square-bottom">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Growing a Sympoietic Art Organism</h2>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.4 Katie Spoon Speaker Square -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Katie Spoon</span>
+                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-square" id="katie-square">
+                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-square">
+                                <div class="speaker-square-top">
+                                    <div class="photo-frame">
+                                        <div class="photo-placeholder" style="background: linear-gradient(135deg, #e56b6f, #eaac8b);">KS</div>
+                                    </div>
+                                    <h3>Katie Spoon</h3>
+                                    <p class="affiliation">Stanford University</p>
+                                </div>
+                                <div class="speaker-square-bottom">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">Your doctor visits as a network</h2>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.5 Yessica Herrera Speaker Square -->
+            <div class="card-container-wrapper">
+                <div class="card-label">
+                    <span>Speaker: Yessica Herrera</span>
+                    <span class="dimensions">1080 x 1080 (1:1)</span>
+                </div>
+                <div class="preview-scale-wrapper">
+                    <div class="card-export-container size-square" id="yessica-square">
+                        <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                        <div class="card-content">
+                            <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | 2:30 PM – 5:45 PM</div>
+                            <div class="template-speaker-square">
+                                <div class="speaker-square-top">
+                                    <div class="photo-frame">
+                                        <img src="media/speakers/yessica_herrera_guzman.jpeg" alt="Yessica Herrera">
+                                    </div>
+                                    <h3>Yessica Herrera</h3>
+                                    <p class="affiliation">University of Notre Dame</p>
+                                </div>
+                                <div class="speaker-square-bottom">
+                                    <span class="section-tag">Featured Presentation</span>
+                                    <h2 class="talk-title">The Art World as a Network</h2>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-footer-logo">
+                                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="2.2" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="2.6" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="4" fill="#508484" />
+                                        <circle cx="10" cy="12" r="4" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="4" fill="#355070" />
+                                        <circle cx="26" cy="8" r="5.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1.5" />
+                                    </svg>
+                                    <span>Edge Cases</span>
+                                </div>
+                                <div class="card-footer-web">edgecases2026.org</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
