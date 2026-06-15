@@ -61,6 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
         mouse.active = false;
     });
 
+    function formatNameForWrapping(name) {
+        if (!name) return name;
+        let formatted = name.replace(/-/g, '\u2011');
+        const parts = formatted.trim().split(/ +/);
+        if (parts.length <= 2) {
+            return formatted;
+        }
+        const titles = ['dr.', 'prof.', 'mr.', 'ms.', 'mrs.', 'mx.'];
+        const hasTitle = titles.includes(parts[0].toLowerCase());
+        if (hasTitle && parts.length >= 3) {
+            const titleAndFirst = parts[0] + '\u00A0' + parts[1];
+            const rest = parts.slice(2).join('\u00A0');
+            return titleAndFirst + ' ' + rest;
+        } else {
+            const first = parts[0];
+            const rest = parts.slice(1).join('\u00A0');
+            return first + ' ' + rest;
+        }
+    }
+
     async function loadData() {
         try {
             const [themesRes, speakersRes, networkRes, agendaRes, settingsRes] = await Promise.all([
@@ -73,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const themes = await themesRes.json();
             const speakers = await speakersRes.json();
+            // Format speaker names to handle wrap behaviors nicely
+            speakers.forEach(s => {
+                if (s.name) s.name = formatNameForWrapping(s.name);
+            });
             const agenda = await agendaRes.json();
             const settings = await settingsRes.json();
             cachedNetworkData = await networkRes.json();
