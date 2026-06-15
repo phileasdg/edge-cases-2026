@@ -1979,7 +1979,7 @@
         <!-- TAB 5: CREATIVE WILDCARDS -->
         <div class="tab-panel" id="tab-wildcards-creative">
             <h2 class="sheet-section-title">
-                Creative Group & Lineup Promos <span class="badge">Schedules, Columns & Typographic Highlights</span>
+                Creative Group & Lineup Promos <span class="badge">Schedules, Columns & Logo Highlights</span>
             </h2>
             <div class="cards-grid">
 
@@ -2124,17 +2124,17 @@
                     </div>
                 </div>
 
-                <!-- 5.5 Typographic Poster Banner -->
+                <!-- 5.5 Logo Poster Banner -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Typographic Poster Banner<span class="dimensions">1200 x 630</span></div>
+                        <div>Logo Poster Banner<span class="dimensions">1200 x 630</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('creative-typo-banner')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('creative-typo-banner')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-logo-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-logo-banner')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper size-banner-wrapper">
-                        <div class="card-export-container size-banner" id="creative-typo-banner">
+                        <div class="card-export-container size-banner" id="creative-logo-banner">
                             <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
                             <div class="card-content">
                                 <div class="card-header-meta">Wednesday, Oct 14 | Binghamton University</div>
@@ -2152,7 +2152,7 @@
                                                 <circle cx="14" cy="20" r="3" fill="#355070" />
                                                 <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
                                             </svg>
-                                            <h1 style="margin: 0;">EDGE<br>CASES</h1>
+                                            <div style="font-family: var(--font-heading); font-size: 5.5rem; font-weight: 600; color: var(--primary-dark); user-select: none;">Edge Cases</div>
                                         </div>
                                         <p class="sub" style="color: var(--muted-text);">Unconventional Network Science</p>
                                     </div>
@@ -2169,17 +2169,17 @@
                     </div>
                 </div>
 
-                <!-- 5.6 Typographic Poster Square -->
+                <!-- 5.6 Logo Poster Square -->
                 <div class="card-container-wrapper">
                     <div class="card-label">
-                        <div>Typographic Poster Square<span class="dimensions">1080 x 1080</span></div>
+                        <div>Logo Poster Square<span class="dimensions">1080 x 1080</span></div>
                         <div class="card-actions">
-                            <button class="card-action-btn" onclick="previewCard('creative-typo-square')">👁️ Preview</button>
-                            <button class="card-action-btn" onclick="saveCard('creative-typo-square')">💾 Save PNG</button>
+                            <button class="card-action-btn" onclick="previewCard('creative-logo-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('creative-logo-square')">💾 Save PNG</button>
                         </div>
                     </div>
                     <div class="preview-scale-wrapper size-square-wrapper">
-                        <div class="card-export-container size-square" id="creative-typo-square">
+                        <div class="card-export-container size-square" id="creative-logo-square">
                             <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
                             <div class="card-content">
                                 <div class="card-header-meta large">Wednesday, Oct 14 | Lecture Hall 10</div>
@@ -2197,7 +2197,7 @@
                                                 <circle cx="14" cy="20" r="3" fill="#355070" />
                                                 <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
                                             </svg>
-                                            <h1 style="margin: 0; line-height: 1;">EDGE CASES</h1>
+                                            <div style="font-family: var(--font-heading); font-size: 4rem; font-weight: 600; color: var(--primary-dark); user-select: none; line-height: 1;">Edge Cases</div>
                                         </div>
                                         <p class="sub" style="color: var(--secondary-accent); font-weight: 700;">UNCONVENTIONAL NETWORK SCIENCE</p>
                                     </div>
@@ -3250,7 +3250,7 @@
                 }).join('');
             }
 
-            // Typographic list (Typographic Poster Banner)
+            // Typographic list (Logo Poster Banner)
             const typoBannerList = document.getElementById('typo-banner-list');
             if (typoBannerList) {
                 if (processedSpeakers.length > 5) {
@@ -3267,7 +3267,7 @@
                 `).join('');
             }
 
-            // Typographic grid (Typographic Poster Square)
+            // Typographic grid (Logo Poster Square)
             const typoSquareGrid = document.getElementById('typo-square-grid');
             if (typoSquareGrid) {
                 if (processedSpeakers.length > 4) {
