@@ -40,11 +40,12 @@
     "id": "arhan-vora",
     "name": "Arhan Vora",
     "affiliation": "University of Montpellier",
-    "topic": "Sailing through Phenotype Space : Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
-    "abstract": "Fitness Landscapes like Fisher's Geometric Model allow us a way to define the distribution of fitness effects for mutations of an individual. We modify this model to allow us to follow these distributions in changing environments. I shall describe how we discretise this landscape to create a network of phenotypes (where the network records the transition probabilities of mutating between the different types) and then use the Backward Kolmogorov equation to create a framework to calculate extinction probabilities in these changing environments.",
+    "topic": "",
+    "abstract": "",
     "bio": "",
     "image": "media/speakers/arhan_vora.jpeg",
-    "note": "Pending biography"
+    "note": "Pending biography and presentation details",
+    "publishAnyway": true
   },
   {
     "id": "divya-sindhu-lekha",
@@ -70,9 +71,11 @@
     "id": "alejandra-ortiz-duran",
     "name": "Alejandra Ortiz Durán",
     "affiliation": "Wolfram Research",
-    "topic": "Reaction-Diffusion on Graphs",
-    "abstract": "Exploring pattern formation and dynamical processes on complex network topologies.",
+    "topic": "",
+    "abstract": "",
     "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer in the Discrete Computation team at Wolfram. She holds a multidisciplinary bachelor's degree in Technology from the Center of Applied Physics and Advanced Technology and a master's degree in Mathematics from the National Autonomous University of Mexico. She is currently pursuing a Ph.D. in Mathematical Biology. Her research interests lie at the intersection of network science, discrete mathematics, graph theory, and mathematical modeling. Her work focuses on developing computational and mathematical methods to study natural and social systems, with particular emphasis on the structure, dynamics, and behavior of networked phenomena.",
-    "image": "media/speakers/alejandra_ortiz.png"
+    "image": "media/speakers/alejandra_ortiz.png",
+    "note": "Pending presentation details",
+    "publishAnyway": true
   }
 ]

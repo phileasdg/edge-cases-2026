@@ -2571,7 +2571,14 @@
                         `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
                         `<div class="photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
                     
-                    const draftBadge = speaker.note ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
+                    const reasons = [];
+                    if (!speaker.image) reasons.push('image');
+                    if (!speaker.bio) reasons.push('bio');
+                    if (!speaker.topic) reasons.push('topic');
+                    if (!speaker.abstract) reasons.push('abstract');
+                    if (speaker.note) reasons.push('note');
+                    const needsUpdate = reasons.length > 0;
+                    const draftBadge = needsUpdate ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
 
                     return `
                         <div class="card-container-wrapper">
@@ -2597,8 +2604,8 @@
                                             </div>
                                             <div class="speaker-right">
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title">${speaker.topic || ''}</h2>
-                                                <p class="talk-abstract">${speaker.abstract || 'Abstract details coming soon.'}</p>
+                                                <h2 class="talk-title">${speaker.topic || 'To be announced'}</h2>
+                                                <p class="talk-abstract">${speaker.abstract || 'Presentation details coming soon.'}</p>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -2635,7 +2642,14 @@
                         `<img src="${speaker.image}" alt="${speaker.name}" onerror="this.outerHTML='<div class=&quot;photo-placeholder&quot; style=&quot;background: linear-gradient(135deg, ${c1}, ${c2})&quot;>${getInitials(speaker.name)}</div>';">` :
                         `<div class="photo-placeholder" style="background: linear-gradient(135deg, ${c1}, ${c2})">${getInitials(speaker.name)}</div>`;
                     
-                    const draftBadge = speaker.note ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
+                    const reasons = [];
+                    if (!speaker.image) reasons.push('image');
+                    if (!speaker.bio) reasons.push('bio');
+                    if (!speaker.topic) reasons.push('topic');
+                    if (!speaker.abstract) reasons.push('abstract');
+                    if (speaker.note) reasons.push('note');
+                    const needsUpdate = reasons.length > 0;
+                    const draftBadge = needsUpdate ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
 
                     return `
                         <div class="card-container-wrapper">
@@ -2661,8 +2675,8 @@
                                             </div>
                                             <div class="speaker-square-right">
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title">${speaker.topic || ''}</h2>
-                                                <p class="talk-abstract">${speaker.abstract || 'Abstract details coming soon.'}</p>
+                                                <h2 class="talk-title">${speaker.topic || 'To be announced'}</h2>
+                                                <p class="talk-abstract">${speaker.abstract || 'Presentation details coming soon.'}</p>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -2782,7 +2796,7 @@
                         </div>
                         <div class="timeline-content">
                             <h4>${speaker.name}</h4>
-                            <p>${speaker.topic} (${getShortAffiliation(speaker.affiliation)})</p>
+                            <p>${speaker.topic || 'To be announced'} (${getShortAffiliation(speaker.affiliation)})</p>
                         </div>
                     </div>
                 `;
@@ -2813,7 +2827,7 @@
                         </div>
                         <div class="timeline-content">
                             <h4>${speaker.name}</h4>
-                            <p>${speaker.topic} (${getShortAffiliation(speaker.affiliation)})</p>
+                            <p>${speaker.topic || 'To be announced'} (${getShortAffiliation(speaker.affiliation)})</p>
                         </div>
                     </div>
                 `;
@@ -2879,7 +2893,7 @@
                             <div class="stripe-info">
                                 <h4>${speaker.name}</h4>
                                 <p class="affiliation">${getShortAffiliation(speaker.affiliation)}</p>
-                                <p class="topic">${speaker.topic}</p>
+                                <p class="topic">${speaker.topic || 'To be announced'}</p>
                             </div>
                         </div>
                     `;
@@ -2915,7 +2929,7 @@
                             <div class="stripe-info">
                                 <h4>${speaker.name}</h4>
                                 <p class="affiliation">${speaker.affiliation || ''}</p>
-                                <p class="topic">${speaker.topic || ''}</p>
+                                <p class="topic">${speaker.topic || 'To be announced'}</p>
                             </div>
                         </div>
                     `;
@@ -2933,7 +2947,7 @@
                 typoBannerList.innerHTML = speakers.map(speaker => `
                     <div class="typo-speaker-item">
                         <h3>${speaker.name}</h3>
-                        <p class="topic">${speaker.topic || ''}</p>
+                        <p class="topic">${speaker.topic || 'To be announced'}</p>
                         <p class="affiliation">${speaker.affiliation || ''}</p>
                     </div>
                 `).join('');
@@ -2956,7 +2970,7 @@
                 typoSquareGrid.innerHTML = speakers.map(speaker => `
                     <div class="typo-speaker-item">
                         <h3>${speaker.name}</h3>
-                        <p class="topic">${speaker.topic || ''}</p>
+                        <p class="topic">${speaker.topic || 'To be announced'}</p>
                         <p class="affiliation">${speaker.affiliation || ''}</p>
                     </div>
                 `).join('');

@@ -9,9 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     function observeReveals() {
-        document.querySelectorAll('[data-reveal]').forEach(el => {
-            revealObserver.observe(el);
-        });
+        if (window.location.search.includes('revealAll=true')) {
+            document.querySelectorAll('[data-reveal]').forEach(el => {
+                el.classList.add('revealed');
+            });
+        } else {
+            document.querySelectorAll('[data-reveal]').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
     }
 
     /**
@@ -190,6 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         const reasons = [];
                         if (!speaker.image) reasons.push('Missing headshot image');
                         if (!speaker.bio) reasons.push('Missing biography');
+                        if (!speaker.topic) reasons.push('Missing presentation title');
+                        if (!speaker.abstract) reasons.push('Missing talk description');
                         if (speaker.note) reasons.push(`Draft note: ${speaker.note}`);
                         
                         const needsUpdate = reasons.length > 0;
@@ -197,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             `<div class="update-badge" title="[Draft: ${speaker.name}]\nPending updates:\n${reasons.map(r => `• ${r}`).join('\n')}">Update Needed</div>` : 
                             '';
 
-                        const isAnonymous = !showIndicators && needsUpdate;
+                        const isAnonymous = !showIndicators && needsUpdate && !speaker.publishAnyway;
 
                         if (isAnonymous) {
                             return `
@@ -232,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="speaker-info">
                                     <h3>${speaker.name}</h3>
                                     <div class="affiliation">${speaker.affiliation}</div>
-                                    <p class="topic">${speaker.topic}</p>
+                                    <p class="topic">${speaker.topic || 'To be announced'}</p>
                                 </div>
                             </div>
                         `;
@@ -284,16 +292,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         // Talk Title visibility
                         const titleLabel = modalTalkTitle.previousElementSibling;
-                        if (speaker.topic) {
-                            modalTalkTitle.textContent = speaker.topic;
-                            modalTalkTitle.style.display = '';
-                            if (titleLabel) titleLabel.style.display = '';
-                        } else {
-                            modalTalkTitle.style.display = 'none';
-                            if (titleLabel) titleLabel.style.display = 'none';
-                        }
+                        modalTalkTitle.textContent = speaker.topic || 'To be announced';
+                        modalTalkTitle.style.display = '';
+                        if (titleLabel) titleLabel.style.display = '';
                         
-                        modalTalkAbstract.textContent = speaker.abstract || 'Abstract details coming soon.';
+                        modalTalkAbstract.textContent = speaker.abstract || 'Presentation details coming soon.';
                         modalSpeakerBio.textContent = speaker.bio || 'Biography coming soon.';
 
                         // Find matching index for gradient fallback
