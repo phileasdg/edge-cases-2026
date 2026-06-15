@@ -815,6 +815,71 @@
             max-width: 280px;
             margin: 0 auto;
         }
+        /* Themes Wildcard Styles */
+        .themes-grid {
+            grid-template-columns: 1fr 1fr;
+            align-content: center;
+            gap: 1.25rem 2rem !important;
+        }
+
+        .theme-item-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+        }
+
+        .theme-number {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+            background: rgba(80, 132, 132, 0.1);
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            flex-shrink: 0;
+            min-width: 42px;
+            text-align: center;
+        }
+
+        .theme-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0 0 0.25rem 0;
+            line-height: 1.2;
+        }
+
+        .theme-info p {
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            color: var(--muted-text);
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .themes-grid-square {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 2.5rem;
+            width: 100%;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin: 1.5rem 0;
+            height: 70%;
+            align-content: center;
+        }
+
+        .themes-grid-square .theme-item-row {
+            align-items: flex-start;
+        }
 
         /* Creative Group Lineups & Schedule Styles */
         .template-wildcard-schedule {
@@ -1988,6 +2053,119 @@
                     </div>
                 </div>
 
+                <!-- 4.3 Themes Highlight Banner -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Themes Highlight Banner<span class="dimensions">1200 x 630</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('wildcard-themes-banner')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('wildcard-themes-banner')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-banner-wrapper">
+                        <div class="card-export-container size-banner" id="wildcard-themes-banner">
+                            <script>document.write(document.getElementById('svg-bg-landscape').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta">Key Focus Areas & Research Themes | CCS 2026 Satellite</div>
+                                <div class="template-wildcard-banner">
+                                    <div class="wildcard-left">
+                                        <h1>
+                                            <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                            </svg>
+                                            <span>Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">CCS 2026 Satellite Symposium on Unconventional Network Science</p>
+                                        <p class="date" style="color: var(--accent-color); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.95rem; margin-top: 1.5rem;">Symposium Themes</p>
+                                    </div>
+                                    <div class="wildcard-right-grid themes-grid" id="wildcard-banner-themes">
+                                        <!-- Dynamically Populated -->
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="3" fill="#508484" />
+                                            <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="3" fill="#355070" />
+                                            <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4.4 Themes Highlight Square -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>Themes Highlight Square<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('wildcard-themes-square')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('wildcard-themes-square')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper">
+                        <div class="card-export-container size-square" id="wildcard-themes-square">
+                            <script>document.write(document.getElementById('svg-bg-square').innerHTML);</script>
+                            <div class="card-content">
+                                <div class="card-header-meta large">Key Focus Areas & Research Themes | CCS 2026 Satellite</div>
+                                <div class="template-wildcard-square">
+                                    <div class="wildcard-square-header">
+                                        <h1>
+                                            <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; flex-shrink: 0;">
+                                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                            </svg>
+                                            <span style="font-size: 4rem;">Edge Cases</span>
+                                        </h1>
+                                        <p class="sub">Key Symposium Themes</p>
+                                    </div>
+                                    <div class="themes-grid-square" id="wildcard-square-themes">
+                                        <!-- Dynamically Populated -->
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-footer-logo">
+                                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                                            <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                            <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                            <circle cx="6" cy="24" r="3" fill="#508484" />
+                                            <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                            <circle cx="14" cy="20" r="3" fill="#355070" />
+                                            <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                        </svg>
+                                        <span>Edge Cases</span>
+                                    </div>
+                                    <div class="card-footer-web">edgecases2026.org</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -2425,7 +2603,7 @@
                     <div class="preview-scale-wrapper size-square-wrapper checkerboard-light">
                         <div class="card-export-container size-square transparent-bg" id="logo-ccs-circle-light" style="padding: 20px;">
                             <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
-                                <div style="width: 1040px; height: 1040px; border-radius: 50%; background-color: #ffffff; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(43, 38, 35, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(43, 38, 35, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 35, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(43, 38, 35, 0.1); border: 4px solid #2b2623; position: relative; overflow: hidden; flex-shrink: 0;">
+                                <div style="width: 1040px; height: 1040px; border-radius: 50%; background-color: #ffffff; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(43, 38, 35, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(43, 38, 35, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 35, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(43, 38, 35, 0.1); border: 4px solid #8c827a; position: relative; overflow: hidden; flex-shrink: 0;">
                                     <!-- Network Watermark Background (Schematic Style) -->
                                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #8c827a;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 
@@ -2515,15 +2693,166 @@
 
                                         <!-- Secondary Spline-based Background Network -->
                                         <g opacity="0.12">
-                                            <!-- Curved splines connecting outliers and clusters -->
-                                            <path d="M 36 22 Q 50 15, 70 35" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 70 35 Q 80 55, 64 78" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 64 78 Q 50 85, 30 68" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 20 45, 36 22" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 45 45, 70 35" fill="none" stroke="#8c827a" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 36 22 Q 55 55, 64 78" fill="none" stroke="#8c827a" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 16 20 Q 5 45, 18 72" fill="none" stroke="#8c827a" stroke-width="0.3" opacity="0.5" />
-                                            <path d="M 82 28 Q 95 55, 84 80" fill="none" stroke="#8c827a" stroke-width="0.3" opacity="0.5" />
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            
+                                            <!-- Sparse network connections -->
+                                            <line x1="10" y1="25" x2="30" y2="40" stroke="#8c827a" stroke-width="0.3" />
+                                            <line x1="30" y1="40" x2="70" y2="60" stroke="#8c827a" stroke-width="0.3" />
+                                            <line x1="70" y1="60" x2="90" y2="75" stroke="#8c827a" stroke-width="0.3" />
+                                            <line x1="30" y1="40" x2="45" y2="80" stroke="#8c827a" stroke-width="0.3" />
+                                            <line x1="70" y1="60" x2="45" y2="80" stroke="#8c827a" stroke-width="0.3" />
+                                            
+                                            <!-- Sparse network nodes -->
+                                            <circle cx="10" cy="25" r="1.2" fill="#508484" />
+                                            <circle cx="30" cy="40" r="1.5" fill="#6d597a" />
+                                            <circle cx="70" cy="60" r="1.5" fill="#355070" />
+                                            <circle cx="90" cy="75" r="1.2" fill="#6d597a" />
+                                            <circle cx="45" cy="80" r="1.4" fill="#508484" />
+                                        </g>
+                                    </svg>
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.5" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.8" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="3.2" fill="#508484" />
+                                        <circle cx="10" cy="12" r="3.2" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="3.2" fill="#355070" />
+                                        <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.2" />
+                                    </svg>
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                        Edge Cases
+                                        <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.7b CCS Circular Badge (Light) -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>CCS Circular Badge (Light)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-ccs-circle-light-rim')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-ccs-circle-light-rim')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-light">
+                        <div class="card-export-container size-square transparent-bg" id="logo-ccs-circle-light-rim" style="padding: 20px;">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
+                                <div style="width: 1040px; height: 1040px; border-radius: 50%; background-color: #ffffff; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(43, 38, 35, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(43, 38, 35, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 35, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(43, 38, 35, 0.1); border: 4px solid #8c827a; position: relative; overflow: hidden; flex-shrink: 0;">
+                                    <!-- Network Watermark Background (Schematic Style) -->
+                                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #8c827a;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="rim-text-path-light-rim" d="M 50, 94 a 44,44 0 1,1 0,-88 a 44,44 0 1,1 0,88" fill="none" />
+                                        </defs>
+
+                                        <!-- Outer Rim Text -->
+                                        <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#8c827a" letter-spacing="0.3em">
+                                            <textPath href="#rim-text-path-light-rim" startOffset="50%" text-anchor="middle">
+                                                SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS
+                                            </textPath>
+                                        </text>
+
+                                        <!-- Background Network Constellation (Vibrant Brand Colors) -->
+                                        <g opacity="0.3">
+                                            <!-- Cluster 1 (Top-Left molecular grid) -->
+                                            <line x1="12" y1="12" x2="22" y2="10" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="12" y1="12" x2="16" y2="20" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="22" y1="10" x2="26" y2="18" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="16" y1="20" x2="26" y2="18" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="16" y1="20" x2="10" y2="24" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="26" y1="18" x2="20" y2="28" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="10" y1="24" x2="20" y2="28" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            
+                                            <circle cx="12" cy="12" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="22" cy="10" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="16" cy="20" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="26" cy="18" r="1.6" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="10" cy="24" r="1.5" fill="#508484" opacity="0.4" />
+                                            <circle cx="20" cy="28" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier G (Top-Left) -->
+                                            <line x1="26" y1="18" x2="36" y2="22" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <line x1="22" y1="10" x2="36" y2="22" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <circle cx="36" cy="22" r="2.2" fill="#e56b6f" opacity="0.6" />
+
+                                            <!-- Cluster 2 (Top-Right molecular grid) -->
+                                            <line x1="76" y1="20" x2="86" y2="14" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="76" y1="20" x2="82" y2="28" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="86" y1="14" x2="92" y2="22" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="82" y1="28" x2="92" y2="22" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="82" y1="28" x2="88" y2="32" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="92" y1="22" x2="88" y2="32" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+
+                                            <circle cx="76" cy="20" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="86" cy="14" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="82" cy="28" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="92" cy="22" r="1.5" fill="#6d597a" opacity="0.4" />
+                                            <circle cx="88" cy="32" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier TR_F (Top-Right) -->
+                                            <line x1="82" y1="28" x2="70" y2="35" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <line x1="76" y1="20" x2="70" y2="35" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <circle cx="70" cy="35" r="2.2" fill="#e56b6f" opacity="0.6" />
+
+                                            <!-- Cluster 3 (Bottom-Right molecular grid) -->
+                                            <line x1="88" y1="88" x2="78" y2="90" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="88" y1="88" x2="84" y2="80" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="78" y1="90" x2="74" y2="82" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="84" y1="80" x2="74" y2="82" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="84" y1="80" x2="90" y2="76" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="74" y1="82" x2="80" y2="72" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="90" y1="76" x2="80" y2="72" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            
+                                            <circle cx="88" cy="88" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="78" cy="90" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="84" cy="80" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="74" cy="82" r="1.6" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="90" cy="76" r="1.5" fill="#508484" opacity="0.4" />
+                                            <circle cx="80" cy="72" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier N (Bottom-Right) -->
+                                            <line x1="74" y1="82" x2="64" y2="78" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <line x1="80" y1="72" x2="64" y2="78" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <circle cx="64" cy="78" r="2.2" fill="#e56b6f" opacity="0.6" />
+
+                                            <!-- Cluster 4 (Bottom-Left molecular grid) -->
+                                            <line x1="14" y1="80" x2="24" y2="86" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="14" y1="80" x2="18" y2="72" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="14" y1="80" x2="10" y2="74" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="14" y1="80" x2="8" y2="84" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="18" y1="72" x2="10" y2="74" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="10" y1="74" x2="8" y2="84" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+                                            <line x1="18" y1="72" x2="24" y2="86" stroke="#8c827a" stroke-width="0.5" opacity="0.3" />
+
+                                            <circle cx="14" cy="80" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="24" cy="86" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="18" cy="72" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="10" cy="74" r="1.5" fill="#6d597a" opacity="0.4" />
+                                            <circle cx="8" cy="84" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier BL_F (Bottom-Left) -->
+                                            <line x1="18" y1="72" x2="30" y2="68" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <line x1="14" y1="80" x2="30" y2="68" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.5" />
+                                            <circle cx="30" cy="68" r="2.2" fill="#e56b6f" opacity="0.6" />
+                                        </g>
+
+                                        <!-- Secondary Spline-based Background Network -->
+                                        <g opacity="0.12">
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
                                             
                                             <!-- Sparse network connections -->
                                             <line x1="10" y1="25" x2="30" y2="40" stroke="#8c827a" stroke-width="0.3" />
@@ -2691,15 +3020,178 @@
 
                                         <!-- Secondary Spline-based Background Network -->
                                         <g opacity="0.09">
-                                            <!-- Curved splines connecting outliers and clusters -->
-                                            <path d="M 36 22 Q 50 15, 70 35" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 70 35 Q 80 55, 64 78" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 64 78 Q 50 85, 30 68" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 20 45, 36 22" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 45 45, 70 35" fill="none" stroke="#faf9f5" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 36 22 Q 55 55, 64 78" fill="none" stroke="#faf9f5" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 16 20 Q 5 45, 18 72" fill="none" stroke="#faf9f5" stroke-width="0.3" opacity="0.5" />
-                                            <path d="M 82 28 Q 95 55, 84 80" fill="none" stroke="#faf9f5" stroke-width="0.3" opacity="0.5" />
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            
+                                            <!-- Sparse network connections -->
+                                            <line x1="10" y1="25" x2="30" y2="40" stroke="#faf9f5" stroke-width="0.3" />
+                                            <line x1="30" y1="40" x2="70" y2="60" stroke="#faf9f5" stroke-width="0.3" />
+                                            <line x1="70" y1="60" x2="90" y2="75" stroke="#faf9f5" stroke-width="0.3" />
+                                            <line x1="30" y1="40" x2="45" y2="80" stroke="#faf9f5" stroke-width="0.3" />
+                                            <line x1="70" y1="60" x2="45" y2="80" stroke="#faf9f5" stroke-width="0.3" />
+                                            
+                                            <!-- Sparse network nodes -->
+                                            <circle cx="10" cy="25" r="1.2" fill="#508484" />
+                                            <circle cx="30" cy="40" r="1.5" fill="#6d597a" />
+                                            <circle cx="70" cy="60" r="1.5" fill="#355070" />
+                                            <circle cx="90" cy="75" r="1.2" fill="#6d597a" />
+                                            <circle cx="45" cy="80" r="1.4" fill="#508484" />
+                                        </g>
+                                    </svg>
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                        <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.8" stroke-dasharray="2.5 2.5" />
+                                        <circle cx="6" cy="24" r="3.2" fill="#508484" />
+                                        <circle cx="10" cy="12" r="3.2" fill="#6d597a" />
+                                        <circle cx="14" cy="20" r="3.2" fill="#355070" />
+                                        <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#2b2623" stroke-width="1.2" />
+                                    </svg>
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                        Edge Cases
+                                        <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.8b CCS Circular Badge (Dark) -->
+                <div class="card-container-wrapper">
+                    <div class="card-label">
+                        <div>CCS Circular Badge (Dark)<span class="dimensions">1080 x 1080</span></div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" onclick="previewCard('logo-ccs-circle-dark-rim')">👁️ Preview</button>
+                            <button class="card-action-btn" onclick="saveCard('logo-ccs-circle-dark-rim')">💾 Save PNG</button>
+                        </div>
+                    </div>
+                    <div class="preview-scale-wrapper size-square-wrapper checkerboard-dark">
+                        <div class="card-export-container size-square transparent-bg" id="logo-ccs-circle-dark-rim" style="padding: 20px;">
+                            <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
+                                <div style="width: 1040px; height: 1040px; border-radius: 50%; background-color: #2b2623; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(43, 38, 35, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(250, 249, 245, 0.06) 1.5px, transparent 1.5px), linear-gradient(rgba(250, 249, 245, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(250, 249, 245, 0.02) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); border: 4px solid #faf9f5; position: relative; overflow: hidden; flex-shrink: 0;">
+                                    <!-- Network Watermark Background (Schematic Style) -->
+                                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #faf9f5;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <radialGradient id="teal-glow-dark-rim" cx="50%" cy="50%" r="50%">
+                                                <stop offset="0%" stop-color="#508484" stop-opacity="0.15" />
+                                                <stop offset="100%" stop-color="#508484" stop-opacity="0" />
+                                            </radialGradient>
+                                            <radialGradient id="purple-glow-dark-rim" cx="50%" cy="50%" r="50%">
+                                                <stop offset="0%" stop-color="#6d597a" stop-opacity="0.18" />
+                                                <stop offset="100%" stop-color="#6d597a" stop-opacity="0" />
+                                            </radialGradient>
+                                            <path id="rim-text-path-dark-rim" d="M 50, 94 a 44,44 0 1,1 0,-88 a 44,44 0 1,1 0,88" fill="none" />
+                                        </defs>
+
+                                        <!-- Outer Rim Text -->
+                                        <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#faf9f5" letter-spacing="0.3em">
+                                            <textPath href="#rim-text-path-dark-rim" startOffset="50%" text-anchor="middle">
+                                                SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS
+                                            </textPath>
+                                        </text>
+
+                                        <!-- Ambient Glimmers (Glow Effects) -->
+                                        <rect x="0" y="0" width="100" height="100" fill="url(#teal-glow-dark-rim)" opacity="0.8" />
+                                        <rect x="0" y="0" width="100" height="100" fill="url(#purple-glow-dark-rim)" opacity="0.8" />
+
+                                        <!-- Background Network Constellation (Vibrant Brand Colors) -->
+                                        <g opacity="0.25">
+                                            <!-- Cluster 1 (Top-Left molecular grid) -->
+                                            <line x1="12" y1="12" x2="22" y2="10" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="12" y1="12" x2="16" y2="20" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="22" y1="10" x2="26" y2="18" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="16" y1="20" x2="26" y2="18" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="16" y1="20" x2="10" y2="24" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="26" y1="18" x2="20" y2="28" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="10" y1="24" x2="20" y2="28" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            
+                                            <circle cx="12" cy="12" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="22" cy="10" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="16" cy="20" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="26" cy="18" r="1.6" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="10" cy="24" r="1.5" fill="#508484" opacity="0.4" />
+                                            <circle cx="20" cy="28" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier G (Top-Left) -->
+                                            <line x1="26" y1="18" x2="36" y2="22" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <line x1="22" y1="10" x2="36" y2="22" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <circle cx="36" cy="22" r="2.2" fill="#e56b6f" opacity="0.55" />
+
+                                            <!-- Cluster 2 (Top-Right molecular grid) -->
+                                            <line x1="76" y1="20" x2="86" y2="14" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="76" y1="20" x2="82" y2="28" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="86" y1="14" x2="92" y2="22" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="82" y1="28" x2="92" y2="22" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="82" y1="28" x2="88" y2="32" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="92" y1="22" x2="88" y2="32" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+
+                                            <circle cx="76" cy="20" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="86" cy="14" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="82" cy="28" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="92" cy="22" r="1.5" fill="#6d597a" opacity="0.4" />
+                                            <circle cx="88" cy="32" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier TR_F (Top-Right) -->
+                                            <line x1="82" y1="28" x2="70" y2="35" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <line x1="76" y1="20" x2="70" y2="35" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <circle cx="70" cy="35" r="2.2" fill="#e56b6f" opacity="0.55" />
+
+                                            <!-- Cluster 3 (Bottom-Right molecular grid) -->
+                                            <line x1="88" y1="88" x2="78" y2="90" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="88" y1="88" x2="84" y2="80" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="78" y1="90" x2="74" y2="82" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="84" y1="80" x2="74" y2="82" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="84" y1="80" x2="90" y2="76" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="74" y1="82" x2="80" y2="72" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="90" y1="76" x2="80" y2="72" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            
+                                            <circle cx="88" cy="88" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="78" cy="90" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="84" cy="80" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="74" cy="82" r="1.6" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="90" cy="76" r="1.5" fill="#508484" opacity="0.4" />
+                                            <circle cx="80" cy="72" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier N (Bottom-Right) -->
+                                            <line x1="74" y1="82" x2="64" y2="78" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <line x1="80" y1="72" x2="64" y2="78" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <circle cx="64" cy="78" r="2.2" fill="#e56b6f" opacity="0.55" />
+
+                                            <!-- Cluster 4 (Bottom-Left molecular grid) -->
+                                            <line x1="14" y1="80" x2="24" y2="86" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="14" y1="80" x2="18" y2="72" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="14" y1="80" x2="10" y2="74" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="14" y1="80" x2="8" y2="84" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="18" y1="72" x2="10" y2="74" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="10" y1="74" x2="8" y2="84" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+                                            <line x1="18" y1="72" x2="24" y2="86" stroke="#faf9f5" stroke-width="0.5" opacity="0.25" />
+
+                                            <circle cx="14" cy="80" r="1.8" fill="#508484" opacity="0.45" />
+                                            <circle cx="24" cy="86" r="2.0" fill="#6d597a" opacity="0.45" />
+                                            <circle cx="18" cy="72" r="1.6" fill="#355070" opacity="0.45" />
+                                            <circle cx="10" cy="74" r="1.5" fill="#6d597a" opacity="0.4" />
+                                            <circle cx="8" cy="84" r="1.8" fill="#355070" opacity="0.45" />
+
+                                            <!-- Outlier BL_F (Bottom-Left) -->
+                                            <line x1="18" y1="72" x2="30" y2="68" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <line x1="14" y1="80" x2="30" y2="68" stroke="#e56b6f" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.45" />
+                                            <circle cx="30" cy="68" r="2.2" fill="#e56b6f" opacity="0.55" />
+                                        </g>
+
+                                        <!-- Secondary Spline-based Background Network -->
+                                        <g opacity="0.09">
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
                                             
                                             <!-- Sparse network connections -->
                                             <line x1="10" y1="25" x2="30" y2="40" stroke="#faf9f5" stroke-width="0.3" />
@@ -2748,7 +3240,7 @@
                     <div class="preview-scale-wrapper size-square-wrapper checkerboard-light">
                         <div class="card-export-container size-square transparent-bg" id="logo-ccs-square-light" style="padding: 20px;">
                             <div class="card-content" style="justify-content: center; align-items: center; background: transparent;">
-                                <div style="width: 1040px; height: 1040px; border-radius: 120px; background-color: #ffffff; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(43, 38, 35, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(43, 38, 35, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 35, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(43, 38, 35, 0.1); border: 4px solid #2b2623; position: relative; overflow: hidden; flex-shrink: 0;">
+                                <div style="width: 1040px; height: 1040px; border-radius: 120px; background-color: #ffffff; background-image: linear-gradient(135deg, rgba(80, 132, 132, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(229, 107, 111, 0.08) 100%), radial-gradient(rgba(43, 38, 35, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(43, 38, 35, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 35, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 160px 160px, 160px 160px; background-position: center center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(43, 38, 35, 0.1); border: 4px solid #8c827a; position: relative; overflow: hidden; flex-shrink: 0;">
                                     <!-- Network Watermark Background (Schematic Style) -->
                                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #8c827a;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 
@@ -2838,15 +3330,12 @@
 
                                         <!-- Secondary Spline-based Background Network -->
                                         <g opacity="0.12">
-                                            <!-- Curved splines connecting outliers and clusters -->
-                                            <path d="M 36 22 Q 50 15, 70 35" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 70 35 Q 80 55, 64 78" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 64 78 Q 50 85, 30 68" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 20 45, 36 22" fill="none" stroke="#8c827a" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 45 45, 70 35" fill="none" stroke="#8c827a" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 36 22 Q 55 55, 64 78" fill="none" stroke="#8c827a" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 16 20 Q 5 45, 18 72" fill="none" stroke="#8c827a" stroke-width="0.3" opacity="0.5" />
-                                            <path d="M 82 28 Q 95 55, 84 80" fill="none" stroke="#8c827a" stroke-width="0.3" opacity="0.5" />
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#8c827a" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#8c827a" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
                                             
                                             <!-- Sparse network connections -->
                                             <line x1="10" y1="25" x2="30" y2="40" stroke="#8c827a" stroke-width="0.3" />
@@ -3014,15 +3503,12 @@
 
                                         <!-- Secondary Spline-based Background Network -->
                                         <g opacity="0.09">
-                                            <!-- Curved splines connecting outliers and clusters -->
-                                            <path d="M 36 22 Q 50 15, 70 35" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 70 35 Q 80 55, 64 78" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 64 78 Q 50 85, 30 68" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 20 45, 36 22" fill="none" stroke="#faf9f5" stroke-width="0.35" opacity="0.8" />
-                                            <path d="M 30 68 Q 45 45, 70 35" fill="none" stroke="#faf9f5" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 36 22 Q 55 55, 64 78" fill="none" stroke="#faf9f5" stroke-width="0.25" opacity="0.6" stroke-dasharray="1.5 1.5" />
-                                            <path d="M 16 20 Q 5 45, 18 72" fill="none" stroke="#faf9f5" stroke-width="0.3" opacity="0.5" />
-                                            <path d="M 82 28 Q 95 55, 84 80" fill="none" stroke="#faf9f5" stroke-width="0.3" opacity="0.5" />
+                                            <!-- Intersecting sweeping splines crossing the canvas -->
+                                            <path d="M -5 -5 Q 20 70, 105 105" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 20 -5 C 40 25, 80 0, 105 85" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M -5 90 Q 70 20, 95 -5" fill="none" stroke="#faf9f5" stroke-width="0.4" />
+                                            <path d="M 30 -5 Q 58 58, 70 105" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
+                                            <path d="M -5 75 Q 45 45, 105 25" fill="none" stroke="#faf9f5" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.7" />
                                             
                                             <!-- Sparse network connections -->
                                             <line x1="10" y1="25" x2="30" y2="40" stroke="#faf9f5" stroke-width="0.3" />
@@ -3177,14 +3663,15 @@
 
             Promise.all([
                 fetch('data/speakers.json').then(res => res.json()),
+                fetch('data/themes.json').then(res => res.json()),
                 fetch('data/settings.json').then(res => res.json()).catch(() => ({}))
             ])
-            .then(([speakers, settings]) => {
+            .then(([speakers, themes, settings]) => {
                 // Format speaker names to handle wrap behaviors nicely
                 speakers.forEach(s => {
                     if (s.name) s.name = formatNameForWrapping(s.name);
                 });
-                renderDynamicPR(speakers, settings);
+                renderDynamicPR(speakers, themes, settings);
                 
                 // Route to specific tab from hash if present
                 const hash = window.location.hash.substring(1);
@@ -3249,7 +3736,7 @@
             return times;
         }
 
-        function renderDynamicPR(speakers, settings) {
+        function renderDynamicPR(speakers, themes, settings) {
             const landscapeSvgBg = document.getElementById('svg-bg-landscape').innerHTML;
             const squareSvgBg = document.getElementById('svg-bg-square').innerHTML;
 
@@ -3754,6 +4241,37 @@
                         <p class="affiliation">${speaker.affiliation || ''}</p>
                     </div>
                 `).join('');
+            }
+
+            // Populate Themes (Tab 4 Wildcard Themes Highlight Banner & Square)
+            const bannerThemesContainer = document.getElementById('wildcard-banner-themes');
+            if (bannerThemesContainer && themes) {
+                bannerThemesContainer.innerHTML = themes.map((theme, index) => {
+                    return `
+                        <div class="theme-item-row">
+                            <div class="theme-number">${theme.id}</div>
+                            <div class="theme-info">
+                                <h4>${theme.title}</h4>
+                                <p>${theme.description}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const squareThemesContainer = document.getElementById('wildcard-square-themes');
+            if (squareThemesContainer && themes) {
+                squareThemesContainer.innerHTML = themes.map((theme, index) => {
+                    return `
+                        <div class="theme-item-row">
+                            <div class="theme-number">${theme.id}</div>
+                            <div class="theme-info">
+                                <h4>${theme.title}</h4>
+                                <p>${theme.description}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             }
         }
     </script>
