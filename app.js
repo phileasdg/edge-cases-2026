@@ -139,10 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
             let renderedSpeakers = [...speakers];
             if (!showIndicators) {
                 renderedSpeakers.sort((a, b) => {
-                    const aNeeds = !a.image || !a.bio || !!a.note;
-                    const bNeeds = !b.image || !b.bio || !!b.note;
+                    const aAnon = (!a.image || !a.bio || !a.topic || !a.abstract || !!a.note) && !a.publishAnyway;
+                    const bAnon = (!b.image || !b.bio || !b.topic || !b.abstract || !!b.note) && !b.publishAnyway;
+                    
+                    if (aAnon && !bAnon) return 1;
+                    if (!aAnon && bAnon) return -1;
+                    
+                    const aNeeds = (!a.image || !a.bio || !a.topic || !a.abstract || !!a.note);
+                    const bNeeds = (!b.image || !b.bio || !b.topic || !b.abstract || !!b.note);
+                    
                     if (aNeeds && !bNeeds) return 1;
                     if (!aNeeds && bNeeds) return -1;
+                    
                     return 0;
                 });
             }
@@ -209,15 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (isAnonymous) {
                             return `
-                                <div class="speaker-card no-image is-anonymous" data-reveal style="--theme-color: ${c1};">
+                                <div class="speaker-card is-anonymous" data-reveal style="--theme-color: ${c1}; --theme-color-secondary: ${c2};">
                                     ${badgeHtml}
-                                    <div class="speaker-image-placeholder" style="${gradientStyle}">
-                                        ?
+                                    <div class="tba-avatar-placeholder">
+                                        <span>?</span>
                                     </div>
                                     <div class="speaker-info">
-                                        <h3>TBA</h3>
-                                        <div class="affiliation">Symposium Session</div>
-                                        <p class="topic">Presentation details coming soon</p>
+                                        <h3 class="tba-title">Session TBA</h3>
+                                        <p class="tba-text">More details coming soon</p>
                                     </div>
                                 </div>
                             `;
@@ -240,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="speaker-info">
                                     <h3>${speaker.name}</h3>
                                     <div class="affiliation">${speaker.affiliation}</div>
-                                    <p class="topic">${speaker.topic || 'To be announced'}</p>
+                                    <p class="topic">${speaker.topic || 'Coming soon'}</p>
                                 </div>
                             </div>
                         `;
@@ -292,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         // Talk Title visibility
                         const titleLabel = modalTalkTitle.previousElementSibling;
-                        modalTalkTitle.textContent = speaker.topic || 'To be announced';
+                        modalTalkTitle.textContent = speaker.topic || 'Coming soon';
                         modalTalkTitle.style.display = '';
                         if (titleLabel) titleLabel.style.display = '';
                         

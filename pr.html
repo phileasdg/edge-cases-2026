@@ -2604,7 +2604,7 @@
                                             </div>
                                             <div class="speaker-right">
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title">${speaker.topic || 'To be announced'}</h2>
+                                                <h2 class="talk-title">${speaker.topic || 'Coming soon'}</h2>
                                                 <p class="talk-abstract">${speaker.abstract || 'Presentation details coming soon.'}</p>
                                             </div>
                                         </div>
@@ -2675,7 +2675,7 @@
                                             </div>
                                             <div class="speaker-square-right">
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title">${speaker.topic || 'To be announced'}</h2>
+                                                <h2 class="talk-title">${speaker.topic || 'Coming soon'}</h2>
                                                 <p class="talk-abstract">${speaker.abstract || 'Presentation details coming soon.'}</p>
                                             </div>
                                         </div>
@@ -2796,7 +2796,7 @@
                         </div>
                         <div class="timeline-content">
                             <h4>${speaker.name}</h4>
-                            <p>${speaker.topic || 'To be announced'} (${getShortAffiliation(speaker.affiliation)})</p>
+                            <p>${speaker.topic || 'Coming soon'} (${getShortAffiliation(speaker.affiliation)})</p>
                         </div>
                     </div>
                 `;
@@ -2827,7 +2827,7 @@
                         </div>
                         <div class="timeline-content">
                             <h4>${speaker.name}</h4>
-                            <p>${speaker.topic || 'To be announced'} (${getShortAffiliation(speaker.affiliation)})</p>
+                            <p>${speaker.topic || 'Coming soon'} (${getShortAffiliation(speaker.affiliation)})</p>
                         </div>
                     </div>
                 `;
@@ -2893,7 +2893,7 @@
                             <div class="stripe-info">
                                 <h4>${speaker.name}</h4>
                                 <p class="affiliation">${getShortAffiliation(speaker.affiliation)}</p>
-                                <p class="topic">${speaker.topic || 'To be announced'}</p>
+                                <p class="topic">${speaker.topic || 'Coming soon'}</p>
                             </div>
                         </div>
                     `;
@@ -2929,7 +2929,7 @@
                             <div class="stripe-info">
                                 <h4>${speaker.name}</h4>
                                 <p class="affiliation">${speaker.affiliation || ''}</p>
-                                <p class="topic">${speaker.topic || 'To be announced'}</p>
+                                <p class="topic">${speaker.topic || 'Coming soon'}</p>
                             </div>
                         </div>
                     `;
@@ -2947,7 +2947,7 @@
                 typoBannerList.innerHTML = speakers.map(speaker => `
                     <div class="typo-speaker-item">
                         <h3>${speaker.name}</h3>
-                        <p class="topic">${speaker.topic || 'To be announced'}</p>
+                        <p class="topic">${speaker.topic || 'Coming soon'}</p>
                         <p class="affiliation">${speaker.affiliation || ''}</p>
                     </div>
                 `).join('');
@@ -2970,7 +2970,7 @@
                 typoSquareGrid.innerHTML = speakers.map(speaker => `
                     <div class="typo-speaker-item">
                         <h3>${speaker.name}</h3>
-                        <p class="topic">${speaker.topic || 'To be announced'}</p>
+                        <p class="topic">${speaker.topic || 'Coming soon'}</p>
                         <p class="affiliation">${speaker.affiliation || ''}</p>
                     </div>
                 `).join('');
