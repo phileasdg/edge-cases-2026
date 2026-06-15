@@ -217,14 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (isAnonymous) {
                             return `
-                                <div class="speaker-card is-anonymous" data-reveal style="--theme-color: ${c1}; --theme-color-secondary: ${c2};">
+                                <div class="speaker-card no-image is-anonymous" data-reveal style="--theme-color: #8c827a;">
                                     ${badgeHtml}
-                                    <div class="tba-avatar-placeholder">
-                                        <span>?</span>
+                                    <div class="speaker-image-placeholder" style="background: #f4f3f2; border: 1.5px dashed #d1cecb; color: #beb9b5; box-shadow: none;">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 38px; height: 38px; opacity: 0.85;">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
                                     </div>
                                     <div class="speaker-info">
-                                        <h3 class="tba-title">Session TBA</h3>
-                                        <p class="tba-text">More details coming soon</p>
+                                        <h3>To Be Announced</h3>
+                                        <div class="affiliation" style="opacity: 0.65;">Mystery Contributor</div>
+                                        <p class="topic" style="font-style: italic;">More details coming soon</p>
                                     </div>
                                 </div>
                             `;

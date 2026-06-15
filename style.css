@@ -246,7 +246,7 @@ header .container {
 
 /* Hero */
 .hero {
-  height: 600px;
+  height: 90vh;
   /* Taller hero */
   min-height: 600px;
   display: flex;
@@ -438,74 +438,13 @@ header .container {
 }
 
 .speaker-card.is-anonymous {
-  background: radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--theme-color) 4%, transparent) 0%, transparent 60%),
-              radial-gradient(circle at 90% 90%, color-mix(in srgb, var(--theme-color-secondary) 4%, transparent) 0%, transparent 60%),
-              #ffffff;
-  border: 1px dashed rgba(140, 130, 122, 0.25);
   cursor: default;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .speaker-card.is-anonymous:hover {
-  transform: translateY(-5px) scale(1.015);
-  border-style: solid;
-  border-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
-  background: radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--theme-color) 12%, transparent) 0%, transparent 60%),
-              radial-gradient(circle at 90% 90%, color-mix(in srgb, var(--theme-color-secondary) 12%, transparent) 0%, transparent 60%),
-              #ffffff;
-  box-shadow: 0 16px 36px rgba(43, 38, 35, 0.08);
-}
-
-.tba-avatar-placeholder {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 1.25rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2.5px dashed color-mix(in srgb, var(--theme-color) 35%, transparent);
-  background: color-mix(in srgb, var(--theme-color) 5%, transparent);
-  color: color-mix(in srgb, var(--theme-color) 80%, transparent);
-  font-family: var(--font-heading);
-  font-size: 2.25rem;
-  font-weight: 300;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
-}
-
-.speaker-card.is-anonymous:hover .tba-avatar-placeholder {
-  transform: scale(1.08) rotate(15deg);
-  border-color: var(--theme-color);
-  background: color-mix(in srgb, var(--theme-color) 12%, transparent);
-  color: var(--theme-color);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--theme-color) 20%, transparent);
-}
-
-.tba-title {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--primary-dark);
-  margin-top: 0;
-  margin-bottom: 0.4rem;
-}
-
-.tba-text {
-  font-size: 0.85rem;
-  color: var(--muted-text);
-  line-height: 1.5;
-  margin: 0 auto;
-  max-width: 190px;
-  font-style: italic;
-  opacity: 0.8;
+  border-color: var(--border-color);
+  transform: none;
+  box-shadow: none;
 }
 
 .speaker-image {
