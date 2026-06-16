@@ -1787,7 +1787,6 @@
         <button class="tab-button" data-tab="tab-speaker-banners" onclick="switchTab('tab-speaker-banners')">Speaker Banners (16:9)</button>
         <button class="tab-button" data-tab="tab-speaker-squares" onclick="switchTab('tab-speaker-squares')">Speaker Squares (1:1)</button>
         <button class="tab-button" data-tab="tab-wildcards" onclick="switchTab('tab-wildcards')">Wildcard Lineups</button>
-        <button class="tab-button" data-tab="tab-wildcards-creative" onclick="switchTab('tab-wildcards-creative')">Creative Wildcards</button>
         <button class="tab-button" data-tab="tab-logos" onclick="switchTab('tab-logos')">Logos & Icons</button>
     </nav>
 
@@ -2166,15 +2165,10 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- TAB 5: CREATIVE WILDCARDS -->
-        <div class="tab-panel" id="tab-wildcards-creative">
-            <h2 class="sheet-section-title">
-                Creative Group & Lineup Promos <span class="badge">Schedules, Columns & Logo Highlights</span>
-            </h2>
-            <div class="cards-grid">
+                <!-- 4.3 Sub-section Break: Creative Wildcards -->
+                <div class="sheet-section-title" style="grid-column: 1 / -1; margin-top: 3.5rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--sheet-border); width: 100%;">
+                    Creative Group & Lineup Promos <span class="badge">Schedules, Columns & Logo Highlights</span>
+                </div>
 
                 <!-- 5.1 Program Schedule Banner -->
                 <div class="card-container-wrapper">
@@ -2752,13 +2746,17 @@
                                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #8c827a;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
                                             <path id="rim-text-path-light-rim" d="M 50, 94 a 44,44 0 1,1 0,-88 a 44,44 0 1,1 0,88" fill="none" />
+                                            <path id="rim-text-path-light-bottom" d="M 2.4, 50 A 47.6,47.6 0 0,0 97.6, 50" fill="none" />
                                         </defs>
 
                                         <!-- Outer Rim Text -->
                                         <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#8c827a" letter-spacing="0.3em">
-                                            <textPath href="#rim-text-path-light-rim" startOffset="50%" text-anchor="middle">
-                                                SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS
-                                            </textPath>
+                                            <textPath href="#rim-text-path-light-rim" startOffset="50%" text-anchor="middle">SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS</textPath>
+                                        </text>
+
+                                        <!-- Bottom Rim Text -->
+                                        <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#8c827a" letter-spacing="0.3em">
+                                            <textPath href="#rim-text-path-light-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026</textPath>
                                         </text>
 
                                         <!-- Background Network Constellation (Vibrant Brand Colors) -->
@@ -3087,13 +3085,17 @@
                                                 <stop offset="100%" stop-color="#6d597a" stop-opacity="0" />
                                             </radialGradient>
                                             <path id="rim-text-path-dark-rim" d="M 50, 94 a 44,44 0 1,1 0,-88 a 44,44 0 1,1 0,88" fill="none" />
+                                            <path id="rim-text-path-dark-bottom" d="M 2.4, 50 A 47.6,47.6 0 0,0 97.6, 50" fill="none" />
                                         </defs>
 
                                         <!-- Outer Rim Text -->
                                         <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#faf9f5" letter-spacing="0.3em">
-                                            <textPath href="#rim-text-path-dark-rim" startOffset="50%" text-anchor="middle">
-                                                SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS
-                                            </textPath>
+                                            <textPath href="#rim-text-path-dark-rim" startOffset="50%" text-anchor="middle">SURPRISING NETWORK SCIENCE IN UNCONVENTIONAL DOMAINS</textPath>
+                                        </text>
+
+                                        <!-- Bottom Rim Text -->
+                                        <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#faf9f5" letter-spacing="0.3em">
+                                            <textPath href="#rim-text-path-dark-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026</textPath>
                                         </text>
 
                                         <!-- Ambient Glimmers (Glow Effects) -->
@@ -3612,7 +3614,28 @@
                 scale: 2, // 2x retina boost
                 useCORS: true,
                 backgroundColor: null,
-                allowTaint: true
+                allowTaint: true,
+                onclone: (clonedDoc) => {
+                    const clonedElement = clonedDoc.getElementById(cardId);
+                    if (clonedElement) {
+                        // Reset styling that positions or scales the element in the preview grid
+                        clonedElement.style.transform = 'none';
+                        clonedElement.style.position = 'relative';
+                        clonedElement.style.top = '0';
+                        clonedElement.style.left = '0';
+                        clonedElement.style.margin = '0';
+                        clonedElement.style.display = 'block';
+                        clonedElement.style.visibility = 'visible';
+                        
+                        // Set specific container body styles to prevent any clipping in the clone
+                        clonedDoc.body.style.width = 'auto';
+                        clonedDoc.body.style.height = 'auto';
+                        clonedDoc.body.style.overflow = 'visible';
+                        
+                        // Append it to body so it escapes any parent overflow:hidden or constraints
+                        clonedDoc.body.appendChild(clonedElement);
+                    }
+                }
             }).then(canvasExport => {
                 const link = document.createElement('a');
                 link.download = `edgecases-pr-${cardId}.png`;
