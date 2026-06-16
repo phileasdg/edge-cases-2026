@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /pr.html
+Disallow: /pr
+
+# Allow indexing of all other assets and the main page
+Allow: /
