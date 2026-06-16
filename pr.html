@@ -617,6 +617,161 @@
             max-width: 100%;
         }
 
+        /* Speaker Square (Title Only Variant) Style */
+        .template-speaker-square-title-only {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 4.5rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .speaker-square-photo-only {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .speaker-square-photo-only .photo-frame {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--bg-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .speaker-square-text-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .speaker-square-text-column h3.speaker-name {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 0 0 0.5rem 0;
+            line-height: 1.1;
+        }
+
+        .speaker-square-text-column p.speaker-affiliation {
+            font-family: var(--font-main);
+            font-size: 1.65rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .speaker-square-divider {
+            width: 120px;
+            height: 4px;
+            background-color: #e56b6f;
+            margin: 1.75rem 0;
+            border: none;
+        }
+
+        .speaker-square-text-column .section-tag {
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+        }
+
+        /* Prominent header style for Speaker Title Only variant (vertical stack layout) */
+        .speaker-title-only-header {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 3.5rem;
+            border-bottom: 2px solid rgba(140, 130, 122, 0.25);
+            padding-bottom: 2rem;
+            gap: 1.75rem;
+        }
+
+        .speaker-title-only-header .header-brand-block {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .speaker-title-only-header .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .speaker-title-only-header .brand-name {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        .speaker-title-only-header .brand-sub {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+        }
+
+        .speaker-title-only-header .header-info-block {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 0.75rem;
+            background: rgba(80, 132, 132, 0.06);
+            border: 1.5px solid rgba(80, 132, 132, 0.25);
+            border-radius: 10px;
+            padding: 1rem 1.75rem;
+        }
+
+        .speaker-title-only-header .info-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 1.25rem;
+        }
+
+        .speaker-title-only-header .info-row:not(:last-child) {
+            border-bottom: 1px dashed rgba(140, 130, 122, 0.25);
+            padding-bottom: 0.75rem;
+        }
+
+        .speaker-title-only-header .info-label {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            opacity: 0.85;
+            width: 230px;
+            flex-shrink: 0;
+            border-right: 1.5px solid rgba(140, 130, 122, 0.35);
+            padding-right: 1rem;
+        }
+
+        .speaker-title-only-header .info-value {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            white-space: nowrap;
+        }
+
+        .card-content:has(.template-speaker-square-title-only) .card-footer-web {
+            font-size: 1.15rem;
+        }
+
         /* Wildcards Banners & Squares */
         .template-wildcard-banner {
             display: grid;
@@ -1629,6 +1784,96 @@
         body.hide-promo-times .promo-time-wrapper {
             display: none !important;
         }
+
+        /* PR Copy & Blurbs Styles */
+        .copy-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .copy-card {
+            background-color: var(--sheet-panel);
+            border: 1px solid var(--sheet-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .copy-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--sheet-border);
+            padding-bottom: 0.75rem;
+        }
+
+        .copy-card-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--sheet-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .copy-card-meta {
+            font-size: 0.8rem;
+            color: var(--sheet-muted);
+            font-family: var(--font-mono);
+        }
+
+        .copy-text-area {
+            background: var(--sheet-bg);
+            border: 1px solid var(--sheet-border);
+            color: var(--sheet-text);
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            position: relative;
+            min-height: 100px;
+        }
+
+        .copy-btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .copy-status-btn {
+            background: var(--sheet-panel);
+            border: 1px solid var(--sheet-border);
+            color: var(--sheet-text);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-status-btn:hover {
+            background: var(--sheet-accent);
+            border-color: var(--sheet-accent);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .copy-status-btn.copied {
+            background: #508484;
+            border-color: #508484;
+            color: white;
+        }
     </style>
 </head>
 
@@ -1789,6 +2034,7 @@
         <button class="tab-button" data-tab="tab-speaker-squares" onclick="switchTab('tab-speaker-squares')">Speaker Squares (1:1)</button>
         <button class="tab-button" data-tab="tab-wildcards" onclick="switchTab('tab-wildcards')">Wildcard Lineups</button>
         <button class="tab-button" data-tab="tab-logos" onclick="switchTab('tab-logos')">Logos & Icons</button>
+        <button class="tab-button" data-tab="tab-copy" onclick="switchTab('tab-copy')">PR Copy & Blurbs</button>
     </nav>
 
     <!-- Tab Panels -->
@@ -2710,7 +2956,7 @@
                                             <circle cx="45" cy="80" r="1.4" fill="#508484" />
                                         </g>
                                     </svg>
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
@@ -2720,7 +2966,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -2757,7 +3003,7 @@
 
                                         <!-- Bottom Rim Text -->
                                         <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#8c827a" letter-spacing="0.3em">
-                                            <textPath href="#rim-text-path-light-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026</textPath>
+                                            <textPath href="#rim-text-path-light-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026 IN BINGHAMTON</textPath>
                                         </text>
 
                                         <!-- Background Network Constellation (Vibrant Brand Colors) -->
@@ -2868,7 +3114,7 @@
                                             <circle cx="45" cy="80" r="1.4" fill="#508484" />
                                         </g>
                                     </svg>
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
@@ -2878,7 +3124,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -3041,7 +3287,7 @@
                                             <circle cx="45" cy="80" r="1.4" fill="#508484" />
                                         </g>
                                     </svg>
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
@@ -3051,7 +3297,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#2b2623" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -3096,7 +3342,7 @@
 
                                         <!-- Bottom Rim Text -->
                                         <text font-family="var(--font-heading)" font-size="3.6" font-weight="600" fill="#faf9f5" letter-spacing="0.3em">
-                                            <textPath href="#rim-text-path-dark-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026</textPath>
+                                            <textPath href="#rim-text-path-dark-bottom" startOffset="50%" text-anchor="middle">AT CCS 2026 IN BINGHAMTON</textPath>
                                         </text>
 
                                         <!-- Ambient Glimmers (Glow Effects) -->
@@ -3211,7 +3457,7 @@
                                             <circle cx="45" cy="80" r="1.4" fill="#508484" />
                                         </g>
                                     </svg>
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
@@ -3221,7 +3467,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#2b2623" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -3355,7 +3601,7 @@
                                             <circle cx="45" cy="80" r="1.4" fill="#508484" />
                                         </g>
                                     </svg>
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.5" />
@@ -3365,7 +3611,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#ffffff" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #2b2623; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -3529,7 +3775,7 @@
                                         </g>
                                     </svg>
                                     
-                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -30px; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <svg width="520" height="520" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 15px; position: relative; z-index: 2; flex-shrink: 0;">
                                         <line x1="6" y1="24" x2="14" y2="20" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="6" y1="24" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
                                         <line x1="14" y1="20" x2="10" y2="12" stroke="#faf9f5" stroke-dasharray="none" stroke-width="1.5" opacity="0.4" />
@@ -3539,7 +3785,7 @@
                                         <circle cx="14" cy="20" r="3.2" fill="#355070" />
                                         <circle cx="26" cy="8" r="4.8" fill="#e56b6f" stroke="#2b2623" stroke-width="1.2" />
                                     </svg>
-                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 30px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
+                                    <div style="font-family: var(--font-heading); font-size: 6.8rem; font-weight: 600; color: #faf9f5; margin-top: 15px; text-align: center; line-height: 1.1; user-select: none; position: relative; z-index: 2; flex-shrink: 0;">
                                         Edge Cases
                                         <div style="font-size: 4rem; font-weight: 600; color: #e56b6f; letter-spacing: 0.16em; margin-top: 15px; flex-shrink: 0;">2026</div>
                                     </div>
@@ -3550,6 +3796,100 @@
                 </div>
 
             </div> <!-- End of logos-square-grid -->
+        </div>
+
+        <!-- TAB 6: PR COPY & BLURBS -->
+        <div class="tab-panel" id="tab-copy">
+            <h2 class="sheet-section-title">
+                PR Copy & Social Media Blurbs <span class="badge">Text Assets</span>
+            </h2>
+            <div style="background: var(--sheet-panel); border: 1px solid var(--sheet-border); padding: 1.25rem 1.5rem; border-radius: 8px; margin-bottom: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                <p style="font-size: 0.95rem; color: var(--sheet-text); margin-bottom: 0.5rem; font-weight: 500;">Press & Outreach Toolkit</p>
+                <p style="font-size: 0.88rem; color: var(--sheet-muted);">
+                    Quickly copy pre-formatted event descriptions, promotional blurbs, and email templates to share across your social media channels and newsletters.
+                </p>
+            </div>
+            
+            <div class="copy-layout">
+                <!-- 1. Social Media Blurb (Official) -->
+                <div class="copy-card">
+                    <div class="copy-card-header">
+                        <div class="copy-card-title">Official Social Media Blurb</div>
+                        <div class="copy-card-meta">70 words / 489 chars</div>
+                    </div>
+                    <div class="copy-text-area" id="blurb-official">Edge Cases is a satellite symposium at CCS 2026 showcasing the work of emerging scholars applying network science in surprising or unconventional domains. The event features research in fields that have historically been qualitative, or peripheral to mainstream network science. By highlighting these edge cases of the discipline, we hope to encourage creative cross-pollination in network and complex systems science, and inspire new collaborations across less connected problem spaces in these fields.</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-status-btn" onclick="copyToClipboard(this, 'blurb-official')">
+                            📋 Copy Blurb
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Integrated Concept Description -->
+                <div class="copy-card">
+                    <div class="copy-card-header">
+                        <div class="copy-card-title">Full Concept Description (Website Version)</div>
+                        <div class="copy-card-meta">83 words / 588 chars</div>
+                    </div>
+                    <div class="copy-text-area" id="blurb-concept">While network science is inherently interdisciplinary, research in the field is often siloed by specialty or domain. Edge Cases is a satellite symposium at CCS 2026 showcasing the work of emerging scholars applying network science in surprising or unconventional domains. The event features research in fields that have historically been qualitative or peripheral to mainstream network science. By highlighting these edge cases of the discipline, we hope to encourage creative cross-pollination in network and complex systems science, and inspire new collaborations across less connected problem spaces.</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-status-btn" onclick="copyToClipboard(this, 'blurb-concept')">
+                            📋 Copy Text
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Short Post / Tweet -->
+                <div class="copy-card">
+                    <div class="copy-card-header">
+                        <div class="copy-card-title">Short Promo Post (Twitter / Mastodon / LinkedIn)</div>
+                        <div class="copy-card-meta">254 chars</div>
+                    </div>
+                    <div class="copy-text-area" id="blurb-short">🔬 Announcing Edge Cases: a satellite symposium at CCS 2026 in Binghamton! Showcasing emerging scholars applying network science to surprising, unconventional, or historically qualitative domains. Let's break academic silos together! 🌐
+
+📅 Oct 14
+#CCS2026 #NetworkScience</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-status-btn" onclick="copyToClipboard(this, 'blurb-short')">
+                            📋 Copy Post
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Email / Newsletter Template -->
+                <div class="copy-card">
+                    <div class="copy-card-header">
+                        <div class="copy-card-title">Email Invitation / Newsletter Template</div>
+                        <div class="copy-card-meta">173 words</div>
+                    </div>
+                    <div class="copy-text-area" id="blurb-email">Subject: Join us at Edge Cases: CCS 2026 Satellite Symposium on Unconventional Network Science
+
+Dear colleagues,
+
+We are excited to invite you to Edge Cases, a half-day satellite symposium at the Conference on Complex Systems (CCS 2026) in Binghamton, NY.
+
+Edge Cases showcases the work of emerging scholars applying network science in surprising or unconventional domains—specifically focusing on fields that have historically been qualitative, or peripheral to mainstream network science.
+
+By highlighting these edge cases of the discipline, we hope to encourage creative cross-pollination in network and complex systems science, and inspire new collaborations across less connected problem spaces in these fields.
+
+Event Details:
+- Date: Wednesday, October 14, 2026
+- Location: Lecture Hall 10, Binghamton University (Binghamton, NY)
+- Official Website: [Website Link]
+- Registration & Program: Available on the main CCS 2026 website.
+
+We look forward to seeing you there!
+
+Best regards,
+The Edge Cases 2026 Organizing Committee
+(Wolfram Research & Complexity Coffee)</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-status-btn" onclick="copyToClipboard(this, 'blurb-email')">
+                            📋 Copy Template
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -3564,6 +3904,31 @@
 
     <!-- Interactive Script -->
     <script>
+        // Clipboard utility
+        function copyToClipboard(button, targetId) {
+            const textElement = document.getElementById(targetId);
+            let text = '';
+            if (textElement.tagName === 'TEXTAREA' || textElement.tagName === 'INPUT') {
+                text = textElement.value;
+            } else {
+                text = textElement.innerText;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy to clipboard. Please copy manually.');
+            });
+        }
+
         // Tab switching logic
         function switchTab(tabId) {
             // Remove active class from all buttons and panels
@@ -3906,10 +4271,10 @@
                     const needsUpdate = reasons.length > 0;
                     const draftBadge = (needsUpdate && !speaker.isAnonymous) ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
 
-                    return `
+                    const cardStandard = `
                         <div class="card-container-wrapper">
                             <div class="card-label">
-                                <div>Speaker: ${speaker.name}${draftBadge}<span class="dimensions">1080 x 1080</span></div>
+                                <div>Speaker: ${speaker.name} (with Abstract)${draftBadge}<span class="dimensions">1080 x 1080</span></div>
                                 <div class="card-actions">
                                     <button class="card-action-btn" onclick="previewCard('${speaker.id}-square')">👁️ Preview</button>
                                     <button class="card-action-btn" onclick="saveCard('${speaker.id}-square')">💾 Save PNG</button>
@@ -3955,6 +4320,72 @@
                             </div>
                         </div>
                     `;
+
+                    const cardTitleOnly = `
+                        <div class="card-container-wrapper">
+                            <div class="card-label">
+                                <div>Speaker: ${speaker.name} (Title Only)${draftBadge}<span class="dimensions">1080 x 1080</span></div>
+                                <div class="card-actions">
+                                    <button class="card-action-btn" onclick="previewCard('${speaker.id}-square-title-only')">👁️ Preview</button>
+                                    <button class="card-action-btn" onclick="saveCard('${speaker.id}-square-title-only')">💾 Save PNG</button>
+                                </div>
+                            </div>
+                            <div class="preview-scale-wrapper size-square-wrapper">
+                                <div class="card-export-container size-square" id="${speaker.id}-square-title-only">
+                                    ${squareSvgBg}
+                                    <div class="card-content">
+                                        <div class="speaker-title-only-header">
+                                            <div class="header-brand-block">
+                                                <svg width="100" height="100" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                                    <circle cx="6" cy="24" r="3" fill="#508484" />
+                                                    <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                                    <circle cx="14" cy="20" r="3" fill="#355070" />
+                                                    <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
+                                                </svg>
+                                                <div class="brand-text">
+                                                    <span class="brand-name">Edge Cases</span>
+                                                    <span class="brand-sub">Satellite Symposium @ CCS 2026</span>
+                                                </div>
+                                            </div>
+                                            <div class="header-info-block">
+                                                <div class="info-row">
+                                                    <span class="info-label">Symposium Schedule</span>
+                                                    <span class="info-value">Wednesday, Oct 14 | 2:30 PM – 5:45 PM</span>
+                                                </div>
+                                                <div class="info-row">
+                                                    <span class="info-label">Symposium Venue</span>
+                                                    <span class="info-value">Lecture Hall 10 | Binghamton University</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="template-speaker-square-title-only">
+                                            <div class="speaker-square-photo-only">
+                                                <div class="photo-frame">
+                                                    ${photoHTML}
+                                                </div>
+                                            </div>
+                                            <div class="speaker-square-text-column">
+                                                <h3 class="speaker-name">${speaker.name}</h3>
+                                                <p class="speaker-affiliation">${speaker.affiliation || ''}</p>
+                                                <div class="speaker-square-divider"></div>
+                                                <span class="section-tag">Featured Presentation</span>
+                                                <h2 class="talk-title" style="font-size: 3.4rem; line-height: 1.25; margin-top: 1rem;">${speaker.topic || 'Coming soon'}</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-footer-web" style="margin-left: auto;">edgecases2026.org</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    return cardStandard + cardTitleOnly;
                 }).join('');
             }
 
