@@ -53,9 +53,10 @@
     "affiliation": "Indian Institute of Information Technology Kottayam",
     "topic": "Winning at Chess Without Search: Predicting Game Outcomes from Evolving Interaction Networks",
     "abstract": "Chess is traditionally approached through search, handcrafted evaluation functions, or reinforcement learning. In this work, we take a different perspective by modeling a chess game as a dynamic interaction network, where pieces and positions form an evolving graph shaped by strategic decisions.\n\nWe construct game graphs that encode relationships such as attacks, mobility, and piece interactions over time, and apply graph neural networks to predict game outcomes (win/loss) from partial game trajectories. Rather than relying on deep lookahead or domain-specific heuristics, the model learns outcome-relevant structure directly from the evolving network representation.\n\nWe show that network-based representations capture strategic signals that are predictive of game outcomes well before the game concludes, highlighting how global outcomes emerge from local interactions. Beyond chess, this approach illustrates how competitive, sequential decision-making processes can be reframed as evolving networks, opening the door to applying network science tools to a broad class of strategic and adversarial systems.",
-    "bio": "",
+    "bio": "Divya is a researcher and engineer working at the intersection of network science, graphs and graph machine learning. She is interested in applying network-based approaches to complex systems and enjoys connecting ideas across domains. Her work explores how graph representations and machine learning can uncover patterns and support decision-making.",
     "image": "",
-    "note": "Pending confirmation, biography, and headshot photo"
+    "publishAnyway": true,
+    "note": "Pending headshot photo"
   },
   {
     "id": "chathura-jayalath",
