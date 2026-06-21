@@ -1,4 +1,5 @@
 {
     "showPlaceholderOnMissingImage": false,
-    "releaseMode": true
+    "releaseMode": true,
+    "slidesDefaultTheme": "light"
 }

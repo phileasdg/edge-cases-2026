@@ -60,6 +60,12 @@ def validate_html(file_path):
 
 if __name__ == '__main__':
     import os
-    pr_path = "/Users/phileasdazeleygaist/Desktop/My Websites/edge-cases-2026/pr.html"
-    success = validate_html(pr_path)
-    sys.exit(0 if success else 1)
+    base_dir = "/Users/phileasdazeleygaist/Desktop/My Websites/edge-cases-2026"
+    html_files = [os.path.join(base_dir, f) for f in os.listdir(base_dir) if f.endswith('.html')]
+    all_success = True
+    for file_path in html_files:
+        print(f"\nValidating {os.path.basename(file_path)}:")
+        success = validate_html(file_path)
+        if not success:
+            all_success = False
+    sys.exit(0 if all_success else 1)

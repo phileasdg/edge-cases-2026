@@ -4,59 +4,71 @@
     "name": "Haily Merritt",
     "affiliation": "Network Science Institute, Northeastern University London",
     "topic": "Brain Networks as Phenotypes",
-    "abstract": "Network approaches to neuroscience have shaped our understanding of development, disease, the neural underpinnings of behavior and cognition, and the link between brain structure and function. Traditionally, this work has sought to identify universal organizational principles of brain networks, but recent years have seen a shift to characterizing variability in brain network organization across people. That is, even though seemingly all brain networks display similar properties, there is substantial individual heterogeneity in the functional organization of brain network connectivity that cannot be accounted for by random fluctuations or task/cognitive state. Moreover, this variation in functional connectivity seems to be constrained by (epi)genetics and shaped by coupling with the environment. For this reason, I advocate for studying brain networks as phenotypes. This perspective has consequences for how we interpret and analyze brain networks and how we understand brain function and dynamics. Specifically, the functional connectivity associated with better mental health and better cognitive performance is distinguishable in different social environments. Put another way, adaptive brain network organization depends on context. While brain networks are certainly not uncommon at conferences like CCS, approaching them as phenotypes marks a significant departure from the standard perspective that stands to enhance our understanding of human neuroscience and the neural underpinnings of wellbeing and behavior.",
-    "bio": "Haily Merritt is a multidisciplinary researcher with expertise spanning network neuroscience, complex systems, social neuroecology, and philosophy of mind. Her work approaches brain science from a humanistic perspective, drawing from biological theory and complex systems science methods, with consequences for the social sciences. Currently, she is a Postdoctoral Researcher with Dr. Sofia Teixeira at the Network Science Institute at Northeastern University London. Previously, she completed dual PhDs in Informatics (Complex Networks and Systems) and Cognitive Science at Indiana University.",
-    "image": "media/speakers/haily_merritt.jpg"
+    "abstract": "Network approaches to neuroscience have traditionally sought universal organizational principles, but recent years have seen a shift to characterizing variability across individuals. By treating brain networks as phenotypes constrained by (epi)genetics and shaped by the environment, we can better understand how adaptive brain organization depends on context.",
+    "bio": "Haily is a Postdoctoral Researcher at the Network Science Institute at Northeastern University London. She holds dual PhDs in Informatics and Cognitive Science from Indiana University.",
+    "image": "media/speakers/haily_merritt.jpg",
+    "themeIds": ["05", "02", "03"],
+    "themeRelevance": "Approaching brain networks as phenotypic structures constrained by genetic and environmental contexts."
   },
   {
     "id": "phileas-dazeley-gaist",
     "name": "Phileas Dazeley-Gaist",
     "affiliation": "Wolfram Research, Wolfram Institute",
     "topic": "Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism",
-    "abstract": "Empirical data recording how cultural artefacts, motifs, and lineages form in real time are of great benefit and interest in the study of cultural evolution. In this work, we introduce an experimental design (nicknamed “Sympoietic Art Organism” in a nod to Haraway[1]) that attempts to richly capture the bottom-up emergence of a shared cultural heritage in a small, controlled setting, as well as the influences at play throughout its evolution. Our approach calls for a small community of artists to engage in active collaborative artmaking over several months to build up a shared creative commons. After an initial “seeding phase” round of art contributions to the commons data repository, participants are asked to contribute at least five new artefacts to the commons every two weeks, over a series of “co-creative cycles”, and with the requirements that each shared piece engage with one or more pre-existing artworks (that is, artworks from earlier cycles) and that we record these influences between works to a shared ledger. We, the ten co-authors of this study, took part in our own experiment over three months, growing a dataset of 411 original artworks, and a network of 725 verified relationships between them. Our experiment yielded a complete history of the creation of cultural artefacts (artworks) by each participant, and of all acknowledged influences from other pieces, allowing us to reconstruct the citation network of contributed artworks. By enforcing synchronous updates within each co-creative cycle such that participants only engaged with artworks from earlier stages, we were able to model the network’s growth as a time series. Our results are well suited for multi-modal analysis. Quantitatively, we observed the structural evolution of the citation network from disconnected nodes into a consolidated core as the system matured. We found the network’s structural dynamics were consistent rich-get-richer feedback, showing that preferential attachment emerged endogenously around specific hub artworks. Qualitatively, the artworks provide a basis for tracing a kind of semantic phylogeny through visual inspection and comparison of contributed artworks, to see how participants adapted, remixed, or subverted specific aesthetic motifs across generations. We propose this experiment as a proof of concept for a scalable ethnographic tool in network science. This approach provides a transparent environment for investigating the mechanisms of cultural inheritance. This work was initiated at the 2025 Complexity Global School, organised by the Santa Fe Institute and TREES group at the Universidad de Los Andes.",
-    "bio": "Phileas is a human ecologist, creative technologist, and developer at Wolfram Research, working at the crossroads between human ecology and complexity science. Their work spans agent-based modeling, ecological and environmental systems modeling, GIS, and digital humanities, with a special focus on interdisciplinary, human-ecological projects.",
-    "image": "media/speakers/phileas_dazeley-gaist.png"
+    "abstract": "We introduce the “Sympoietic Art Organism”, an experimental design to richly capture the bottom-up emergence of shared cultural heritage in a small community. Over three months, ten artists built a shared creative commons, resulting in a dataset of 411 original artworks and a citation network of 725 verified relationships between them. By modeling the network's growth as a time series, we provide a scalable ethnographic tool for investigating the mechanisms of cultural inheritance.",
+    "bio": "Phileas is a human ecologist, creative technologist, and developer at Wolfram Research, focusing on human ecology, agent-based modeling, and digital humanities.",
+    "image": "media/speakers/phileas_dazeley-gaist.png",
+    "themeIds": ["01", "02"],
+    "themeRelevance": "Constructing and mapping citation networks of artistic creations to track cultural evolution in real time."
   },
   {
     "id": "katie-spoon",
     "name": "Katie Spoon",
     "affiliation": "Stanford University",
     "topic": "Your doctor visits as a network: Discovering high-risk health trajectories",
-    "abstract": "While life span is increasing, disparities are emerging in health span, or years spent in good health. Health outcomes result from long and complex life histories, yet most population health studies still estimate the short-term effect of a single factor on a single outcome. As a result, little is known about how events such as new diagnoses, residential changes, or disruptions in care continuity, combine to form long-term trajectories toward health or illness, at population scale. This nuance is central to understanding when and where health trajectories diverge in later life, and why some older adults thrive in later life and others don’t. Here we use network science to turn 90 million primary-care visits for 8 million U.S. patients from 2010-2024 into a state-transition graph of health trajectories.\n\nUsing Electronic Health Records from the American Family Cohort, we first learn a small set of recurrent “snapshot states” by clustering visit-level feature vectors that summarize recent clinical status, continuity of care, and neighborhood context. We then build a directed, weighted graph over these states, where edges represent observed transitions between states across visits. Each patient’s history becomes a path on this shared state space. Applying graph-based representation learning to this network, we derive patient-level trajectory embeddings and cluster patients into trajectory types.\n\nThis framework lets us ask questions such as: which paths through the state space are most strongly associated with accelerated deterioration, and which neighborhoods and demographic groups are most likely to follow those paths? Unlike transformer-based approaches that operate as a black box, interpretable graph-based approaches allow us to pinpoint where health trajectories diverge. In addition, these representations can serve as rich, interpretable pre-exposure histories for causal analyses, e.g., how losing a primary-care provider changes downstream health outcomes.",
+    "abstract": "Most population health studies estimate the short-term effect of a single factor, leaving a gap in understanding long-term health trajectories at scale. Using Electronic Health Records for 8 million U.S. patients, we turn 90 million primary-care visits into a state-transition graph of health trajectories. Applying graph-based representation learning to this network allows us to identify where health trajectories diverge and which demographic groups follow specific paths.",
     "bio": "",
-    "image": ""
+    "image": "",
+    "themeIds": ["03", "05"],
+    "themeRelevance": "Reframing longitudinal health trajectories and clinical visit sequences as paths on a state-transition network."
   },
   {
     "id": "yessica-herrera",
     "name": "Yessica Herrera",
     "affiliation": "University of Notre Dame",
     "topic": "The Art World as a Network",
-    "abstract": "What actually makes an artist succeed? Talent is only part of it. Much of success and prestige travels through an invisible network of museums, art collectors, and influence passed through preferential collaborations. This talk follows that question and invites to think about the art world as a connected system, revealing how novel computational tools and AI can help discover network data, and what that network reveals about the mechanisms of prestige and success shaping the art world. Then we flip the question, asking what happens when we use network patterns not just to study art, but to create it.",
-    "bio": "Yessica Herrera is a scientist who blends social complexity with behavioral research, network science, and data visualization to explore how art, science, and technology shape—and are shaped by—human creativity and social behavior.",
+    "abstract": "What actually makes an artist succeed? Talent is only part of it. Much of success and prestige travels through an invisible network of museums, art collectors, and preferential collaborations. We reveal how novel computational tools and AI can help discover network data to expose the mechanisms of prestige shaping the art world, and explore using network patterns to create art.",
+    "bio": "Yessica is a scientist blending social complexity with behavioral research, network science, and data visualization to explore how art, science, and technology shape human creativity.",
     "image": "media/speakers/yessica_herrera_guzman.jpeg",
-    "website": "https://yessicaherrera.com"
+    "website": "https://yessicaherrera.com",
+    "themeIds": ["01", "04"],
+    "themeRelevance": "Analyzing the art world as a complex network of museum curation, collector prestige, and creative collaborations."
   },
   {
     "id": "arhan-vora",
     "name": "Arhan Vora",
     "affiliation": "University of Montpellier",
-    "topic": "",
-    "abstract": "",
+    "topic": "Sailing Through Phenotype Space: Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
+    "abstract": "Traditional evolutionary dynamics are modeled on continuous fitness landscapes. In this work, we take a network-centric approach by discretizing evolution as population dynamics on a network of phenotypes. We explore how structural properties of the phenotype network constrain evolutionary trajectories and adaptation to selective pressures, revealing how complex genetic patterns map onto network-based transitions.",
     "bio": "",
     "image": "media/speakers/arhan_vora.jpeg",
-    "note": "Pending biography and presentation details",
-    "publishAnyway": true
+    "note": "Pending biography",
+    "publishAnyway": true,
+    "themeIds": ["02", "06"],
+    "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
   },
   {
     "id": "divya-sindhu-lekha",
     "name": "Dr. Divya Sindhu Lekha",
     "affiliation": "Indian Institute of Information Technology Kottayam",
     "topic": "Winning at Chess Without Search: Predicting Game Outcomes from Evolving Interaction Networks",
-    "abstract": "Chess is traditionally approached through search, handcrafted evaluation functions, or reinforcement learning. In this work, we take a different perspective by modeling a chess game as a dynamic interaction network, where pieces and positions form an evolving graph shaped by strategic decisions.\n\nWe construct game graphs that encode relationships such as attacks, mobility, and piece interactions over time, and apply graph neural networks to predict game outcomes (win/loss) from partial game trajectories. Rather than relying on deep lookahead or domain-specific heuristics, the model learns outcome-relevant structure directly from the evolving network representation.\n\nWe show that network-based representations capture strategic signals that are predictive of game outcomes well before the game concludes, highlighting how global outcomes emerge from local interactions. Beyond chess, this approach illustrates how competitive, sequential decision-making processes can be reframed as evolving networks, opening the door to applying network science tools to a broad class of strategic and adversarial systems.",
-    "bio": "Divya is a researcher and engineer working at the intersection of network science, graphs and graph machine learning. She is interested in applying network-based approaches to complex systems and enjoys connecting ideas across domains. Her work explores how graph representations and machine learning can uncover patterns and support decision-making.",
+    "abstract": "We model chess games as dynamic interaction networks, where pieces and positions form an evolving graph shaped by strategic decisions. By applying graph neural networks to these game trajectories, we can predict game outcomes (win/loss) well before the game concludes. This network-based approach demonstrates how competitive, sequential decision-making can be reframed to capture strategic signals without relying on deep lookahead.",
+    "bio": "Divya is a researcher and engineer working at the intersection of network science, graphs, and graph machine learning to uncover patterns in complex systems.",
     "image": "",
     "publishAnyway": true,
-    "note": "Pending headshot photo"
+    "note": "Pending headshot photo",
+    "themeIds": ["03", "04"],
+    "themeRelevance": "Treating strategic sequential moves in chess as an evolving piece-interaction network to predict outcomes."
   },
   {
     "id": "chathura-jayalath",
@@ -66,17 +78,21 @@
     "abstract": "We propose a new paradigm for modeling complex social systems by integrating mechanistic network models with multimodal generative AI. Social behavior emerges from dynamic interactions on multilayer, temporal networks that are non-linear and non-ergodic, and cannot be captured by traditional statistical methods alone. Our approach, called Generative Model Discovery (GMD), functions as a meta-model that learns and evolves candidate network mechanisms capable of reproducing observed macro-level outcomes from micro-level interactions. GMD bridges explainable agent-based modeling with data-rich generative foundation models, enabling causal, interpretable, and scalable inference over network dynamics.",
     "bio": "",
     "image": "",
-    "note": "Pending confirmation, biography, and headshot photo"
+    "note": "Pending confirmation, biography, and headshot photo",
+    "themeIds": ["04", "06"],
+    "themeRelevance": "Using multimodal generative AI to discover micro-level agent-based model mechanisms from macro network patterns."
   },
   {
     "id": "alejandra-ortiz-duran",
     "name": "Alejandra Ortiz Durán",
     "affiliation": "Wolfram Research",
-    "topic": "",
-    "abstract": "",
-    "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer in the Discrete Computation team at Wolfram. She holds a multidisciplinary bachelor's degree in Technology from the Center of Applied Physics and Advanced Technology and a master's degree in Mathematics from the National Autonomous University of Mexico. She is currently pursuing a Ph.D. in Mathematical Biology. Her research interests lie at the intersection of network science, discrete mathematics, graph theory, and mathematical modeling. Her work focuses on developing computational and mathematical methods to study natural and social systems, with particular emphasis on the structure, dynamics, and behavior of networked phenomena.",
+    "topic": "Reaction-Diffusion on Graphs",
+    "abstract": "We explore pattern formation and dynamical processes on complex network topologies by simulating reaction-diffusion systems directly on graphs. We investigate how topological features such as community structures, hub nodes, and path lengths govern spatial pattern emergence, with applications to biological systems and information flow.",
+    "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer at Wolfram. She holds a master's degree in Mathematics from UNAM and is currently pursuing a Ph.D. in Mathematical Biology.",
     "image": "media/speakers/alejandra_ortiz.png",
-    "note": "Pending presentation details",
-    "publishAnyway": true
+    "note": "Pending presentation slides",
+    "publishAnyway": true,
+    "themeIds": ["06", "03"],
+    "themeRelevance": "Developing mathematical formulations to study reaction-diffusion patterns and dynamics on complex graph structures."
   }
 ]

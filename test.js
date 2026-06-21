@@ -1,0 +1,947 @@
+
+        let currentSlide = 0;
+        let slideDeck = [];
+        let networkData = null;
+        let themeMap = {};
+        
+        // Timer Variables
+        let timerInterval = null;
+        let timerSeconds = 0;
+        let timerRunning = true; // Auto start
+
+        // Interactive control panel autohide timer
+        let controlsTimeout = null;
+
+        // Theme colors configurations for light and dark modes
+        const THEME_COLORS_DARK = {
+            "01": "#e56b6f", // Encoding & Representation (Rose)
+            "02": "#eaac8b", // Evolution & Adaptation (Peach)
+            "03": "#b5838d", // Dynamics & Function (Mauve)
+            "04": "#6d597a", // Computation & Discovery (Purple)
+            "05": "#508484", // Natural & Mental Systems (Teal)
+            "06": "#355070"  // Foundational Frameworks (Deep Blue)
+        };
+
+        const THEME_COLORS_LIGHT = {
+            "01": "#b83b5e", // Rose/Crimson (deep)
+            "02": "#cd6133", // Terracotta/Peach (deep)
+            "03": "#804a69", // Plum/Mauve (deep)
+            "04": "#51386c", // Purple (deep)
+            "05": "#1b6562", // Teal (deep)
+            "06": "#223d5e"  // Deep Blue (deep)
+        };
+
+        let THEME_COLORS = THEME_COLORS_LIGHT; // Default is light mode
+        let isDarkMode = false;
+
+        const THEME_LABELS = {
+            "01": "Encoding & Representation",
+            "02": "Evolution & Adaptation",
+            "03": "Dynamics & Function",
+            "04": "Computation & Discovery",
+            "05": "Natural & Mental Systems",
+            "06": "Foundational Frameworks"
+        };
+
+        // DOM Elements
+        const slideContainer = document.getElementById('slideContainer');
+        const slideCounter = document.getElementById('slideCounter');
+        const outlineList = document.getElementById('outlineList');
+        const timerDisplay = document.getElementById('sessionTimer');
+        const playPauseBtn = document.getElementById('timerPlayPauseBtn');
+        const outlineDrawer = document.getElementById('outlineDrawer');
+        const helpOverlay = document.getElementById('helpOverlay');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const controlsPanel = null;
+
+        // Theme Toggling Functions
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                isDarkMode = true;
+                document.body.classList.add('dark-mode');
+                THEME_COLORS = THEME_COLORS_DARK;
+            } else {
+                isDarkMode = false;
+                document.body.classList.remove('dark-mode');
+                THEME_COLORS = THEME_COLORS_LIGHT;
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('slidesTheme', theme);
+            
+            // Update node colors in background canvas
+            if (nodes && nodes.length > 0) {
+                nodes.forEach(node => {
+                    node.color = THEME_COLORS[node.themeId] || '#8c827a';
+                });
+            }
+            
+            // Re-render slides to apply updated theme colors
+            if (slideDeck && slideDeck.length > 0) {
+                renderSlideDeck();
+                showSlide(currentSlide);
+                renderOutline();
+            }
+            
+            // Update theme toggle icon
+            updateThemeToggleButton();
+        }
+
+        function toggleTheme() {
+            setTheme(isDarkMode ? 'light' : 'dark');
+        }
+
+        function updateThemeToggleButton() {
+            const btn = document.getElementById('themeToggleBtn');
+            const iconSvg = document.getElementById('themeToggleIcon');
+            if (!iconSvg) return;
+            
+            if (isDarkMode) {
+                // Sun Icon
+                iconSvg.innerHTML = `
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                `;
+                btn.title = "Switch to Light Mode";
+            } else {
+                // Moon Icon
+                iconSvg.innerHTML = `
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                `;
+                btn.title = "Switch to Dark Mode";
+            }
+        }
+
+        function resetControlsAutohide() {}
+
+        // Fetch Data on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            resetControlsAutohide();
+            startTimer();
+
+            Promise.all([
+                fetch('data/themes.json').then(res => res.json()),
+                fetch('data/speakers.json').then(res => res.json()),
+                fetch('data/network.json').then(res => res.json()),
+                fetch('data/settings.json').then(res => res.json()).catch(() => ({}))
+            ])
+            .then(([themes, speakers, network, settings]) => {
+                networkData = network;
+                themes.forEach(t => themeMap[t.id] = t);
+                
+                // Parse initial theme selection
+                let initialTheme = 'light'; // default
+                
+                // 1. Settings default
+                if (settings && settings.slidesDefaultTheme) {
+                    initialTheme = settings.slidesDefaultTheme;
+                }
+                // 2. Local storage persistence
+                const savedTheme = localStorage.getItem('slidesTheme');
+                if (savedTheme === 'light' || savedTheme === 'dark') {
+                    initialTheme = savedTheme;
+                }
+                // 3. URL param override
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('theme')) {
+                    const themeParam = urlParams.get('theme');
+                    if (themeParam === 'light' || themeParam === 'dark') {
+                        initialTheme = themeParam;
+                    }
+                }
+                
+                // Apply theme variable set
+                setTheme(initialTheme);
+                
+                // Build dynamic slideshow deck structure
+                buildSlideDeck(themes, speakers, settings);
+                
+                // Remove loading spinner
+                loadingOverlay.classList.add('fade-out');
+                
+                // Initialize background network physics canvas
+                initNetworkCanvas();
+                
+                // Render slide outline and setup first slide
+                renderOutline();
+                
+                // Initial slide index from hash if present
+                let startSlideIdx = 0;
+                const hash = window.location.hash;
+                if (hash.startsWith('#slide-')) {
+                    const idx = parseInt(hash.replace('#slide-', '')) - 1;
+                    if (!isNaN(idx) && idx >= 0 && idx < slideDeck.length) {
+                        startSlideIdx = idx;
+                    }
+                }
+                showSlide(startSlideIdx);
+            })
+            .catch(err => {
+                console.error("Error building slideshow:", err);
+                loadingOverlay.innerHTML = `
+                    <div style="font-family: var(--font-heading); font-size: 1.5rem; color: #e56b6f; font-weight: 600;">Failed to load symposium data</div>
+                    <div style="font-size: 0.95rem; color: var(--muted-text); margin-top: 0.5rem;">Please check console logs or network server.</div>
+                `;
+            });
+        });
+
+        // 1. Build Slides Data Structure Dynamically
+        function buildSlideDeck(themes, speakers, settings) {
+            const isReleaseMode = settings && settings.releaseMode === true;
+            
+            // Process speakers: conditionally anonymize
+            const processedSpeakers = speakers.map(s => {
+                const needsUpdate = !s.image || !s.bio || !s.topic || !s.abstract || s.note;
+                const isAnonymous = isReleaseMode && needsUpdate && !s.publishAnyway;
+                if (isAnonymous) {
+                    return {
+                        ...s,
+                        name: "To Be Announced",
+                        affiliation: "Mystery Contributor",
+                        topic: "Coming soon",
+                        abstract: "More details coming soon.",
+                        bio: "",
+                        image: "",
+                        isAnonymous: true
+                    };
+                }
+                return { ...s, isAnonymous: false };
+            });
+
+            slideDeck = [];
+
+            // Slide 1: Welcome/Title
+            slideDeck.push({
+                type: 'welcome',
+                title: 'Edge Cases',
+                subtitle: 'Surprising and Unconventional Applications in Network Science',
+                meta: 'CCS 2026 Satellite Symposium | Binghamton, NY',
+                notes: {
+                    abstract: 'Welcome to Edge Cases 2026, a satellite symposium at CCS 2026 showcasing the work of emerging scholars applying network science in qualitative or peripheral domains.',
+                    bio: 'Organized by the Edge Cases Symposium Organizing Committee.'
+                }
+            });
+
+            // Slide 2: Themes Overview Grid
+            slideDeck.push({
+                type: 'themes-overview',
+                title: 'Symposium Themes',
+                subtitle: 'Bridging specialized domains through dynamic network models',
+                themes: themes,
+                notes: {
+                    abstract: 'Overview of the 6 key themes directing this symposium. We will navigate through them systematically in this presentation, featuring speakers mapping to each.',
+                    bio: 'Each theme will change the color representation of our interactive network background.'
+                }
+            });
+
+            // Slide 3: Presenters Overview
+            slideDeck.push({
+                type: 'presenters-overview',
+                title: 'Contributors',
+                speakers: processedSpeakers
+            });
+
+            // Slide 4: Topics Overview
+            slideDeck.push({
+                type: 'topics-overview',
+                title: 'Presentation Topics',
+                speakers: processedSpeakers
+            });
+
+            // Slide 5: Schedule
+            slideDeck.push({
+                type: 'schedule',
+                title: 'Symposium Schedule',
+                speakers: processedSpeakers
+            });
+
+            // Add Speaker slides directly
+            processedSpeakers.forEach(speaker => {
+                const speakerThemeIds = speaker.themeIds || (speaker.themeId ? [speaker.themeId] : []);
+                slideDeck.push({
+                    type: 'speaker',
+                    themeIds: speakerThemeIds,
+                    speaker: speaker,
+                    notes: {
+                        abstract: speaker.abstract || 'No abstract provided.',
+                        bio: speaker.bio || 'No biography details provided.'
+                    }
+                });
+            });
+
+            // Final Outro Slide
+            slideDeck.push({
+                type: 'outro',
+                title: 'Thank You!',
+                subtitle: 'Edge Cases 2026',
+                notes: {
+                    abstract: 'Thank you for attending our symposium. We hope this encourages collaborations across less connected academic silos.',
+                    bio: 'Presented by the Edge Cases Symposium Organizing Committee.'
+                }
+            });
+
+            // Render Deck HTML
+            renderSlideDeck();
+        }
+
+        // Render Deck HTML elements dynamically
+        function renderSlideDeck() {
+            slideContainer.innerHTML = slideDeck.map((slide, idx) => {
+                let contentHTML = '';
+                
+                if (slide.type === 'welcome') {
+                    contentHTML = `
+                        <div class="title-slide-logo">
+                            <svg width="100" height="100" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="var(--panel-bg)" stroke-width="1" />
+                            </svg>
+                            <h1>${slide.title}</h1>
+                        </div>
+                        <div class="title-slide-sub">${slide.subtitle}</div>
+                        <div style="font-size: 1.15rem; color: var(--muted-text);">Organized by the Edge Cases Symposium Committee</div>
+                        <div class="title-slide-meta">${slide.meta}</div>
+                    `;
+                }
+                
+                else if (slide.type === 'themes-overview') {
+                    contentHTML = `
+                        <div class="slide-header">
+                            <span class="slide-tag">Symposium Roadmap</span>
+                            <span class="slide-tag">CCS 2026</span>
+                        </div>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <div class="themes-overview-grid">
+                            ${slide.themes.map(t => {
+                                const color = THEME_COLORS[t.id] || 'var(--accent-color)';
+                                return `
+                                    <div class="theme-grid-card" style="border-top: 4px solid ${color};">
+                                        <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: ${color};">${t.id}</div>
+                                        <h3>${t.title}</h3>
+                                        <p>${t.description}</p>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+                
+                else if (slide.type === 'presenters-overview') {
+                    contentHTML = `
+                        <div class="slide-header">
+                            <span class="slide-tag">Symposium Contributors</span>
+                        </div>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <div class="presenters-grid">
+                            ${slide.speakers.map(sp => {
+                                const initials = getInitials(sp.name);
+                                const primaryThemeId = (sp.themeIds && sp.themeIds.length > 0) ? sp.themeIds[0] : (sp.themeId || '01');
+                                const color = THEME_COLORS[primaryThemeId] || 'var(--accent-color)';
+                                const gradientStyle = `background: linear-gradient(135deg, ${color}, #eaac8b);`;
+                                const avatarHTML = sp.image ? 
+                                    `<img src="${sp.image}" alt="${sp.name}" onerror="this.outerHTML='<div class=&quot;presenter-card-avatar&quot; style=&quot;${gradientStyle}; border: none;&quot;>${initials}</div>';">` :
+                                    `<div class="presenter-card-avatar" style="${gradientStyle}; border: none;">${initials}</div>`;
+                                
+                                return `
+                                    <div class="presenter-card">
+                                        <div class="presenter-card-avatar" style="border-color: ${color};">
+                                            ${avatarHTML}
+                                        </div>
+                                        <h4>${sp.name}</h4>
+                                        <p>${sp.affiliation}</p>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+
+                else if (slide.type === 'topics-overview') {
+                    contentHTML = `
+                        <div class="slide-header">
+                            <span class="slide-tag">Symposium Topics</span>
+                        </div>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <div class="topics-list" style="overflow-y: auto; padding-right: 1rem;">
+                            ${slide.speakers.map(sp => {
+                                const primaryThemeId = (sp.themeIds && sp.themeIds.length > 0) ? sp.themeIds[0] : (sp.themeId || '01');
+                                const color = THEME_COLORS[primaryThemeId] || 'var(--accent-color)';
+                                return `
+                                    <div class="topic-item" style="border-left-color: ${color};">
+                                        <div class="topic-item-title">${sp.topic || 'Coming soon'}</div>
+                                        <div class="topic-item-speaker">${sp.name}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+
+                else if (slide.type === 'schedule') {
+                    contentHTML = `
+                        <div class="slide-header">
+                            <span class="slide-tag">Event Timeline</span>
+                        </div>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <div class="schedule-list" style="overflow-y: auto; padding-right: 1rem; flex: 1;">
+                            ${slide.speakers.map((sp, i) => {
+                                const hour = 10 + Math.floor((i * 30) / 60);
+                                const min = (i * 30) % 60;
+                                const timeStr = `${hour > 12 ? hour - 12 : hour}:${min === 0 ? '00' : min} ${hour >= 12 ? 'PM' : 'AM'}`;
+                                return `
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">${timeStr}</div>
+                                        <div class="schedule-details">
+                                            <div class="schedule-title">${sp.topic || 'Coming soon'}</div>
+                                            <div class="topic-item-speaker">${sp.name} - ${sp.affiliation}</div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+                
+                else if (slide.type === 'speaker') {
+                    const sp = slide.speaker;
+                    const primaryThemeId = slide.themeIds[0];
+                    const color = THEME_COLORS[primaryThemeId] || 'var(--accent-color)';
+                    
+                    const initials = getInitials(sp.name);
+                    const gradientStyle = `background: linear-gradient(135deg, ${color}, #eaac8b);`;
+                    
+                    const avatarHTML = sp.image ? 
+                        `<img src="${sp.image}" alt="${sp.name}" onerror="this.outerHTML='<div class=&quot;speaker-slide-avatar&quot; style=&quot;${gradientStyle}; border: none;&quot;>${initials}</div>';">` :
+                        `<div class="speaker-slide-avatar" style="${gradientStyle}; border: none;">${initials}</div>`;
+
+                    const themeBadgesHTML = slide.themeIds.map(tid => {
+                        const tColor = THEME_COLORS[tid] || 'var(--accent-color)';
+                        const tName = THEME_LABELS[tid] || '';
+                        return `<span class="slide-tag" style="color: ${tColor}; background: ${tColor}12; border: 1px solid ${tColor}25; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem; letter-spacing: 0.05em;">Theme ${tid}: ${tName}</span>`;
+                    }).join('');
+
+                    contentHTML = `
+                        <div class="slide-header">
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; max-width: 75%;">
+                                ${themeBadgesHTML}
+                            </div>
+                            <span class="slide-tag">Contributor Profile</span>
+                        </div>
+                        <div class="speaker-slide-body">
+                            <div class="speaker-slide-left">
+                                <h3 class="speaker-talk-title">${sp.topic || 'Coming soon'}</h3>
+                                <p class="speaker-talk-abstract">${sp.abstract || 'Presentation details coming soon.'}</p>
+                                ${sp.themeRelevance ? `
+                                    <div class="speaker-theme-relevance" style="border-left-color: ${color};">
+                                        <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: ${color}; margin-bottom: 0.35rem; text-transform: uppercase;">Relevance to Themes</div>
+                                        ${sp.themeRelevance}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <div class="speaker-slide-right">
+                                <div class="speaker-slide-avatar" style="border-color: ${color};">
+                                    ${avatarHTML}
+                                </div>
+                                <h3 class="speaker-slide-name">${sp.name}</h3>
+                                <div class="speaker-slide-aff">${sp.affiliation}</div>
+                                ${sp.bio ? `<p class="speaker-slide-bio">${sp.bio}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                else if (slide.type === 'outro') {
+                    contentHTML = `
+                        <div class="title-slide-logo">
+                            <svg width="80" height="80" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
+                                <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
+                                <circle cx="6" cy="24" r="3" fill="#508484" />
+                                <circle cx="10" cy="12" r="3" fill="#6d597a" />
+                                <circle cx="14" cy="20" r="3" fill="#355070" />
+                                <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="var(--panel-bg)" stroke-width="1" />
+                            </svg>
+                            <h1 style="font-size: 4rem;">${slide.title}</h1>
+                        </div>
+                        <div class="title-slide-sub" style="font-size: 1.4rem; color: var(--accent-color);">Edge Cases | CCS 2026 Satellite Symposium</div>
+                        <div style="max-width: 600px; line-height: 1.6; color: var(--muted-text); font-size: 1rem;">
+                            Special thanks to the contributors, the attendees, the conference organizers, and all those who played a role in bringing this event together.
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="index.html" style="font-family: var(--font-mono); color: var(--accent-color); text-decoration: underline; font-size: 0.95rem;">Official Website</a>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="slide ${slide.type === 'welcome' ? 'title-slide' : ''} ${slide.type === 'outro' ? 'title-slide' : ''}" id="slide-${idx}">
+                        ${contentHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 2. Render Slide Outline Drawer Content
+        function renderOutline() {
+            outlineList.innerHTML = slideDeck.map((slide, idx) => {
+                let name = '';
+                if (slide.type === 'welcome') name = 'Symposium Welcome';
+                else if (slide.type === 'themes-overview') name = 'Roadmap & Themes';
+                else if (slide.type === 'presenters-overview') name = 'Contributors';
+                else if (slide.type === 'topics-overview') name = 'Presentation Topics';
+                else if (slide.type === 'schedule') name = 'Symposium Schedule';
+                else if (slide.type === 'speaker') name = `Talk: ${slide.speaker.name}`;
+                else if (slide.type === 'outro') name = 'Symposium Conclusion';
+                
+                return `
+                    <li class="outline-item" id="outline-item-${idx}" onclick="jumpToSlide(${idx})">
+                        <span>${name}</span>
+                        <span class="slide-num">${idx + 1}</span>
+                    </li>
+                `;
+            }).join('');
+        }
+
+
+
+        // 3. Slides Navigation Logic
+        function showSlide(index) {
+            if (index < 0 || index >= slideDeck.length) return;
+            
+            // Remove active from previous slide
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.outline-item').forEach(item => item.classList.remove('active'));
+            
+            // Activate current
+            currentSlide = index;
+            const slideEl = document.getElementById(`slide-${currentSlide}`);
+            if (slideEl) slideEl.classList.add('active');
+            
+            const outlineItemEl = document.getElementById(`outline-item-${currentSlide}`);
+            if (outlineItemEl) {
+                outlineItemEl.classList.add('active');
+                // Scroll outline list to follow active item
+                outlineItemEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+
+            // Update counter UI
+            if (slideCounter) {
+                slideCounter.textContent = (currentSlide + 1).toString().padStart(2, '0') + ' / ' + slideDeck.length.toString().padStart(2, '0');
+            }
+
+
+            // Update URL hash
+            history.replaceState(null, null, '#slide-' + (currentSlide + 1));
+            
+            // Morph background network theme color
+            morphNetworkBg();
+        }
+
+        function nextSlide() {
+            if (currentSlide < slideDeck.length - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function jumpToSlide(idx) {
+            showSlide(idx);
+            // Auto close outline drawer on small screen / touch
+            if (window.innerWidth < 800) {
+                toggleOutline();
+            }
+        }
+
+        // Handle routing from URL hash on load
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash;
+            if (hash.startsWith('#slide-')) {
+                const idx = parseInt(hash.replace('#slide-', '')) - 1;
+                if (!isNaN(idx) && idx !== currentSlide) {
+                    showSlide(idx);
+                }
+            }
+        });
+
+        // 4. Keyboard Navigation Controls
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(slideDeck.length - 1);
+            } else if (e.key.toLowerCase() === 'o') {
+                toggleOutline();
+            } else if (e.key.toLowerCase() === 'f') {
+                toggleFullscreen();
+            } else if (e.key.toLowerCase() === 't') {
+                toggleTheme();
+            } else if (e.key === 'Escape') {
+                if (helpOverlay.classList.contains('open')) toggleHelp();
+                if (outlineDrawer.classList.contains('open')) toggleOutline();
+            } else if (e.key === '?' || e.key === '/') {
+                toggleHelp();
+            }
+        });
+
+        // Touch Swipe Gestures
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        window.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        window.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            // Swipe Left -> next
+            if (touchstartX - touchendX > 80) {
+                nextSlide();
+            }
+            // Swipe Right -> prev
+            if (touchendX - touchstartX > 80) {
+                prevSlide();
+            }
+        }
+
+        // Toggle UI Panels
+        function toggleOutline() {
+            outlineDrawer.classList.toggle('open');
+            const btn = document.getElementById('outlineToggleBtn');
+            if (btn) btn.classList.toggle('active', outlineDrawer.classList.contains('open'));
+        }
+
+        function toggleNotes() {
+            notesDrawer.classList.toggle('open');
+            const btn = document.getElementById('notesToggleBtn');
+            if (btn) btn.classList.toggle('active', notesDrawer.classList.contains('open'));
+        }
+
+        function toggleHelp() {
+            helpOverlay.classList.toggle('open');
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(() => {
+                    const btn = document.getElementById('fullscreenBtn');
+                    if (btn) btn.innerHTML = '<span>⛶</span> Exit';
+                }).catch(err => {
+                    console.error("Fullscreen failed:", err);
+                });
+            } else {
+                document.exitFullscreen().then(() => {
+                    const btn = document.getElementById('fullscreenBtn');
+                    if (btn) btn.innerHTML = '<span>⛶</span> Present';
+                });
+            }
+        }
+
+        // 5. Presenter stopwatch session timer logic
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (timerRunning) {
+                    timerSeconds++;
+                    const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+                    const secs = String(timerSeconds % 60).padStart(2, '0');
+                    timerDisplay.textContent = `${mins}:${secs}`;
+                }
+            }, 1000);
+        }
+
+        function toggleTimer() {
+            timerRunning = !timerRunning;
+        }
+
+        function resetTimer() {
+            timerSeconds = 0;
+            timerDisplay.textContent = '00:00';
+            timerRunning = true;
+        }
+
+
+        // ==========================================
+        // AMBIENT NETWORK CANVAS PHYSICS
+        // ==========================================
+        const canvas = document.getElementById('slidesNetworkCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, dpr;
+        let nodes = [];
+        let links = [];
+        let simulationActive = true;
+        let activeThemeColor = null;
+        let activeThemeIds = [];
+
+        const CONFIG = {
+            repulsion: 140,
+            springLength: 60,
+            springStrength: 0.035,
+            centerStrength: 0.04,
+            damping: 0.9,
+            nodeRadius: 2.2,
+            hubRadius: 4.8,
+            colors: ['#e56b6f', '#eaac8b', '#b5838d', '#6d597a', '#508484', '#355070'],
+            edgeColor: 'rgba(140, 130, 122, 0.08)' // faint grey lines
+        };
+
+        function initNetworkCanvas() {
+            if (!canvas || !networkData) return;
+            
+            dpr = window.devicePixelRatio || 1;
+            resizeCanvas();
+            
+            // Build nodes with custom positions
+            nodes = networkData.nodes.map(n => {
+                // Select a random theme for this node to make background color morphing structured
+                const themeIds = Object.keys(THEME_COLORS);
+                const randomThemeId = themeIds[n.id % themeIds.length];
+                
+                return {
+                    ...n,
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: 0,
+                    vy: 0,
+                    links: 0,
+                    themeId: randomThemeId,
+                    color: THEME_COLORS[randomThemeId]
+                };
+            });
+
+            links = networkData.links.map(l => ({
+                source: nodes.find(n => n.id === l.source),
+                target: nodes.find(n => n.id === l.target)
+            }));
+
+            // Pre-calculate links counts
+            links.forEach(l => {
+                if (l.source && l.target) {
+                    l.source.links++;
+                    l.target.links++;
+                }
+            });
+
+            // Set hub nodes for main themes
+            const sortedNodes = [...nodes].sort((a, b) => b.links - a.links);
+            const themeIds = Object.keys(THEME_LABELS);
+            themeIds.forEach((id, i) => {
+                if (sortedNodes[i]) {
+                    sortedNodes[i].label = THEME_LABELS[id];
+                    sortedNodes[i].themeId = id;
+                    sortedNodes[i].color = THEME_COLORS[id];
+                }
+            });
+
+            // Run initial simulation ticks to resolve overlap
+            for (let i = 0; i < 150; i++) {
+                physicsUpdate();
+            }
+
+            // Start animation loop
+            requestAnimationFrame(drawLoop);
+        }
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            ctx.scale(dpr, dpr);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+        });
+
+        // Trigger morphing when slide changes
+        function morphNetworkBg() {
+            const activeSlide = slideDeck[currentSlide];
+            if (!activeSlide) return;
+            
+            if (activeSlide.themeIds && activeSlide.themeIds.length > 0) {
+                activeThemeIds = activeSlide.themeIds;
+                activeThemeColor = THEME_COLORS[activeThemeIds[0]] || null;
+            } else {
+                activeThemeIds = [];
+                activeThemeColor = null;
+            }
+        }
+
+        function physicsUpdate() {
+            // Repulsion forces
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const n1 = nodes[i];
+                    const n2 = nodes[j];
+                    const dx = n2.x - n1.x;
+                    const dy = n2.y - n1.y;
+                    const distSq = dx * dx + dy * dy || 1;
+                    const force = CONFIG.repulsion / distSq;
+                    n1.vx -= dx * force;
+                    n1.vy -= dy * force;
+                    n2.vx += dx * force;
+                    n2.vy += dy * force;
+                }
+            }
+
+            // Spring link forces
+            links.forEach(link => {
+                if (!link.source || !link.target) return;
+                const dx = link.target.x - link.source.x;
+                const dy = link.target.y - link.source.y;
+                const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                const force = (dist - CONFIG.springLength) * CONFIG.springStrength;
+                const fx = (dx / dist) * force;
+                const fy = (dy / dist) * force;
+                link.source.vx += fx;
+                link.source.vy += fy;
+                link.target.vx -= fx;
+                link.target.vy -= fy;
+            });
+
+            // Center gravity & damping
+            nodes.forEach(node => {
+                node.vx += (width / 2 - node.x) * CONFIG.centerStrength * 0.01;
+                node.vy += (height / 2 - node.y) * CONFIG.centerStrength * 0.01;
+                
+                // Add a small jitter
+                node.vx += (Math.random() - 0.5) * 0.008;
+                node.vy += (Math.random() - 0.5) * 0.008;
+                
+                node.x += node.vx * 0.4;
+                node.y += node.vy * 0.4;
+                
+                node.vx *= CONFIG.damping;
+                node.vy *= CONFIG.damping;
+            });
+        }
+
+        function drawLoop() {
+            ctx.clearRect(0, 0, width, height);
+
+            physicsUpdate();
+
+            // Draw links
+            links.forEach(link => {
+                if (!link.source || !link.target) return;
+                
+                // Determine connection opacity
+                let linkAlpha = 0.035; // default faint background
+                
+                if (activeThemeIds.length > 0) {
+                    const sourceMatch = activeThemeIds.includes(link.source.themeId);
+                    const targetMatch = activeThemeIds.includes(link.target.themeId);
+                    // Highlight connections matching active theme
+                    if (sourceMatch && targetMatch) {
+                        linkAlpha = 0.18;
+                    } else if (sourceMatch || targetMatch) {
+                        linkAlpha = 0.07;
+                    } else {
+                        linkAlpha = 0.01; // dim out others
+                    }
+                }
+                
+                const currentEdgeColor = isDarkMode ? 'rgba(140, 130, 122, 0.08)' : 'rgba(43, 38, 35, 0.04)';
+                const sourceThemeActive = activeThemeIds.includes(link.source.themeId);
+                const themeColor = sourceThemeActive ? THEME_COLORS[link.source.themeId] : null;
+                ctx.strokeStyle = themeColor || currentEdgeColor;
+                ctx.lineWidth = (activeThemeIds.length > 0 && activeThemeIds.includes(link.source.themeId) && activeThemeIds.includes(link.target.themeId)) ? 1.0 : 0.6;
+                ctx.globalAlpha = linkAlpha;
+                
+                ctx.beginPath();
+                ctx.moveTo(link.source.x, link.source.y);
+                ctx.lineTo(link.target.x, link.target.y);
+                ctx.stroke();
+            });
+
+            // Draw nodes
+            nodes.forEach(node => {
+                const isHub = node.label !== undefined;
+                
+                let radius = isHub ? CONFIG.hubRadius : CONFIG.nodeRadius;
+                let opacity = 0.25; // default faint background node
+                let color = node.color;
+                
+                if (activeThemeIds.length > 0) {
+                    if (activeThemeIds.includes(node.themeId)) {
+                        opacity = 0.8;
+                        radius = isHub ? CONFIG.hubRadius * 1.5 : CONFIG.nodeRadius * 1.6;
+                        // Add shadow effect for highlighted theme nodes
+                        ctx.shadowColor = color;
+                        ctx.shadowBlur = 8;
+                    } else {
+                        opacity = 0.04; // dim out others
+                        ctx.shadowBlur = 0;
+                    }
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+
+                ctx.globalAlpha = opacity;
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Reset shadows
+                ctx.shadowBlur = 0;
+
+                // Draw labels for active theme hubs
+                if (isHub && (activeThemeIds.length === 0 || activeThemeIds.includes(node.themeId))) {
+                    ctx.fillStyle = isDarkMode ? '#faf9f5' : '#2b2623';
+                    ctx.globalAlpha = activeThemeIds.length > 0 ? 0.9 : 0.65;
+                    ctx.font = '600 11px "Outfit", sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(node.label, node.x, node.y + 16);
+                }
+            });
+
+            ctx.globalAlpha = 1.0;
+            requestAnimationFrame(drawLoop);
+        }
+
+        function getInitials(name) {
+            if (!name) return '??';
+            if (name.toLowerCase().includes('mystery')) return '?';
+            const parts = name.trim().split(/\s+/);
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+            }
+            return name.slice(0, 2).toUpperCase();
+        }
+
+    
