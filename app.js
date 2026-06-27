@@ -385,16 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
                         <strong>More information coming soon.</strong>
                     </p>
-                    <div style="margin-top: 2rem;">
-                        <a href="https://www.wolframcloud.com/obj/phileasd/EdgeCases2026_Submission" target="_blank"
-                            class="primary-cta" style="display: inline-flex; justify-content: center;">
-                            Submit a Proposal
-                            <svg class="arrow-circle-icon" width="24" height="14" viewBox="-395 256 24 14" style="margin-left: 0.5rem;">
-                                <path fill="none" d="M-377 263h-17.6m15.4-2.2l2.2 2.2-2.2 2.2" stroke="currentColor" stroke-width="1.5" />
-                                <circle fill="none" cx="-378.1" cy="263" r="6.8" stroke="currentColor" stroke-width="1.5" />
-                            </svg>
-                        </a>
-                    </div>
+
                 </div>
             `;
         }

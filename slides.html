@@ -47,12 +47,6 @@
         </ul>
     </div>
 
-    <!-- Theme Toggle Button (Faint and Unobtrusive) -->
-    <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme" style="position: fixed; top: 4vh; right: 6vw; z-index: 100; background: none; border: none; cursor: pointer; color: var(--text-color); opacity: 0.35; transition: opacity 0.2s ease, transform 0.2s ease; padding: 0.5rem; display: flex; align-items: center; justify-content: center;">
-        <svg id="themeToggleIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
 
     <!-- Corner Status Indicators (Faint and Unobtrusive) -->
     <div id="sessionTimer" title="Session Timer" style="position: fixed; bottom: 4vh; left: 6vw; z-index: 100; font-family: var(--font-mono); font-size: 0.9rem; color: var(--muted-text); opacity: 0.45; letter-spacing: 0.05em; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s ease;">
@@ -92,9 +86,7 @@
                 <div class="shortcut-key">F</div>
                 <div class="shortcut-desc">Toggle Fullscreen Mode</div>
                 
-                <div class="shortcut-key">T</div>
-                <div class="shortcut-desc">Toggle Theme (Light / Dark)</div>
-                
+
                 <div class="shortcut-key">Esc / ?</div>
                 <div class="shortcut-desc">Close Modal / Open Help</div>
             </div>
@@ -706,8 +698,7 @@
                 toggleOutline();
             } else if (e.key.toLowerCase() === 'f') {
                 toggleFullscreen();
-            } else if (e.key.toLowerCase() === 't') {
-                toggleTheme();
+
             } else if (e.key === 'Escape') {
                 if (helpOverlay.classList.contains('open')) toggleHelp();
                 if (outlineDrawer.classList.contains('open')) toggleOutline();

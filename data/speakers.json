@@ -70,18 +70,7 @@
     "themeIds": ["03", "04"],
     "themeRelevance": "Treating strategic sequential moves in chess as an evolving piece-interaction network to predict outcomes."
   },
-  {
-    "id": "chathura-jayalath",
-    "name": "Chathura Jayalath",
-    "affiliation": "University of Central Florida",
-    "topic": "Generative Model Discovery",
-    "abstract": "We propose a new paradigm for modeling complex social systems by integrating mechanistic network models with multimodal generative AI. Social behavior emerges from dynamic interactions on multilayer, temporal networks that are non-linear and non-ergodic, and cannot be captured by traditional statistical methods alone. Our approach, called Generative Model Discovery (GMD), functions as a meta-model that learns and evolves candidate network mechanisms capable of reproducing observed macro-level outcomes from micro-level interactions. GMD bridges explainable agent-based modeling with data-rich generative foundation models, enabling causal, interpretable, and scalable inference over network dynamics.",
-    "bio": "",
-    "image": "",
-    "note": "Pending confirmation, biography, and headshot photo",
-    "themeIds": ["04", "06"],
-    "themeRelevance": "Using multimodal generative AI to discover micro-level agent-based model mechanisms from macro network patterns."
-  },
+
   {
     "id": "alejandra-ortiz-duran",
     "name": "Alejandra Ortiz Durán",
@@ -94,5 +83,17 @@
     "publishAnyway": true,
     "themeIds": ["06", "03"],
     "themeRelevance": "Developing mathematical formulations to study reaction-diffusion patterns and dynamics on complex graph structures."
+  },
+  {
+    "id": "atiyab-zafar",
+    "name": "Atiyab Zafar",
+    "affiliation": "Department of Physics and Astrophysics, University of Delhi",
+    "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
+    "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
+    "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
+    "image": "",
+    "publishAnyway": true,
+    "themeIds": ["03", "04"],
+    "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
   }
 ]
