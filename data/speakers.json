@@ -7,18 +7,25 @@
     "abstract": "Network approaches to neuroscience have traditionally sought universal organizational principles, but recent years have seen a shift to characterizing variability across individuals. By treating brain networks as phenotypes constrained by (epi)genetics and shaped by the environment, we can better understand how adaptive brain organization depends on context.",
     "bio": "Haily is a Postdoctoral Researcher at the Network Science Institute at Northeastern University London. She holds dual PhDs in Informatics and Cognitive Science from Indiana University.",
     "image": "media/speakers/haily_merritt.jpg",
-    "themeIds": ["05", "02", "03"],
+    "themeIds": [
+      "05",
+      "02",
+      "03"
+    ],
     "themeRelevance": "Approaching brain networks as phenotypic structures constrained by genetic and environmental contexts."
   },
   {
     "id": "phileas-dazeley-gaist",
     "name": "Phileas Dazeley-Gaist",
-    "affiliation": "Wolfram Research, Wolfram Institute",
+    "affiliation": "Wolfram Research",
     "topic": "Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism",
     "abstract": "We introduce the “Sympoietic Art Organism”, an experimental design to richly capture the bottom-up emergence of shared cultural heritage in a small community. Over three months, ten artists built a shared creative commons, resulting in a dataset of 411 original artworks and a citation network of 725 verified relationships between them. By modeling the network's growth as a time series, we provide a scalable ethnographic tool for investigating the mechanisms of cultural inheritance.",
     "bio": "Phileas is a human ecologist, creative technologist, and developer at Wolfram Research, focusing on human ecology, agent-based modeling, and digital humanities.",
     "image": "media/speakers/phileas_dazeley-gaist.png",
-    "themeIds": ["01", "02"],
+    "themeIds": [
+      "01",
+      "02"
+    ],
     "themeRelevance": "Constructing and mapping citation networks of artistic creations to track cultural evolution in real time."
   },
   {
@@ -29,7 +36,10 @@
     "abstract": "Most population health studies estimate the short-term effect of a single factor, leaving a gap in understanding long-term health trajectories at scale. Using Electronic Health Records for 8 million U.S. patients, we turn 90 million primary-care visits into a state-transition graph of health trajectories. Applying graph-based representation learning to this network allows us to identify where health trajectories diverge and which demographic groups follow specific paths.",
     "bio": "",
     "image": "",
-    "themeIds": ["03", "05"],
+    "themeIds": [
+      "03",
+      "05"
+    ],
     "themeRelevance": "Reframing longitudinal health trajectories and clinical visit sequences as paths on a state-transition network."
   },
   {
@@ -41,7 +51,10 @@
     "bio": "Yessica is a scientist blending social complexity with behavioral research, network science, and data visualization to explore how art, science, and technology shape human creativity.",
     "image": "media/speakers/yessica_herrera_guzman.jpeg",
     "website": "https://yessicaherrera.com",
-    "themeIds": ["01", "04"],
+    "themeIds": [
+      "01",
+      "04"
+    ],
     "themeRelevance": "Analyzing the art world as a complex network of museum curation, collector prestige, and creative collaborations."
   },
   {
@@ -54,7 +67,10 @@
     "image": "media/speakers/arhan_vora.jpeg",
     "note": "Pending biography",
     "publishAnyway": true,
-    "themeIds": ["02", "06"],
+    "themeIds": [
+      "02",
+      "06"
+    ],
     "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
   },
   {
@@ -66,10 +82,12 @@
     "bio": "Divya is a researcher and engineer working at the intersection of network science, graphs, and graph machine learning to uncover patterns in complex systems.",
     "image": "media/speakers/divya_sindhu_lekha.png",
     "publishAnyway": true,
-    "themeIds": ["03", "04"],
+    "themeIds": [
+      "03",
+      "04"
+    ],
     "themeRelevance": "Treating strategic sequential moves in chess as an evolving piece-interaction network to predict outcomes."
   },
-
   {
     "id": "alejandra-ortiz-duran",
     "name": "Alejandra Ortiz Durán",
@@ -80,7 +98,10 @@
     "image": "media/speakers/alejandra_ortiz.png",
     "note": "Pending presentation slides",
     "publishAnyway": true,
-    "themeIds": ["06", "03"],
+    "themeIds": [
+      "06",
+      "03"
+    ],
     "themeRelevance": "Developing mathematical formulations to study reaction-diffusion patterns and dynamics on complex graph structures."
   },
   {
@@ -92,7 +113,10 @@
     "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
     "image": "",
     "publishAnyway": true,
-    "themeIds": ["03", "04"],
+    "themeIds": [
+      "03",
+      "04"
+    ],
     "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
   }
 ]
