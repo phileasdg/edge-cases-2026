@@ -64,9 +64,8 @@
     "topic": "Winning at Chess Without Search: Predicting Game Outcomes from Evolving Interaction Networks",
     "abstract": "We model chess games as dynamic interaction networks, where pieces and positions form an evolving graph shaped by strategic decisions. By applying graph neural networks to these game trajectories, we can predict game outcomes (win/loss) well before the game concludes. This network-based approach demonstrates how competitive, sequential decision-making can be reframed to capture strategic signals without relying on deep lookahead.",
     "bio": "Divya is a researcher and engineer working at the intersection of network science, graphs, and graph machine learning to uncover patterns in complex systems.",
-    "image": "",
+    "image": "media/speakers/divya_sindhu_lekha.png",
     "publishAnyway": true,
-    "note": "Pending headshot photo",
     "themeIds": ["03", "04"],
     "themeRelevance": "Treating strategic sequential moves in chess as an evolving piece-interaction network to predict outcomes."
   },
