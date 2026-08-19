@@ -29,18 +29,15 @@
     "themeRelevance": "Constructing and mapping citation networks of artistic creations to track cultural evolution in real time."
   },
   {
-    "id": "katie-spoon",
-    "name": "Katie Spoon",
-    "affiliation": "Stanford University",
-    "topic": "Your doctor visits as a network: Discovering high-risk health trajectories",
-    "abstract": "Most population health studies estimate the short-term effect of a single factor, leaving a gap in understanding long-term health trajectories at scale. Using Electronic Health Records for 8 million U.S. patients, we turn 90 million primary-care visits into a state-transition graph of health trajectories. Applying graph-based representation learning to this network allows us to identify where health trajectories diverge and which demographic groups follow specific paths.",
-    "bio": "",
+    "id": "dugan-hammock",
+    "name": "Dugan Hammock",
+    "affiliation": "Wolfram Institute",
+    "topic": "Pending presentation topic",
+    "abstract": "Information pending.",
+    "bio": "Dugan is a Research Fellow at the Wolfram Institute.",
     "image": "",
-    "themeIds": [
-      "03",
-      "05"
-    ],
-    "themeRelevance": "Reframing longitudinal health trajectories and clinical visit sequences as paths on a state-transition network."
+    "themeIds": [],
+    "themeRelevance": ""
   },
   {
     "id": "yessica-herrera",

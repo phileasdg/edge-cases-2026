@@ -488,26 +488,35 @@
                 }
 
                 else if (slide.type === 'schedule') {
+                    const scheduleData = [
+                        { time: '2:30 PM', title: 'Intro & Part 1: Tracking the Micro-Dynamics of Cultural Evolution', speaker: 'Phileas Dazeley-Gaist - Wolfram Research' },
+                        { time: '2:42 PM', title: 'Brain Networks as Phenotypes', speaker: 'Haily Merritt - Network Science Institute' },
+                        { time: '3:04 PM', title: 'Pending presentation topic', speaker: 'Dugan Hammock - Wolfram Institute' },
+                        { time: '3:26 PM', title: 'The Art World as a Network', speaker: 'Yessica Herrera - University of Notre Dame' },
+                        { time: '3:46 PM', title: 'Mid-Session Q&A (10m) & Break (5m)', speaker: 'All Speakers / Attendees' },
+                        { time: '4:01 PM', title: 'Part 2: A Sympoietic Art Organism', speaker: 'Phileas Dazeley-Gaist - Wolfram Research' },
+                        { time: '4:13 PM', title: 'Sailing Through Phenotype Space', speaker: 'Arhan Vora - University of Montpellier' },
+                        { time: '4:35 PM', title: 'Winning at Chess Without Search', speaker: 'Dr. Divya Sindhu Lekha - IIIT Kottayam' },
+                        { time: '4:57 PM', title: 'Reaction-Diffusion on Graphs', speaker: 'Alejandra Ortiz Durán - Wolfram Research' },
+                        { time: '5:19 PM', title: 'How Networks Think', speaker: 'Atiyab Zafar - University of Delhi' },
+                        { time: '5:39 PM', title: 'Closing Remarks', speaker: 'Event Organizers' }
+                    ];
+
                     contentHTML = `
                         <div class="slide-header">
                             <span class="slide-tag">Event Timeline</span>
                         </div>
                         <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
                         <div class="schedule-list" style="overflow-y: auto; padding-right: 1rem; flex: 1;">
-                            ${slide.speakers.map((sp, i) => {
-                                const hour = 10 + Math.floor((i * 30) / 60);
-                                const min = (i * 30) % 60;
-                                const timeStr = `${hour > 12 ? hour - 12 : hour}:${min === 0 ? '00' : min} ${hour >= 12 ? 'PM' : 'AM'}`;
-                                return `
-                                    <div class="schedule-item">
-                                        <div class="schedule-time">${timeStr}</div>
-                                        <div class="schedule-details">
-                                            <div class="schedule-title">${sp.topic || 'Coming soon'}</div>
-                                            <div class="topic-item-speaker">${sp.name} - ${sp.affiliation}</div>
-                                        </div>
+                            ${scheduleData.map(item => `
+                                <div class="schedule-item">
+                                    <div class="schedule-time">${item.time}</div>
+                                    <div class="schedule-details">
+                                        <div class="schedule-title">${item.title}</div>
+                                        <div class="topic-item-speaker">${item.speaker}</div>
                                     </div>
-                                `;
-                            }).join('')}
+                                </div>
+                            `).join('')}
                         </div>
                     `;
                 }
