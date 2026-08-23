@@ -32,12 +32,15 @@
     "id": "dugan-hammock",
     "name": "Dugan Hammock",
     "affiliation": "Wolfram Institute",
-    "topic": "Pending presentation topic",
-    "abstract": "Information pending.",
-    "bio": "Dugan is a Research Fellow at the Wolfram Institute.",
-    "image": "",
-    "themeIds": [],
-    "themeRelevance": ""
+    "topic": "Generating irregular networks from periodic structures",
+    "abstract": "We review two algorithms for generating non-periodic networks from regular lattices. A third construction is described which generates networks of increasing complexity.",
+    "bio": "Dugan is a mathematician and computational geometer specializing in hypershapes, aperiodic tilings, and quasicrystals. He enjoys creating geometric visualizations and art. For the past two years he has been working at the Wolfram Institute as a research fellow.",
+    "image": "media/speakers/dugan_hammock.JPG",
+    "themeIds": [
+      "06",
+      "04"
+    ],
+    "themeRelevance": "Applying computational geometry to generate complex, non-periodic network structures."
   },
   {
     "id": "yessica-herrera",
@@ -108,7 +111,7 @@
     "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
     "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
     "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
-    "image": "",
+    "image": "media/speakers/atiyab_zafar.jpg",
     "publishAnyway": true,
     "themeIds": [
       "03",
