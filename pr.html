@@ -600,21 +600,29 @@
 
         .speaker-square-right h2.talk-title {
             font-family: var(--font-heading);
-            font-size: 2.4rem;
+            font-size: 2.0rem;
             font-weight: 600;
             color: var(--accent-color);
             margin: 0;
-            line-height: 1.2;
+            line-height: 1.15;
             max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .speaker-square-right p.talk-abstract {
             font-family: var(--font-main);
-            font-size: 1.15rem;
-            line-height: 1.55;
+            font-size: 1.05rem;
+            line-height: 1.45;
             color: var(--muted-text);
             margin: 0;
             max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* Speaker Square (Title Only Variant) Style */
@@ -1623,7 +1631,7 @@
             font-size: 0.68rem;
             line-height: 1.2;
             display: -webkit-box;
-            -webkit-line-clamp: 1;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -3839,22 +3847,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Short Post / Tweet -->
-                <div class="copy-card">
-                    <div class="copy-card-header">
-                        <div class="copy-card-title">Short Promo Post (Twitter / Mastodon / LinkedIn)</div>
-                        <div class="copy-card-meta">254 chars</div>
-                    </div>
-                    <div class="copy-text-area" id="blurb-short">🔬 Announcing Edge Cases: a satellite symposium at CCS 2026 in Binghamton! Showcasing emerging scholars applying network science to surprising, unconventional, or historically qualitative domains. Let's break academic silos together! 🌐
-
-📅 Oct 14
-#CCS2026 #NetworkScience</div>
-                    <div class="copy-btn-container">
-                        <button class="copy-status-btn" onclick="copyToClipboard(this, 'blurb-short')">
-                            📋 Copy Post
-                        </button>
-                    </div>
-                </div>
 
                 <!-- 4. Email / Newsletter Template -->
                 <div class="copy-card">
@@ -4086,12 +4078,7 @@ The Edge Cases 2026 Organizing Committee</div>
 
         function getShortAffiliation(aff) {
             if (!aff) return '';
-            if (aff.includes('Northeastern')) return 'Northeastern';
-            if (aff.includes('Wolfram')) return 'Wolfram';
-            if (aff.includes('Stanford')) return 'Stanford';
-            if (aff.includes('Notre Dame')) return 'Notre Dame';
-            if (aff.includes('Illinois')) return 'UIUC';
-            return aff.split(',')[0].trim();
+            return aff;
         }
 
         function getSessionATimes(count) {
@@ -4372,7 +4359,7 @@ The Edge Cases 2026 Organizing Committee</div>
                                                 <p class="speaker-affiliation">${speaker.affiliation || ''}</p>
                                                 <div class="speaker-square-divider"></div>
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title" style="font-size: 3.4rem; line-height: 1.25; margin-top: 1rem;">${speaker.topic || 'Coming soon'}</h2>
+                                                <h2 class="talk-title" style="font-size: 2.2rem; line-height: 1.25; margin-top: 1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; max-width: 100%;">${speaker.topic || 'Coming soon'}</h2>
                                             </div>
                                         </div>
                                         <div class="card-footer">
