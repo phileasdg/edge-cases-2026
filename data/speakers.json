@@ -1,5 +1,20 @@
 [
   {
+    "id": "atiyab-zafar",
+    "name": "Atiyab Zafar",
+    "affiliation": "Department of Physics and Astrophysics, University of Delhi",
+    "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
+    "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
+    "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
+    "image": "media/speakers/atiyab_zafar.jpg",
+    "publishAnyway": true,
+    "themeIds": [
+      "03",
+      "04"
+    ],
+    "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
+  },
+  {
     "id": "haily-merritt",
     "name": "Haily Merritt",
     "affiliation": "Network Science Institute, Northeastern University London",
@@ -15,6 +30,22 @@
     "themeRelevance": "Approaching brain networks as phenotypic structures constrained by genetic and environmental contexts."
   },
   {
+    "id": "arhan-vora",
+    "name": "Arhan Vora",
+    "affiliation": "University of Montpellier",
+    "topic": "Sailing Through Phenotype Space: Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
+    "abstract": "Traditional evolutionary dynamics are modeled on continuous fitness landscapes. In this work, we take a network-centric approach by discretizing evolution as population dynamics on a network of phenotypes. We explore how structural properties of the phenotype network constrain evolutionary trajectories and adaptation to selective pressures, revealing how complex genetic patterns map onto network-based transitions.",
+    "bio": "",
+    "image": "media/speakers/arhan_vora.jpeg",
+    "note": "Pending biography",
+    "publishAnyway": true,
+    "themeIds": [
+      "02",
+      "06"
+    ],
+    "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
+  },
+  {
     "id": "dugan-hammock",
     "name": "Dugan Hammock",
     "affiliation": "Wolfram Institute",
@@ -27,22 +58,6 @@
       "04"
     ],
     "themeRelevance": "Applying computational geometry to generate complex, non-periodic network structures."
-  },
-  {
-    "id": "alejandra-ortiz-duran",
-    "name": "Alejandra Ortiz Durán",
-    "affiliation": "Wolfram Research",
-    "topic": "Reaction-Diffusion on Graphs",
-    "abstract": "We explore pattern formation and dynamical processes on complex network topologies by simulating reaction-diffusion systems directly on graphs. We investigate how topological features such as community structures, hub nodes, and path lengths govern spatial pattern emergence, with applications to biological systems and information flow.",
-    "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer at Wolfram. She holds a master's degree in Mathematics from UNAM and is currently pursuing a Ph.D. in Mathematical Biology.",
-    "image": "media/speakers/alejandra_ortiz.png",
-    "note": "Pending presentation slides",
-    "publishAnyway": true,
-    "themeIds": [
-      "06",
-      "03"
-    ],
-    "themeRelevance": "Developing mathematical formulations to study reaction-diffusion patterns and dynamics on complex graph structures."
   },
   {
     "id": "phileas-dazeley-gaist",
@@ -74,37 +89,6 @@
     "themeRelevance": "Analyzing the art world as a complex network of museum curation, collector prestige, and creative collaborations."
   },
   {
-    "id": "atiyab-zafar",
-    "name": "Atiyab Zafar",
-    "affiliation": "Department of Physics and Astrophysics, University of Delhi",
-    "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
-    "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
-    "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
-    "image": "media/speakers/atiyab_zafar.jpg",
-    "publishAnyway": true,
-    "themeIds": [
-      "03",
-      "04"
-    ],
-    "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
-  },
-  {
-    "id": "arhan-vora",
-    "name": "Arhan Vora",
-    "affiliation": "University of Montpellier",
-    "topic": "Sailing Through Phenotype Space: Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
-    "abstract": "Traditional evolutionary dynamics are modeled on continuous fitness landscapes. In this work, we take a network-centric approach by discretizing evolution as population dynamics on a network of phenotypes. We explore how structural properties of the phenotype network constrain evolutionary trajectories and adaptation to selective pressures, revealing how complex genetic patterns map onto network-based transitions.",
-    "bio": "",
-    "image": "media/speakers/arhan_vora.jpeg",
-    "note": "Pending biography",
-    "publishAnyway": true,
-    "themeIds": [
-      "02",
-      "06"
-    ],
-    "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
-  },
-  {
     "id": "divya-sindhu-lekha",
     "name": "Dr. Divya Sindhu Lekha",
     "affiliation": "Indian Institute of Information Technology Kottayam",
@@ -118,5 +102,21 @@
       "04"
     ],
     "themeRelevance": "Treating strategic sequential moves in chess as an evolving piece-interaction network to predict outcomes."
+  },
+  {
+    "id": "alejandra-ortiz-duran",
+    "name": "Alejandra Ortiz Durán",
+    "affiliation": "Wolfram Research",
+    "topic": "Reaction-Diffusion on Graphs",
+    "abstract": "We explore pattern formation and dynamical processes on complex network topologies by simulating reaction-diffusion systems directly on graphs. We investigate how topological features such as community structures, hub nodes, and path lengths govern spatial pattern emergence, with applications to biological systems and information flow.",
+    "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer at Wolfram. She holds a master's degree in Mathematics from UNAM and is currently pursuing a Ph.D. in Mathematical Biology.",
+    "image": "media/speakers/alejandra_ortiz.png",
+    "note": "Pending presentation slides",
+    "publishAnyway": true,
+    "themeIds": [
+      "06",
+      "03"
+    ],
+    "themeRelevance": "Developing mathematical formulations to study reaction-diffusion patterns and dynamics on complex graph structures."
   }
 ]

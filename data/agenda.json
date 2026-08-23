@@ -11,57 +11,57 @@
         },
         {
             "time": "14:35",
-            "title": "Brain Networks as Phenotypes",
-            "duration": "20 mins",
-            "description": "Haily Merritt"
-        },
-        {
-            "time": "14:55",
-            "title": "Generating irregular networks from periodic structures",
-            "duration": "20 mins",
-            "description": "Dugan Hammock"
-        },
-        {
-            "time": "15:15",
-            "title": "Reaction-Diffusion on Graphs",
-            "duration": "20 mins",
-            "description": "Alejandra Ortiz Durán"
-        },
-        {
-            "time": "15:35",
-            "title": "<a href=\"https://phileasdg.github.io/sympoietic-art-organism/\" target=\"_blank\">Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism</a>",
-            "duration": "10 mins",
-            "description": "Phileas Dazeley-Gaist"
-        },
-        {
-            "time": "15:45",
-            "title": "Mid-Session Q&A & Break",
-            "duration": "15 mins",
-            "description": "Shared Q&A followed by a coffee break."
-        },
-        {
-            "time": "16:00",
-            "title": "The Art World as a Network",
-            "duration": "20 mins",
-            "description": "Yessica Herrera"
-        },
-        {
-            "time": "16:20",
             "title": "How Networks Think: Structure, Memory, and Collective Problem Solving",
             "duration": "20 mins",
             "description": "Atiyab Zafar"
         },
         {
-            "time": "16:40",
+            "time": "14:55",
+            "title": "Brain Networks as Phenotypes",
+            "duration": "20 mins",
+            "description": "Haily Merritt"
+        },
+        {
+            "time": "15:15",
             "title": "Sailing Through Phenotype Space",
             "duration": "20 mins",
             "description": "Arhan Vora"
         },
         {
-            "time": "17:00",
+            "time": "15:35",
+            "title": "Generating irregular networks from periodic structures",
+            "duration": "20 mins",
+            "description": "Dugan Hammock"
+        },
+        {
+            "time": "15:55",
+            "title": "Mid-Session Q&A & Break",
+            "duration": "15 mins",
+            "description": "Shared Q&A followed by a coffee break."
+        },
+        {
+            "time": "16:10",
+            "title": "<a href=\"https://phileasdg.github.io/sympoietic-art-organism/\" target=\"_blank\">Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism</a>",
+            "duration": "10 mins",
+            "description": "Phileas Dazeley-Gaist"
+        },
+        {
+            "time": "16:20",
+            "title": "The Art World as a Network",
+            "duration": "20 mins",
+            "description": "Yessica Herrera"
+        },
+        {
+            "time": "16:40",
             "title": "Winning at Chess Without Search",
             "duration": "20 mins",
             "description": "Dr. Divya Sindhu Lekha"
+        },
+        {
+            "time": "17:00",
+            "title": "Reaction-Diffusion on Graphs",
+            "duration": "20 mins",
+            "description": "Alejandra Ortiz Durán"
         },
         {
             "time": "17:20",

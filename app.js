@@ -161,23 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (speakers && speakers.length > 0) {
             let renderedSpeakers = [...speakers];
-            if (!showIndicators) {
-                renderedSpeakers.sort((a, b) => {
-                    const aAnon = (!a.image || !a.bio || !a.topic || !a.abstract || !!a.note) && !a.publishAnyway;
-                    const bAnon = (!b.image || !b.bio || !b.topic || !b.abstract || !!b.note) && !b.publishAnyway;
-                    
-                    if (aAnon && !bAnon) return 1;
-                    if (!aAnon && bAnon) return -1;
-                    
-                    const aNeeds = (!a.image || !a.bio || !a.topic || !a.abstract || !!a.note);
-                    const bNeeds = (!b.image || !b.bio || !b.topic || !b.abstract || !!b.note);
-                    
-                    if (aNeeds && !bNeeds) return 1;
-                    if (!aNeeds && bNeeds) return -1;
-                    
-                    return 0;
-                });
-            }
+            // Removed sorting block so speakers appear in the exact order defined in speakers.json
 
             const isTeaserMode = renderedSpeakers.some(s => s.name.startsWith('Contributor'));
 
