@@ -606,10 +606,6 @@
             margin: 0;
             line-height: 1.15;
             max-width: 100%;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
         .speaker-square-right p.talk-abstract {
@@ -1907,7 +1903,6 @@
             <h1>Edge Cases — PR Assets Sheet</h1>
         </div>
         <div class="header-info">
-            Interactive showcase of PR cards. Adjust text in this file if needed. <br>
             Use <strong>Preview</strong> to see cards full-size, or click <strong>Save PNG</strong> to export.
         </div>
     </header>
@@ -4257,56 +4252,6 @@ The Edge Cases 2026 Organizing Committee</div>
                     const needsUpdate = reasons.length > 0;
                     const draftBadge = (needsUpdate && !speaker.isAnonymous) ? `<span style="color: #eaac8b; font-size: 0.8rem; margin-left: 0.5rem; border: 1px solid #eaac8b; padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;">DRAFT</span>` : '';
 
-                    const cardStandard = `
-                        <div class="card-container-wrapper">
-                            <div class="card-label">
-                                <div>Speaker: ${speaker.name} (with Abstract)${draftBadge}<span class="dimensions">1080 x 1080</span></div>
-                                <div class="card-actions">
-                                    <button class="card-action-btn" onclick="previewCard('${speaker.id}-square')">👁️ Preview</button>
-                                    <button class="card-action-btn" onclick="saveCard('${speaker.id}-square')">💾 Save PNG</button>
-                                </div>
-                            </div>
-                            <div class="preview-scale-wrapper size-square-wrapper">
-                                <div class="card-export-container size-square" id="${speaker.id}-square">
-                                    ${squareSvgBg}
-                                    <div class="card-content">
-                                        <div class="card-header-meta large">Wednesday, Oct 14 @ Lecture Hall 10, Binghamton University | <span style="white-space: nowrap;">2:30 PM – 5:45 PM</span></div>
-                                        <div class="template-speaker-square">
-                                            <div class="speaker-square-left">
-                                                <div class="photo-frame">
-                                                    ${photoHTML}
-                                                </div>
-                                                <h3>${speaker.name}</h3>
-                                                <p class="affiliation">${speaker.affiliation || ''}</p>
-                                            </div>
-                                            <div class="speaker-square-right">
-                                                <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title">${speaker.topic || 'Coming soon'}</h2>
-                                                <p class="talk-abstract">${speaker.abstract || 'Presentation details coming soon.'}</p>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="card-footer-logo">
-                                                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
-                                                    <line x1="6" y1="24" x2="14" y2="20" stroke="#8c827a" stroke-width="1.2" />
-                                                    <line x1="6" y1="24" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
-                                                    <line x1="14" y1="20" x2="10" y2="12" stroke="#8c827a" stroke-width="1.2" />
-                                                    <line x1="14" y1="20" x2="26" y2="8" stroke="#e56b6f" stroke-width="1.5" stroke-dasharray="2.5 2.5" />
-                                                    <circle cx="6" cy="24" r="3" fill="#508484" />
-                                                    <circle cx="10" cy="12" r="3" fill="#6d597a" />
-                                                    <circle cx="14" cy="20" r="3" fill="#355070" />
-                                                    <circle cx="26" cy="8" r="4.5" fill="#e56b6f" stroke="#ffffff" stroke-width="1" />
-                                                </svg>
-                                                <span>Edge Cases</span>
-                                            </div>
-                                            <div class="card-footer-web">edgecases2026.org</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
                     const cardTitleOnly = `
                         <div class="card-container-wrapper">
                             <div class="card-label">
@@ -4359,7 +4304,7 @@ The Edge Cases 2026 Organizing Committee</div>
                                                 <p class="speaker-affiliation">${speaker.affiliation || ''}</p>
                                                 <div class="speaker-square-divider"></div>
                                                 <span class="section-tag">Featured Presentation</span>
-                                                <h2 class="talk-title" style="font-size: 2.2rem; line-height: 1.25; margin-top: 1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; max-width: 100%;">${speaker.topic || 'Coming soon'}</h2>
+                                                <h2 class="talk-title" style="font-size: 2.2rem; line-height: 1.25; margin-top: 1rem; max-width: 100%;">${speaker.topic || 'Coming soon'}</h2>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -4371,7 +4316,7 @@ The Edge Cases 2026 Organizing Committee</div>
                         </div>
                     `;
 
-                    return cardStandard + cardTitleOnly;
+                    return cardTitleOnly;
                 }).join('');
             }
 
