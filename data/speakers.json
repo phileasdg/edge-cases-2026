@@ -1,20 +1,5 @@
 [
   {
-    "id": "atiyab-zafar",
-    "name": "Atiyab Zafar",
-    "affiliation": "Department of Physics and Astrophysics, University of Delhi",
-    "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
-    "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
-    "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
-    "image": "media/speakers/atiyab_zafar.jpg",
-    "publishAnyway": true,
-    "themeIds": [
-      "03",
-      "04"
-    ],
-    "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
-  },
-  {
     "id": "arhan-vora",
     "name": "Arhan Vora",
     "affiliation": "University of Montpellier",
@@ -29,6 +14,21 @@
       "06"
     ],
     "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
+  },
+  {
+    "id": "atiyab-zafar",
+    "name": "Atiyab Zafar",
+    "affiliation": "Department of Physics and Astrophysics, University of Delhi",
+    "topic": "How Networks Think: Structure, Memory, and Collective Problem Solving",
+    "abstract": "Individuals and organizations often solve complex problems with incomplete information and through interaction with others. We study an agent-based model in which agents face a shared boolean satisfiability problem, learn information through observation and communication, and update beliefs through simple local greedy repairs. Because behavior is otherwise homogeneous, differences in collective performance come from network structure: we show interesting behavior that emerges from the way networks are shaped, ranging from information traps and collective memory to broader patterns of coordination, learning, and adaptation.",
+    "bio": "Atiyab is a researcher who works in the field of network science and complex systems. His research lies in the domain of evolving networks. He holds an M.Sc. in physics and is currently pursuing PhD in physics from Delhi University.",
+    "image": "media/speakers/atiyab_zafar.jpg",
+    "publishAnyway": true,
+    "themeIds": [
+      "03",
+      "04"
+    ],
+    "themeRelevance": "Investigating how network topology influences collective problem-solving and information sharing in agent-based models."
   },
   {
     "id": "haily-merritt",
