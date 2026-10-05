@@ -5,9 +5,8 @@
     "affiliation": "Complexity Coffee",
     "topic": "Complexity Coffee: A grassroots network for complexity science",
     "abstract": "An introduction and presentation on Complexity Coffee, an independent network and community for complexity science researchers.",
-    "bio": "",
+    "bio": "Arhan is a Mathematical Biologist and Complex Systems scientist at the Institut des Sciences de l'Evolution, Montpellier. He is interested in understanding Ecology and Evolution through a complex systems lens. His work spans the collective behaviour of mixed species flocks and stochastic models for the evolution of antibiotic resistance in E. Coli.",
     "image": "media/speakers/arhan_vora.jpeg",
-    "note": "Pending abstract & biography",
     "publishAnyway": true,
     "themeIds": [
       "01",
@@ -62,10 +61,10 @@
   {
     "id": "phileas-dazeley-gaist",
     "name": "Phileas Dazeley-Gaist",
-    "affiliation": "Wolfram Research",
+    "affiliation": "Wolfram Research, Wolfram Institute",
     "topic": "Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism",
     "abstract": "We introduce the “Sympoietic Art Organism”, an experimental design to richly capture the bottom-up emergence of shared cultural heritage in a small community. Over three months, ten artists built a shared creative commons, resulting in a dataset of 411 original artworks and a citation network of 725 verified relationships between them. By modeling the network's growth as a time series, we provide a scalable ethnographic tool for investigating the mechanisms of cultural inheritance.",
-    "bio": "Phileas is a human ecologist, creative technologist, and developer at Wolfram Research, focusing on human ecology, agent-based modeling, and digital humanities.",
+    "bio": "Phileas is a human ecologist, creative technologist, developer at Wolfram Research, and research fellow at the Wolfram Institute, focusing on human ecology, agent-based modeling, and digital humanities.",
     "image": "media/speakers/phileas_dazeley-gaist.png",
     "themeIds": [
       "01",
