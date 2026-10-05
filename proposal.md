@@ -17,9 +17,9 @@ convey to attendees how the same graph-theoretical tools can apply
 different fields.
 
 Hosted by Wolfram Research, and co-organized with Complexity Coffee (an
-independent organization of Santa Fe Institute Complexity Global School
-alumni), this event focuses on the novel, the interdisciplinary, and the
-computational. We welcome submissions that apply graph theory to
+independent network for complexity science researchers), this event
+focuses on the novel, the interdisciplinary, and the computational. We
+welcome submissions that apply graph theory to
 distinct, surprising, or historically non-quantitative subjects.
 
 # ![A red star shaped logo AI-generated content may be incorrect.](media/image1.png){width="0.20902777777777778in" height="0.21666666666666667in"} **Scope & Topics of Interest**
@@ -103,10 +103,9 @@ and high-caliber lineup.
 
 ## **Confirmed Expressions of Interest (direct outreach):**
 
-- **Pedro Márquez-Zacarías** (Wolfram Institute / Former SFI Omidyar
-  Fellow): *Theoretical Biology & Computational Linguistics.* Focus on
-  evolutionary dynamics, multicellularity, and the linguistics of
-  Purépecha.
+- **Pedro Márquez-Zacarías** (Wolfram Institute): *Theoretical Biology &
+  Computational Linguistics.* Focus on evolutionary dynamics,
+  multicellularity, and the linguistics of Purépecha.
 
 - **Emmy Tither** (University of Illinois Urbana-Champaign / Complexity
   Coffee): *Mapping Political & Cultural Systems.* Focus on the
@@ -138,9 +137,7 @@ and high-caliber lineup.
   production of the judicial decision: a comparative study on the
   contrast between Brazil and England
 
-- **Arhan Vora** (University of Montpellier): Sailing through phenotype
-  space : discretizing evolution as population dynamics on a network of
-  phenotypes
+- **Arhan Vora** (Complexity Coffee): Complexity Coffee: A grassroots network for complexity science
 
 - **Osnat Mokryn** (University of Haifa): Engagement homeostasis in
   temporal interaction networks and the edge case that breaks it
@@ -156,7 +153,7 @@ We have extended invitations to the following senior researchers:
 
 - **Prof. Laurent Hébert-Dufresne** (Vermont Complex Systems Institute)
 
-- **Prof. Dave Feldman** (College of the Atlantic / Santa Fe Institute)
+- **Prof. Dave Feldman** (College of the Atlantic)
 
 - **Prof. Moira Zellner** (Northeastern University)
 
@@ -164,9 +161,9 @@ We have extended invitations to the following senior researchers:
 
 ## **Recruitment Channels**
 
-- **The Santa Fe Institute & CGS Ecosystem:** We are actively soliciting
-  speakers from the Complexity Global School (CGS) alumni networks,
-  organizers, and faculty; the Complexity Coffee network.
+- **The Complexity Coffee Ecosystem:** We are actively soliciting
+  speakers from the Complexity Coffee community and associated
+  interdisciplinary networks.
 
 - **International Complexity Hubs:** We will extend invitations to
   researchers at allied institutions, including the Complexity Science

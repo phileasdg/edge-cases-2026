@@ -2,18 +2,18 @@
   {
     "id": "arhan-vora",
     "name": "Arhan Vora",
-    "affiliation": "University of Montpellier",
-    "topic": "Sailing Through Phenotype Space: Discretizing Evolution as Population Dynamics on a Network of Phenotypes",
-    "abstract": "Traditional evolutionary dynamics are modeled on continuous fitness landscapes. In this work, we take a network-centric approach by discretizing evolution as population dynamics on a network of phenotypes. We explore how structural properties of the phenotype network constrain evolutionary trajectories and adaptation to selective pressures, revealing how complex genetic patterns map onto network-based transitions.",
+    "affiliation": "Complexity Coffee",
+    "topic": "Complexity Coffee: A grassroots network for complexity science",
+    "abstract": "An introduction and presentation on Complexity Coffee, an independent network and community for complexity science researchers.",
     "bio": "",
     "image": "media/speakers/arhan_vora.jpeg",
-    "note": "Pending biography",
+    "note": "Pending abstract & biography",
     "publishAnyway": true,
     "themeIds": [
-      "02",
-      "06"
+      "01",
+      "03"
     ],
-    "themeRelevance": "Discretizing biological evolutionary processes as population dynamics over networks of phenotypes."
+    "themeRelevance": "Community and collaborative networks in complexity science."
   },
   {
     "id": "atiyab-zafar",
