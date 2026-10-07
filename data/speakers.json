@@ -107,7 +107,7 @@
     "name": "Alejandra Ortiz Durán",
     "affiliation": "Wolfram Research",
     "topic": "Reaction-Diffusion on Graphs",
-    "abstract": "We explore pattern formation and dynamical processes on complex network topologies by simulating reaction-diffusion systems directly on graphs. We investigate how topological features such as community structures, hub nodes, and path lengths govern spatial pattern emergence, with applications to biological systems and information flow.",
+    "abstract": "In this presentation, we explore the conditions that allow networks to produce Turing patterns. We look at how these patterns emerge across different network structures, including networks that change and grow over time. Interestingly, these evolving networks can develop lattice-like structures that support patterns similar to those we see in growing continuous domains. In addition, we explore how these ideas could be applied to systems in biology and sociology.",
     "bio": "Alejandra is an applied mathematician and Computational Graphs & Geometry Developer at Wolfram. She holds a master's degree in Mathematics from UNAM and is currently pursuing a Ph.D. in Mathematical Biology.",
     "image": "media/speakers/alejandra_ortiz.png",
     "note": "Pending presentation slides",
