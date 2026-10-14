@@ -447,6 +447,38 @@ header .container {
   box-shadow: none;
 }
 
+.speaker-card.is-cancelled {
+  opacity: 0.5;
+  filter: grayscale(1);
+  background: #faf8f6;
+  border-color: rgba(140, 130, 122, 0.25);
+}
+
+.speaker-card.is-cancelled:hover {
+  border-color: rgba(140, 130, 122, 0.4);
+  transform: none;
+  box-shadow: 0 4px 12px rgba(43, 38, 35, 0.04);
+}
+
+.cancelled-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #8c827a;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 6px rgba(140, 130, 122, 0.2);
+  display: inline-flex;
+  align-items: center;
+  z-index: 5;
+}
+
 .speaker-image {
   width: 90px;
   height: 90px;
@@ -655,6 +687,24 @@ header .container {
   font-size: 1rem;
   color: var(--muted-text);
   line-height: 1.5;
+}
+
+.agenda-item.is-cancelled {
+  opacity: 0.45;
+  background: rgba(140, 130, 122, 0.03);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.agenda-item.is-cancelled .time {
+  color: var(--muted-text);
+  font-weight: 400;
+  opacity: 0.4;
+}
+
+.agenda-item.is-cancelled h3 {
+  color: var(--muted-text);
 }
 
 /* Contact & Collaborate */

@@ -282,7 +282,7 @@
             const isReleaseMode = settings && settings.releaseMode === true;
             
             // Filter out inactive/cancelled speakers for the live presentation deck
-            const activeSpeakers = speakers.filter(s => s.id !== 'yessica-herrera');
+            const activeSpeakers = speakers.filter(s => s.id !== 'yessica-herrera' && !s.cancelled);
 
             // Process speakers: conditionally anonymize
             const processedSpeakers = activeSpeakers.map(s => {

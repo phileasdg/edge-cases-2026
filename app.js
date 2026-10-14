@@ -214,10 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (!speaker.bio) reasons.push('Missing biography');
                         if (!speaker.topic) reasons.push('Missing presentation title');
                         if (!speaker.abstract) reasons.push('Missing talk description');
-                        if (speaker.note) reasons.push(`Draft note: ${speaker.note}`);
-                        
                         const needsUpdate = reasons.length > 0;
-                        const badgeHtml = (showIndicators && needsUpdate) ? 
+                        const isCancelled = speaker.cancelled === true;
+                        const badgeHtml = (showIndicators && needsUpdate && !isCancelled) ? 
                             `<div class="update-badge" title="[Draft: ${speaker.name}]\nPending updates:\n${reasons.map(r => `• ${r}`).join('\n')}">Update Needed</div>` : 
                             '';
 
@@ -242,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         return `
-                            <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'}" data-id="${speaker.id}" data-reveal style="--theme-color: ${c1};">
+                            <div class="speaker-card ${hasImage ? 'has-image' : 'no-image'} ${isCancelled ? 'is-cancelled' : ''}" data-id="${speaker.id}" data-reveal style="--theme-color: ${isCancelled ? '#8c827a' : c1};">
                                 ${badgeHtml}
                                 ${hasImage ? `
                                     <div class="speaker-image">
@@ -258,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="speaker-info">
                                     <h3>${speaker.name}</h3>
                                     <div class="affiliation">${speaker.affiliation}</div>
-                                    <p class="topic">${speaker.topic || 'Coming soon'}</p>
+                                    <p class="topic">${speaker.topic || 'Coming soon'}${isCancelled ? ' <span style="font-weight: 600; color: #8c827a; font-size: 0.85em;">(Cancelled)</span>' : ''}</p>
                                 </div>
                             </div>
                         `;
@@ -392,15 +391,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Render Items
-        html += agenda.items.map(item => `
-            <div class="agenda-item" data-reveal>
-                <div class="time">${item.time}</div>
-                <div class="details">
-                    <h3>${item.title} ${item.duration ? `<span style="font-size: 0.8rem; opacity: 0.5; font-weight: 400; margin-left: 0.5rem;">(${item.duration})</span>` : ''}</h3>
-                    ${item.description ? `<p>${item.description}</p>` : ''}
+        html += agenda.items.map(item => {
+            const isCancelled = item.cancelled === true;
+            return `
+                <div class="agenda-item ${isCancelled ? 'is-cancelled' : ''}" data-reveal>
+                    <div class="time">${item.time || ''}</div>
+                    <div class="details">
+                        <h3>${item.title} ${item.duration ? `<span style="font-size: 0.8rem; opacity: ${isCancelled ? '0.7' : '0.5'}; font-weight: ${isCancelled ? '600' : '400'}; margin-left: 0.5rem; ${isCancelled ? 'color: #8c827a;' : ''}">(${item.duration})</span>` : ''}</h3>
+                        ${item.description ? `<p>${item.description}</p>` : ''}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
 
 
 

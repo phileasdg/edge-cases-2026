@@ -96,6 +96,7 @@
     "bio": "Yessica is a scientist blending social complexity with behavioral research, network science, and data visualization to explore how art, science, and technology shape human creativity.",
     "image": "media/speakers/yessica_herrera_guzman.jpeg",
     "website": "https://yessicaherrera.com",
+    "cancelled": true,
     "themeIds": [
       "01",
       "04"
