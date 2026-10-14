@@ -50,7 +50,7 @@
 
 
     <div id="slideCounter" onclick="toggleOutline()" title="View all slides (O)" style="position: fixed; bottom: 4vh; right: 6vw; z-index: 100; font-family: var(--font-mono); font-size: 0.9rem; color: var(--muted-text); opacity: 0.45; letter-spacing: 0.05em; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s ease;">
-        <span>01 / 18</span>
+        <span>01 / 12</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -541,10 +541,9 @@
             outlineList.innerHTML = slideDeck.map((slide, idx) => {
                 let name = '';
                 if (slide.type === 'welcome') name = 'Symposium Welcome';
-                else if (slide.type === 'themes-overview') name = 'Roadmap & Themes';
+                else if (slide.type === 'themes-overview') name = 'Symposium Themes';
                 else if (slide.type === 'presenters-overview') name = 'Contributors';
                 else if (slide.type === 'topics-overview') name = 'Presentation Topics';
-                else if (slide.type === 'schedule') name = 'Symposium Schedule';
                 else if (slide.type === 'speaker') name = `Talk: ${slide.speaker.name}`;
                 else if (slide.type === 'outro') name = 'Symposium Conclusion';
                 
@@ -581,7 +580,8 @@
 
             // Update counter UI
             if (slideCounter) {
-                slideCounter.textContent = (currentSlide + 1).toString().padStart(2, '0') + ' / ' + slideDeck.length.toString().padStart(2, '0');
+                const countText = (currentSlide + 1).toString().padStart(2, '0') + ' / ' + slideDeck.length.toString().padStart(2, '0');
+                slideCounter.innerHTML = `<span>${countText}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
             }
 
 
@@ -679,12 +679,6 @@
             outlineDrawer.classList.toggle('open');
             const btn = document.getElementById('outlineToggleBtn');
             if (btn) btn.classList.toggle('active', outlineDrawer.classList.contains('open'));
-        }
-
-        function toggleNotes() {
-            notesDrawer.classList.toggle('open');
-            const btn = document.getElementById('notesToggleBtn');
-            if (btn) btn.classList.toggle('active', notesDrawer.classList.contains('open'));
         }
 
         function toggleHelp() {
