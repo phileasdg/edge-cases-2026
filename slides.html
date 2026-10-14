@@ -48,14 +48,7 @@
     </div>
 
 
-    <!-- Corner Status Indicators (Faint and Unobtrusive) -->
-    <div id="sessionTimer" title="Session Timer" style="position: fixed; bottom: 4vh; left: 6vw; z-index: 100; font-family: var(--font-mono); font-size: 0.9rem; color: var(--muted-text); opacity: 0.45; letter-spacing: 0.05em; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s ease;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        <span>00:00</span>
-    </div>
+
     <div id="slideCounter" onclick="toggleOutline()" title="View all slides (O)" style="position: fixed; bottom: 4vh; right: 6vw; z-index: 100; font-family: var(--font-mono); font-size: 0.9rem; color: var(--muted-text); opacity: 0.45; letter-spacing: 0.05em; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s ease;">
         <span>01 / 18</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -101,10 +94,7 @@
         let networkData = null;
         let themeMap = {};
         
-        // Timer Variables
-        let timerInterval = null;
-        let timerSeconds = 0;
-        let timerRunning = true; // Auto start
+
 
         // Interactive control panel autohide timer
         let controlsTimeout = null;
@@ -144,8 +134,7 @@
         const slideContainer = document.getElementById('slideContainer');
         const slideCounter = document.getElementById('slideCounter');
         const outlineList = document.getElementById('outlineList');
-        const timerDisplay = document.getElementById('sessionTimer');
-        const playPauseBtn = document.getElementById('timerPlayPauseBtn');
+
         const outlineDrawer = document.getElementById('outlineDrawer');
         const helpOverlay = document.getElementById('helpOverlay');
         const loadingOverlay = document.getElementById('loadingOverlay');
@@ -221,7 +210,6 @@
         // Fetch Data on Load
         window.addEventListener('DOMContentLoaded', () => {
             resetControlsAutohide();
-            startTimer();
 
             Promise.all([
                 fetch('data/themes.json').then(res => res.json()),
@@ -293,8 +281,11 @@
         function buildSlideDeck(themes, speakers, settings) {
             const isReleaseMode = settings && settings.releaseMode === true;
             
+            // Filter out inactive/cancelled speakers for the live presentation deck
+            const activeSpeakers = speakers.filter(s => s.id !== 'yessica-herrera');
+
             // Process speakers: conditionally anonymize
-            const processedSpeakers = speakers.map(s => {
+            const processedSpeakers = activeSpeakers.map(s => {
                 const needsUpdate = !s.image || !s.bio || !s.topic || !s.abstract || s.note;
                 const isAnonymous = isReleaseMode && needsUpdate && !s.publishAnyway;
                 if (isAnonymous) {
@@ -310,6 +301,23 @@
                     };
                 }
                 return { ...s, isAnonymous: false };
+            });
+
+            // Ensure strict speaking schedule order
+            const speakingOrder = [
+                'arhan-vora',
+                'atiyab-zafar',
+                'haily-merritt',
+                'dugan-hammock',
+                'phileas-dazeley-gaist',
+                'divya-sindhu-lekha',
+                'alejandra-ortiz-duran'
+            ];
+
+            processedSpeakers.sort((a, b) => {
+                const idxA = speakingOrder.indexOf(a.id);
+                const idxB = speakingOrder.indexOf(b.id);
+                return (idxA !== -1 ? idxA : 999) - (idxB !== -1 ? idxB : 999);
             });
 
             slideDeck = [];
@@ -352,14 +360,7 @@
                 speakers: processedSpeakers
             });
 
-            // Slide 5: Schedule
-            slideDeck.push({
-                type: 'schedule',
-                title: 'Symposium Schedule',
-                speakers: processedSpeakers
-            });
-
-            // Add Speaker slides directly
+            // Add Speaker slides in speaking order
             processedSpeakers.forEach(speaker => {
                 const speakerThemeIds = speaker.themeIds || (speaker.themeId ? [speaker.themeId] : []);
                 slideDeck.push({
@@ -409,18 +410,13 @@
                             <h1>${slide.title}</h1>
                         </div>
                         <div class="title-slide-sub">${slide.subtitle}</div>
-                        <div style="font-size: 1.15rem; color: var(--muted-text);">Organized by the Edge Cases Symposium Committee</div>
                         <div class="title-slide-meta">${slide.meta}</div>
                     `;
                 }
                 
                 else if (slide.type === 'themes-overview') {
                     contentHTML = `
-                        <div class="slide-header">
-                            <span class="slide-tag">Symposium Roadmap</span>
-                            <span class="slide-tag">CCS 2026</span>
-                        </div>
-                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">${slide.title}</h2>
                         <div class="themes-overview-grid">
                             ${slide.themes.map(t => {
                                 const color = THEME_COLORS[t.id] || 'var(--accent-color)';
@@ -438,10 +434,7 @@
                 
                 else if (slide.type === 'presenters-overview') {
                     contentHTML = `
-                        <div class="slide-header">
-                            <span class="slide-tag">Symposium Contributors</span>
-                        </div>
-                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">${slide.title}</h2>
                         <div class="presenters-grid">
                             ${slide.speakers.map(sp => {
                                 const initials = getInitials(sp.name);
@@ -468,10 +461,7 @@
 
                 else if (slide.type === 'topics-overview') {
                     contentHTML = `
-                        <div class="slide-header">
-                            <span class="slide-tag">Symposium Topics</span>
-                        </div>
-                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
+                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">${slide.title}</h2>
                         <div class="topics-list" style="overflow-y: auto; padding-right: 1rem;">
                             ${slide.speakers.map(sp => {
                                 const primaryThemeId = (sp.themeIds && sp.themeIds.length > 0) ? sp.themeIds[0] : (sp.themeId || '01');
@@ -487,40 +477,6 @@
                     `;
                 }
 
-                else if (slide.type === 'schedule') {
-                    const scheduleData = [
-                        { time: '2:30 PM', title: 'Welcome & Event Introduction', speaker: 'Phileas Dazeley-Gaist - Wolfram Research' },
-                        { time: '2:35 PM', title: 'Complexity Coffee: A grassroots network for complexity science', speaker: 'Arhan Vora - Complexity Coffee' },
-                        { time: '2:50 PM', title: 'How Networks Think: Structure, Memory, and Collective Problem Solving', speaker: 'Atiyab Zafar - University of Delhi' },
-                        { time: '3:10 PM', title: 'Brain Networks as Phenotypes', speaker: 'Haily Merritt - Network Science Institute' },
-                        { time: '3:30 PM', title: 'Generating irregular networks from periodic structures', speaker: 'Dugan Hammock - Wolfram Institute' },
-                        { time: '3:50 PM', title: 'Mid-Session Shared Q&A & Break', speaker: 'All Speakers / Attendees' },
-                        { time: '4:10 PM', title: 'Tracking the Micro-Dynamics of Cultural Evolution; a Sympoietic Art Organism', speaker: 'Phileas Dazeley-Gaist - Wolfram Research & Wolfram Institute' },
-                        { time: '4:20 PM', title: 'Winning at Chess Without Search', speaker: 'Dr. Divya Sindhu Lekha - IIIT Kottayam' },
-                        { time: '4:40 PM', title: 'The Art World as a Network', speaker: 'Yessica Herrera - University of Notre Dame' },
-                        { time: '5:00 PM', title: 'Reaction-Diffusion on Graphs', speaker: 'Alejandra Ortiz Durán - Wolfram Research' },
-                        { time: '5:20 PM', title: 'Closing Shared Q&A & Remarks', speaker: 'All Speakers / Event Organizers' }
-                    ];
-
-                    contentHTML = `
-                        <div class="slide-header">
-                            <span class="slide-tag">Event Timeline</span>
-                        </div>
-                        <h2 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem;">${slide.title}</h2>
-                        <div class="schedule-list" style="overflow-y: auto; padding-right: 1rem; flex: 1;">
-                            ${scheduleData.map(item => `
-                                <div class="schedule-item">
-                                    <div class="schedule-time">${item.time}</div>
-                                    <div class="schedule-details">
-                                        <div class="schedule-title">${item.title}</div>
-                                        <div class="topic-item-speaker">${item.speaker}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
                 else if (slide.type === 'speaker') {
                     const sp = slide.speaker;
                     const primaryThemeId = slide.themeIds[0];
@@ -533,29 +489,10 @@
                         `<img src="${sp.image}" alt="${sp.name}" onerror="this.outerHTML='<div class=&quot;speaker-slide-avatar&quot; style=&quot;${gradientStyle}; border: none;&quot;>${initials}</div>';">` :
                         `<div class="speaker-slide-avatar" style="${gradientStyle}; border: none;">${initials}</div>`;
 
-                    const themeBadgesHTML = slide.themeIds.map(tid => {
-                        const tColor = THEME_COLORS[tid] || 'var(--accent-color)';
-                        const tName = THEME_LABELS[tid] || '';
-                        return `<span class="slide-tag" style="color: ${tColor}; background: ${tColor}12; border: 1px solid ${tColor}25; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem; letter-spacing: 0.05em;">Theme ${tid}: ${tName}</span>`;
-                    }).join('');
-
                     contentHTML = `
-                        <div class="slide-header">
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; max-width: 75%;">
-                                ${themeBadgesHTML}
-                            </div>
-                            <span class="slide-tag">Contributor Profile</span>
-                        </div>
                         <div class="speaker-slide-body">
                             <div class="speaker-slide-left">
-                                <h3 class="speaker-talk-title">${sp.topic || 'Coming soon'}</h3>
-                                <p class="speaker-talk-abstract">${sp.abstract || 'Presentation details coming soon.'}</p>
-                                ${sp.themeRelevance ? `
-                                    <div class="speaker-theme-relevance" style="border-left-color: ${color};">
-                                        <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: ${color}; margin-bottom: 0.35rem; text-transform: uppercase;">Relevance to Themes</div>
-                                        ${sp.themeRelevance}
-                                    </div>
-                                ` : ''}
+                                <h2 class="speaker-talk-title">${sp.topic || 'Coming soon'}</h2>
                             </div>
                             <div class="speaker-slide-right">
                                 <div class="speaker-slide-avatar" style="border-color: ${color};">
@@ -587,9 +524,6 @@
                         <div class="title-slide-sub" style="font-size: 1.4rem; color: var(--accent-color);">Edge Cases | CCS 2026 Satellite Symposium</div>
                         <div style="max-width: 600px; line-height: 1.6; color: var(--muted-text); font-size: 1rem;">
                             Special thanks to the contributors, the attendees, the conference organizers, and all those who played a role in bringing this event together.
-                        </div>
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="index.html" style="font-family: var(--font-mono); color: var(--accent-color); text-decoration: underline; font-size: 0.95rem;">Official Website</a>
                         </div>
                     `;
                 }
@@ -773,28 +707,7 @@
             }
         }
 
-        // 5. Presenter stopwatch session timer logic
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                if (timerRunning) {
-                    timerSeconds++;
-                    const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
-                    const secs = String(timerSeconds % 60).padStart(2, '0');
-                    timerDisplay.textContent = `${mins}:${secs}`;
-                }
-            }, 1000);
-        }
 
-        function toggleTimer() {
-            timerRunning = !timerRunning;
-        }
-
-        function resetTimer() {
-            timerSeconds = 0;
-            timerDisplay.textContent = '00:00';
-            timerRunning = true;
-        }
 
 
         // ==========================================
