@@ -792,8 +792,8 @@ header .container {
 
 /* Info Banner */
 .info-banner {
-  background: rgba(224, 159, 62, 0.08); /* Subtle warm ochre tint */
-  border-bottom: 1px solid rgba(224, 159, 62, 0.2);
+  background: rgba(51, 92, 103, 0.07); /* Muted slate teal tint for concluded event */
+  border-bottom: 1px solid rgba(51, 92, 103, 0.18);
   padding: 0.85rem var(--space-md);
   text-align: center;
   font-size: 0.92rem;
